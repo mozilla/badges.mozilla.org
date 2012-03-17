@@ -10,3 +10,6 @@
 [submodule "vendor-local/src/django-south"]
 	path = vendor-local/src/django-south
 	url = git://github.com/lambdafu/django-south.git
+[submodule "vendor-local/src/django-csp"]
+	path = vendor-local/src/django-csp
+	url = git://github.com/mozilla/django-csp.git

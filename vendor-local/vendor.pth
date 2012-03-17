@@ -1,3 +1,4 @@
 src/django-badger
 src/django-browserid
 src/django-south
+src/django-csp
