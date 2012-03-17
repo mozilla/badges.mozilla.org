@@ -4,3 +4,6 @@
 [submodule "vendor-local/src/django-badger"]
 	path = vendor-local/src/django-badger
 	url = git://github.com/lmorchard/django-badger.git
+[submodule "vendor-local/src/django-browserid"]
+	path = vendor-local/src/django-browserid
+	url = git://github.com/mozilla/django-browserid.git
