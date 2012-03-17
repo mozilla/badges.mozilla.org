@@ -1,2 +1,3 @@
 src/django-badger
 src/django-browserid
+src/django-south
