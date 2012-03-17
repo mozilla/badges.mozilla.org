@@ -1,0 +1,5 @@
+/* Base CSS styles */
+form.browserid { display: inline; margin: 0; padding: 0 }
+
+/* For some reason the bootstrap navbar isn't pushing content down without this */
+.navbar-fixed-top { position: static; }

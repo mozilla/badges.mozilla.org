@@ -1,21 +1,28 @@
 from django.conf import settings
 from django.conf.urls.defaults import *
 
-from .examples import urls
+from .profiles import urls as profiles_urls
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.views.generic.simple import direct_to_template
+
+from django.contrib import admin
+admin.autodiscover()
+
+import badger
+badger.autodiscover()
+
+from badger import Progress
+#from badger_multiplayer.models import Badge, Award, Nomination
+from badger.models import Badge, Award
 
 urlpatterns = patterns('',
-    # Example:
-    (r'', include(urls)),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
-    # (r'^admin/', include(admin.site.urls)),
+    url(r'^$', 'badger.views.home', name='home'),
+    (r'^badges/', include('badger_multiplayer.urls')),
+    (r'^badges/', include('badger.urls')),    
+    (r'^browserid/', include('django_browserid.urls')),
+    (r'^profiles/', include(profiles_urls)),
+    (r'^accounts/', include('django.contrib.auth.urls')),    
+    (r'^admin/', include(admin.site.urls)),
 )
 
 ## In DEBUG mode, serve media files through Django.

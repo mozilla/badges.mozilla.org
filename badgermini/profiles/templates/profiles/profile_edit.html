@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block pageid %}profile_edit{% endblock %}
+
+{% block content %}
+
+<h2>Edit profile for {{ profile.user }}</h2>
+
+<form id="edit_profile" method="POST" action="" enctype="multipart/form-data">
+    {{ csrf() }}
+
+    {% if user_form %}
+        <fieldset>
+            <legend>Account</legend>
+            <ul>{{ user_form.as_ul() }}</ul>
+        </fieldset>
+    {% endif %}
+
+    <fieldset>
+        <legend>Profile</legend>
+        <ul>{{ profile_form.as_ul() }}</ul>
+    </fieldset>
+
+    <ul>
+        <li><input type="submit" class="submit" value="Save"></li>
+    </ul>
+
+</form>
+
+{% endblock %}

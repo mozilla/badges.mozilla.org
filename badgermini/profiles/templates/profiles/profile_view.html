@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block pageid %}profile_detail{% endblock %}
+
+{% block extrahead %}
+    <link rel="alternate" type="application/atom+xml"
+        title="{{ _('Recent awards') }}"
+        href="{{ url('badger.feeds.awards_by_user', 'atom', user.username) }}" />
+{% endblock %}
+
+{% block content %}
+
+<section id="detail">
+    <h2>Profile for {{ user }}</h2>
+    <dl class="profile">
+        <dt class="avatar">Avatar:</dt><dd><img src="{{ user_avatar(profile.user) }}" /></dd>
+        <dt class="username">Username:</dt><dd>{{ user.username }}</dd>
+        <dt class="display_name">Display name:</dt><dd>{{ profile.display_name }}</dd>
+        <dt class="location">Location:</dt><dd>{{ profile.location }}</dd>
+        <dt class="bio">Bio:</dt><dd>{{ profile.bio_html | safe }}</dd>
+        <dt class="created">Created:</dt><dd>{{ profile.created }}</dd>
+        <dt class="modified">Modified:</dt><dd>{{ profile.modified }}</dd>
+        <dt class="actions">Actions:</dt><dd><ul>
+            {% if profile.allows_edit(request.user) %}
+                <li><a href="{{ url('profiles.profile_edit', profile.user.username) }}">{{ _('Edit profile') }}</a>
+            {% endif %}
+        </ul></dd>
+    </dl>
+</section>
+
+<section class="related">
+
+{# TODO: Move this into Nomination model? #}
+{% if request.user == profile.user or request.user.is_superuser or request.user.is_staff %}
+    {% if nominations_pending_approval %}
+        {% set nominations_to_approve = nominations_pending_approval(profile.user) %}
+        {% if nominations_to_approve %}
+        <section id="nominations_to_approve">
+            <h2>Nominations for you to approve</h2>
+            <ul class="nominations">
+                {% for nomination in nominations_to_approve %}
+                    <li><a href="{{ nomination.get_absolute_url() }}">{{ nomination }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    {% endif %}
+
+    {% if nominations_pending_acceptance %}
+        {% set nominations_to_accept = nominations_pending_acceptance(profile.user) %}
+        {% if nominations_to_accept %}
+        <section id="nominations_to_accept">
+            <h2>Nominations for you to accept</h2>
+            <ul class="nominations">
+                {% for nomination in nominations_to_accept %}
+                    <li><a href="{{ nomination.get_absolute_url() }}">{{ nomination }}</a></li>
+                {% endfor %}
+            </ul>
+        </section>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% set award_list = user_awards(profile.user) %}
+{% if award_list %}
+<section id="recent_awards">
+    <h2>Recent awards</h2>
+    <nav><ul>
+        <li>
+            <a href="{{ url('badger.views.awards_by_user', profile.user.username) }}">More...</a>
+            <a href="{{ url('badger.feeds.awards_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+        </li>
+    </ul></nav>
+    {% include "badger/includes/awards_as_badges_list.html" %}
+</section>
+{% endif %}
+
+{% set badge_list = user_badges(profile.user) %}
+{% if badge_list %}
+<section id="recent_badges">
+    <h2>Recently created badges</h2>
+    <nav><ul>
+        <li>
+            <a href="{{ url('badger_multiplayer.views.badges_by_user', profile.user.username) }}">More...</a>
+            <a href="{{ url('badger_multiplayer.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+        </li>
+    </ul></nav>
+    {% include "badger/includes/badges_list.html" %}
+</section>
+{% endif %}
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "badger/base.html" %}
+
+{% set user = award.user %}
+
+{% block pageid %}award_detail{% endblock %}
+
+{% block extrahead %}
+    <link rel="alternate" type="application/json"
+        title="{{ _('{title} (JSON)') | f(title=award) }}"
+        href="{{ request.build_absolute_uri(url('badger.award_detail_json', badge.slug, award.pk)) }}" />
+{% endblock %}
+
+{% block content %}
+
+<h2>Award detail</h2>
+
+<section class="award">
+    {% include "badger/includes/award_full.html" %}
+    {% if award.user == request.user %}
+        <form class="obi_issuer">
+            <button class="issue">Add this badge to your Open Badge Backpack</button>
+        </form>
+    {% endif %}
+</section>
+
+<section class="badge">
+    <h3>Badge</h3>
+    {% include "badger/includes/badge_full.html" %}
+</section>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript"
+        src="{{ settings.OBI_BASE_URL }}issuer.js"></script>
+{% endblock %}
