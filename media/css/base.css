@@ -1,5 +1,189 @@
 /* Base CSS styles */
-form.browserid { display: inline; margin: 0; padding: 0 }
+
+.clearfix:after {
+     clear: both;
+     content: ".";
+     display: block;
+     height: 0pt;
+     line-height: 0;
+     visibility: hidden;
+}
+.clearfix { display: inline-block; }
+html[xmlns] .clearfix { display: block; }
+* html .clearfix { height: 1%; }
+
+.navbar-fixed-top form { display: inline; margin: 0; padding: 0 }
+.navbar-fixed-top form.search_badges input { padding: 2px; margin: 1px 1px 5px
+    1em; height: 18px }
 
 /* For some reason the bootstrap navbar isn't pushing content down without this */
 .navbar-fixed-top { position: static; }
+
+nav.pagination { clear: both; display: block; padding: 1em 0.25em; }
+nav.pagination p.showing { display: inline; margin: 0pt; padding: 0pt; }
+nav.pagination ul.paging { display: inline; margin: 0pt; padding: 0pt; }
+nav.pagination ul.paging li { display: inline; }
+nav.pagination ul.paging li.first { }
+nav.pagination ul.paging li.last { }
+nav.pagination ul.paging li.next { }
+nav.pagination ul.paging li.prev { }
+
+section#main { padding: 0.5em 1em; }
+
+section.item_flow { position: relative; }
+
+ul.badges { margin: 0pt; padding: 0pt; }
+
+#home ul.badges { }
+
+ul.badges li { border-radius: 8px 8px 8px 8px; border: 1px solid #EEEEEE;
+    list-style: none outside none; margin: 0pt 0.75em 0.75em 0pt; padding: 0pt; }
+ul.badges li img { border-radius: 8px 8px 8px 8px; display: block; }
+
+/* HACK: Undo what bootstrap does */
+.badge, .badge:hover { padding: 0; font-size: inherit; font-weight: inherit;
+    color: inherit; background-color: transparent; border-radius: inherit; }
+
+li.badge { display: block; float: left; position: relative; }
+li.badge a.image { display: block; }
+li.badge a.label {
+     background: none repeat scroll 0pt 0pt #222222;
+     border-radius: 0pt 0pt 8px 8px;
+     bottom: 0pt;
+     color: #FFFFFF;
+     display: block;
+     opacity: 0.85;
+     padding: 0.25em 0pt;
+     position: absolute;
+     text-align: center;
+     text-decoration: none;
+     width: 128px;
+}
+li.badge a.label:before { content: "✸ "; }
+li.badge span.badge_title, li.badge span.relation, li.badge span.user {
+    display: block; padding: 2px; }
+
+ul.awards { margin: 0pt; padding: 0pt; }
+ul.awards li.award {
+     border-radius: 8px 8px 8px 8px;
+     border: 1px solid #DDDDDD;
+     float: left;
+     height: 128px;
+     list-style: none outside none;
+     margin: 0pt 0.75em 0.75em 0pt;
+     position: relative;
+     width: 256px;
+}
+ul.awards li.award img { border-radius: 8px 8px 8px 8px; }
+ul.awards li.award a.avatar_image { position: absolute; right: 0pt; }
+ul.awards li.award a.award_image { position: absolute; left: 0pt; }
+ul.awards li.award span.badge_title, li.award span.relation, li.award span.user {
+     background: none repeat scroll 0pt 0pt #000000;
+     border-radius: 8px 8px 8px 8px;
+     color: #FFFFFF;
+     display: block;
+     opacity: 0.75;
+     padding: 0.25em 0pt;
+     position: absolute;
+     text-align: center;
+     text-decoration: none;
+     z-index: 10;
+}
+
+ul.awards li.award span.badge_title { border-radius: 0pt 0pt 8px 8px;
+    bottom: 0pt; left: 0pt; width: 128px; }
+
+ul.awards li.award span.badge_title:before { content: "✸ "; }
+
+ul.awards li.award span.relation {
+     border-radius: 8px 8px 8px 8px;
+     bottom: 32px;
+     left: 80px;
+     opacity: 0.75;
+     width: 96px;
+}
+
+ul.awards li.award span.relation:after { content: " ⇨"; }
+ul.awards li.award span.user { border-radius: 0pt 0pt 8px 8px;
+     bottom: 0pt; right: 0pt; width: 128px; }
+ul.awards li.award span.user:before { content: "☺ "; }
+ul.awardees { margin: 0pt; padding: 0pt; }
+
+ul.awardees li.awardee {
+     float: left;
+     height: 128px;
+     list-style: none outside none;
+     margin: 0pt 0.75em 0.75em 0pt;
+     position: relative;
+     width: 128px;
+}
+
+ul.awardees li.awardee .avatar_image img { border-radius: 8px 8px 8px 8px; }
+
+ul.awardees li.awardee .label {
+     background: none repeat scroll 0pt 0pt #000000;
+     border-radius: 0pt 0pt 8px 8px;
+     bottom: 0pt;
+     color: #FFFFFF;
+     left: 0pt;
+     opacity: 0.8;
+     padding: 0.25em 0pt;
+     position: absolute;
+     text-align: center;
+     text-decoration: none;
+     width: 128px;
+     z-index: 10;
+}
+
+ul.awardees li.awardee .label:before { content: "☺ "; }
+
+form { }
+form fieldset { border: 1px solid #CCCCCC; margin: 1em 0.25em; padding: 0.5em; }
+form ul { margin: 0pt; padding: 0pt; }
+form ul li { list-style: none outside none; margin: 0pt; padding: 0.25em; }
+form ul li label {
+     display: block;
+     float: left;
+     margin: 0.25em 0.5em 0.25em 0pt;
+     text-align: right;
+     width: 15ex;
+}
+form ul li p.notes, form ul li p.help { margin: 0pt 0pt 0pt 20ex; padding: 0.25em; }
+form ul li ul.errorlist { color: red; margin: 0pt 0pt 0pt 16ex; }
+form ul li input.submit { margin-left: 16ex; padding: 0.25em; }
+
+dl { }
+
+dl dt {
+     background: #eee;
+     border-radius: 8px 8px 8px 8px;
+     float: left;
+     margin: 0pt;
+     min-height: 1.125em;
+     padding: 0.5em 0.5em 0.5em 0pt;
+     text-align: right;
+     width: 15ex;
+}
+
+dl dd {
+     clear: right;
+     display: block;
+     margin: 0pt 0pt 0pt 17ex;
+     min-height: 1.25em;
+     padding: 0.5em 0pt;
+     text-indent: 0pt;
+}
+dl dd:after {
+    content: "\00a0";
+}
+
+dl dd ul {
+     margin: 0pt;
+     padding: 0pt;
+}
+
+dl dd ul li {
+     list-style: none outside none;
+     margin: 0pt;
+     padding: 0.25em 0pt;
+}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if request.user.is_authenticated() %}
+    <section>
+        <header class="page-header">
+            <h1>Already signed in</h1>
+        </header>
+        <p><a href="{{ url('django.contrib.auth.views.logout') }}">{{ _('Sign out?') }}</a></p>
+    </section>
+{% else %}
+    <section>
+        <header class="page-header">
+            <h1>Sign in with BrowserID</h1>
+        </header>
+        <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
+            {{ csrf() }}
+            {{ browserid_form.as_p()|safe }}
+            <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+        </form>
+    </section>
+{% endif %}
+
+{% endblock %}

@@ -25,18 +25,15 @@
           <a class="brand" href="{{ url('home') }}">{{ _('Badger') }}</a>
           <div class="nav-collapse">
             <ul class="nav">
-              <li><a href="{{ url('home') }}">Home</a></li>
               <li><a href="{{ url('badger.views.badges_list') }}">{{ _('Badges') }}</a></li>
               <li><a href="{{ url('badger.views.awards_list') }}">{{ _('Awards') }}</a></li>
             </ul>
             <div class="navbar-text pull-right">
                 {% if request.user.is_authenticated() %}
-                    {{ _('Welcome back, <a href="{user_url}">{user_name}</a>') | f(
-                        user_url=request.user.get_absolute_url(),
-                        user_name=request.user) | safe }}
-                    (
-                    <a href="{{ url('django.contrib.auth.views.logout') }}">{{_('logout')}}</a>
-                    )
+                    {% trans user_url=request.user.get_absolute_url(), user_name=request.user %}
+                        Welcome back, <a href="{{user_url}}">{{user_name}}</a>
+                    {% endtrans %}
+                    (<a href="{{ url('django.contrib.auth.views.logout') }}">{{_('Sign out')}}</a>)
                 {% else %}
                     <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
                         {{ csrf() }}
@@ -44,6 +41,13 @@
                         <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
                     </form>
                 {% endif %}
+
+                <form class="search_badges" method="GET"
+                        action="{{ url('badger.views.badges_list') }}">
+                    <input type="text" name="q" id="id_q" 
+                        value="{{ request.GET.get('q', '') }}"
+                        placeholder="{{ _('search badges') }}" />
+                </form>
             </div>
           </div><!--/.nav-collapse -->
         </div>
@@ -58,8 +62,6 @@
           </section>
         </div><!--/span-->
       </div><!--/row-->
-
-      <hr>
 
       <footer>
         {% if false %}

@@ -1,6 +1,6 @@
 {% extends "badger/base.html" %}
 
-{% block pageid %}badge_award{% endblock %}
+{% block pageid %}badge_nominate{% endblock %}
 
 {% block content %}
 
@@ -15,17 +15,18 @@
 
     <section class="span8">
         <header class="page-header">
-            <h2>{{ _("Issue an award") }}</h2>
+            <h2>{{ _("Submit a nomination") }}</h2>
         </header>
 
-        <form id="award_badge" method="POST" action="" enctype="multipart/form-data">
+        <form id="nominate_badge" method="POST" action="" enctype="multipart/form-data">
             {{ csrf() }}
             <ul>
                 {{ form.as_ul() }}
-                <li><input type="submit" class="submit" value="{{ _("Award") }}"></li>
+                <li><input type="submit" class="submit" value="{{ _("Nominate") }}"></li>
             </ul>
         </form>
     </section>
 
 </section>
+
 {% endblock %}

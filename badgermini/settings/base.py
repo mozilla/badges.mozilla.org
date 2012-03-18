@@ -45,12 +45,13 @@ ROOT_URLCONF = 'badgermini.urls'
 # Authentication
 BROWSERID_CREATE_USER = True
 SITE_URL = 'http://localhost:8000'
-LOGIN_URL = '/'
+LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/profiles/home'
 LOGIN_REDIRECT_URL_FAILURE = '/'
 
 AUTHENTICATION_BACKENDS = (
     'django_browserid.auth.BrowserIDBackend',
+    'django.contrib.auth.backends.ModelBackend'
 )
 AUTH_PROFILE_MODULE = "profiles.UserProfile"
 

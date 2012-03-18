@@ -12,21 +12,24 @@
 
 {% block content %}
 
-<h2>Award detail</h2>
+    <section class="award">
+        <header class="page-header">
+            <h2>{{ _('Award detail') }}</h2>
+        </header>
+        {% include "badger/includes/award_full.html" %}
+        {% if award.user == request.user %}
+            <form class="obi_issuer">
+                <button class="issue">{{_("Add this badge to your Open Badge Backpack")}}</button>
+            </form>
+        {% endif %}
+    </section>
 
-<section class="award">
-    {% include "badger/includes/award_full.html" %}
-    {% if award.user == request.user %}
-        <form class="obi_issuer">
-            <button class="issue">Add this badge to your Open Badge Backpack</button>
-        </form>
-    {% endif %}
-</section>
-
-<section class="badge">
-    <h3>Badge</h3>
-    {% include "badger/includes/badge_full.html" %}
-</section>
+    <section class="badge">
+        <header class="page-header">
+            <h3>{{_("Badge")}}</h3>
+        </header>
+        {% include "badger/includes/badge_full.html" %}
+    </section>
 
 {% endblock %}
 
