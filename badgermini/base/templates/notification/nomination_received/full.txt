@@ -1,4 +1,5 @@
 {% trans domain=current_site.domain,
+            protocol=(protocol or 'http'),
             badge_url=nomination.badge.get_absolute_url(),
             badge_title=nomination.badge.title,
             nomination_url=nomination.get_absolute_url(),
@@ -9,6 +10,6 @@ You were nominated for the badge "{{ badge_title }}".
 
 You can accept the nomination here:
 
-    {{ protocol or 'http' }}://{{ domain }}{{ nomination_url }}
+    {{ protocol }}://{{ domain }}{{ nomination_url }}
     
 {% endtrans %}
