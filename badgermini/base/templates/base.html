@@ -22,6 +22,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
+          <a href="{{ url('home') }}"><img width="64" align="bottom" src="{{MEDIA_URL}}img/logo.png" class="logo" /></a>
           <a class="brand" href="{{ url('home') }}">{{ _('Badger') }}</a>
           <div class="nav-collapse">
             <ul class="nav">
@@ -33,13 +34,20 @@
                     {% trans user_url=request.user.get_absolute_url(), user_name=request.user %}
                         Welcome back, <a href="{{user_url}}">{{user_name}}</a>
                     {% endtrans %}
-                    (<a href="{{ url('django.contrib.auth.views.logout') }}">{{_('Sign out')}}</a>)
+                    (
+                        {% if notice_unseen_count %}
+                            <a class="notices" href="{{ url('notification_notices') }}">{{ notice_unseen_count }}</a>,
+                        {% endif %}
+                        <a href="{{ url('django.contrib.auth.views.logout') }}">{{_('Sign out')}}</a>
+                    )
                 {% else %}
+                    {% block signin %}
                     <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
                         {{ csrf() }}
                         {{ browserid_form.as_p()|safe }}
                         <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
                     </form>
+                    {% endblock %}
                 {% endif %}
 
                 <form class="search_badges" method="GET"
@@ -58,6 +66,7 @@
       <div class="row-fluid">
         <div class="span12">
           <section>
+            {# {% block subnav %}{% endblock %} #}
             {% block content %}{% endblock %}
           </section>
         </div><!--/span-->

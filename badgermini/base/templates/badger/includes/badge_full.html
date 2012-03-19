@@ -1,6 +1,10 @@
 <dl class="badge" data-slug="{{ badge.slug }}">
     <dt>{{_("Title:")}}</dt>
         <dd class="title">{{ badge.title }}</dd>
+    {% if badge.description %}
+        <dt>{{_("Description:")}}</dt>
+            <dd class="description">{{ badge.description }}</dd>
+    {% endif %}
     {% if award and award.image %}
         <dt>{{_("Image:")}}</dt>
             <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ award.image.url }}" width="256" height="256" /></a></dd>
@@ -8,12 +12,8 @@
         <dt>{{_("Image:")}}</dt>
             <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ badge.image.url }}" width="256" height="256" /></a></dd>
     {% endif %}
-    {% if badge.description %}
-        <dt>{{_("Description:")}}</dt>
-            <dd class="description">{{ badge.description }}</dd>
-    {% endif %}
     <dt>{{_("Creator:")}}</dt>
-        <dd><a href="{{ badge.creator.get_absolute_url() }}">{{ badge.creator }}</a></dd>
+        <dd><a href="{{ badge.creator.get_absolute_url() }}"><img src="{{ user_avatar(badge.creator) }}" class="avatar" alt="{{ badge.creator }}" width="28" height="28" />{{ badge.creator }}</a></dd>
     <dt>{{_("Created:")}}</dt>
         <dd>{{ badge.created }}</dd>
     <dt>{{_("Modified:")}}</dt>

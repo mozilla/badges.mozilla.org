@@ -11,12 +11,12 @@
 
 <section class="badges_list" class="item_flow">
     <header class="page-header">
-        <h1>
+        <h2>
             <span>{{ _("Badges") }}</span>
             {% if request.user.is_authenticated() %}
                 <small>(<a class="action" href="{{ url('badger_multiplayer.views.create') }}">{{ _('Create new badge') }}</a>)</small>
             {% endif %}
-        </h1>
+        </h2>
     </header>
     {% include "badger/includes/badges_list.html" %}
 </section>

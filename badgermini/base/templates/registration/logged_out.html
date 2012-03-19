@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block signin %}
+    <a href="{{ url('django.contrib.auth.views.login') }}"
+        title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+{% endblock %}
+
 {% block content %}
 
 <section>

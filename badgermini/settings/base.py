@@ -48,6 +48,18 @@ SITE_URL = 'http://localhost:8000'
 LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/profiles/home'
 LOGIN_REDIRECT_URL_FAILURE = '/'
+LOGOUT_REDIRECT_URL = '/'
+
+def username_algo(email):
+    from django.contrib.auth.models import User
+    cnt, base_name = 0, email.split('@')[0]
+    username = base_name
+    while User.objects.filter(username=username).count() > 0:
+        cnt += 1
+        username = '%s_%s' % (base_name, cnt)
+    return username
+
+BROWSERID_USERNAME_ALGO = username_algo
 
 AUTHENTICATION_BACKENDS = (
     'django_browserid.auth.BrowserIDBackend',
@@ -57,6 +69,7 @@ AUTH_PROFILE_MODULE = "profiles.UserProfile"
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'django_browserid.context_processors.browserid_form',
+    'notification.context_processors.notification',
 ]
 
 INSTALLED_APPS = [
@@ -71,6 +84,7 @@ INSTALLED_APPS = [
     'badger',
     'badger_multiplayer',
 
+    'notification',
     'csp',
     'django_browserid',
     'south',
@@ -129,6 +143,7 @@ CSP_IMG_SRC = ("'self'",
                'http://beta.openbadges.org',
                'https://beta.openbadges.org',
                'http://cf.cdn.vid.ly',
+               'http://www.gravatar.com',
                'https://www.gravatar.com',
                'https://secure.gravatar.com',)
 CSP_STYLE_SRC = ("'self'",

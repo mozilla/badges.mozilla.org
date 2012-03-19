@@ -17,16 +17,25 @@
             <h2>{{ _('Profile: {user}') | f(user=user) }}</h2>
         </header>
         <dl class="profile">
+            {% if profile.display_name %}
+                <dt class="display_name">Display name:</dt><dd>{{ profile.display_name }}</dd>
+            {% else %}
+                <dt class="username">Username:</dt><dd>{{ user.username }}</dd>
+            {% endif %}
             <dt class="avatar">Avatar:</dt><dd><img src="{{ user_avatar(profile.user) }}" /></dd>
-            <dt class="username">Username:</dt><dd>{{ user.username }}</dd>
-            <dt class="display_name">Display name:</dt><dd>{{ profile.display_name }}</dd>
-            <dt class="location">Location:</dt><dd>{{ profile.location }}</dd>
-            <dt class="bio">Bio:</dt><dd>{{ profile.bio_html | safe }}</dd>
+            {% if profile.location %}
+                <dt class="location">Location:</dt><dd>{{ profile.location }}</dd>
+            {% endif %}
+            {% if profile.bio_html %}
+                <dt class="bio">Bio:</dt><dd>{{ profile.bio_html | safe }}</dd>
+            {% endif %}
             <dt class="created">Created:</dt><dd>{{ profile.created }}</dd>
             <dt class="modified">Modified:</dt><dd>{{ profile.modified }}</dd>
             <dt class="actions">Actions:</dt><dd><ul>
                 {% if profile.allows_edit(request.user) %}
                     <li><a href="{{ url('profiles.profile_edit', profile.user.username) }}">{{ _('Edit profile') }}</a>
+                    <li><a href="{{ url('notification_notices') }}">{{ _("View Notices") }}</a></li>
+                    <li><a href="{{ url('notification_notice_settings') }}">{{ _("Notification settings") }}</a></li>
                 {% endif %}
             </ul></dd>
         </dl>
@@ -41,7 +50,7 @@
             {% if nominations_to_approve %}
             <section id="nominations_to_approve">
                 <header class="page-header">
-                    <h2>Nominations for you to approve</h2>
+                    <h3>Nominations for you to approve</h3>
                 </header>
                 <ul class="nominations">
                     {% for nomination in nominations_to_approve %}
@@ -57,7 +66,7 @@
             {% if nominations_to_accept %}
             <section id="nominations_to_accept">
                 <header class="page-header">
-                    <h2>Nominations for you to accept</h2>
+                    <h3>Nominations for you to accept</h3>
                 </header>
                 <ul class="nominations">
                     {% for nomination in nominations_to_accept %}
@@ -73,13 +82,13 @@
     {% if award_list %}
     <section id="recent_awards" class="item_flow">
         <header class="page-header">
-            <h2>
+            <h3>
                 <span>{{ _('Recent awards') }}</span>
                 <small>(
                     <a href="{{ url('badger.views.awards_by_user', profile.user.username) }}">More...</a>
                     <a href="{{ url('badger.feeds.awards_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
                 )</small>
-            </h2>
+            </h3>
         </header>
         {% include "badger/includes/awards_as_badges_list.html" %}
     </section>
@@ -89,13 +98,13 @@
     {% if badge_list %}
     <section id="recent_badges" class="item_flow">
         <header class="page-header">
-            <h2>
+            <h3>
                 <span>{{ _('Recent badges') }}</span>
                 <small>(
                     <a href="{{ url('badger_multiplayer.views.badges_by_user', profile.user.username) }}">More...</a>
                     <a href="{{ url('badger_multiplayer.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
                 )</small>
-            </h2>
+            </h3>
         </header>
         {% include "badger/includes/badges_list.html" %}
     </section>

@@ -11,8 +11,9 @@
 {% endblock %}
 
 {% block content %}
+<section class="row-fluid">
 
-    <section class="award">
+    <section class="award span4">
         <header class="page-header">
             <h2>{{ _('Award detail') }}</h2>
         </header>
@@ -24,12 +25,14 @@
         {% endif %}
     </section>
 
-    <section class="badge">
+    <section class="badge span8">
         <header class="page-header">
-            <h3>{{_("Badge")}}</h3>
+            <h2>{{_("Badge")}}</h2>
         </header>
         {% include "badger/includes/badge_full.html" %}
     </section>
+
+</section>
 
 {% endblock %}
 

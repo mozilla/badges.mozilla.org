@@ -12,12 +12,16 @@
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
+.navbar .logo { float: left; display: block; width: 48px; margin-left: -1em; margin-right: 1em; border-radius: 8px; }
 .navbar-fixed-top form { display: inline; margin: 0; padding: 0 }
 .navbar-fixed-top form.search_badges input { padding: 2px; margin: 1px 1px 5px
     1em; height: 18px }
 
 /* For some reason the bootstrap navbar isn't pushing content down without this */
 .navbar-fixed-top { position: static; }
+
+.navbar a.notices { font-weight: bold; }
+.navbar a.notices:before { content:"\2709\00a0"; font-size: 1.25em; font-weight: normal }
 
 nav.pagination { clear: both; display: block; padding: 1em 0.25em; }
 nav.pagination p.showing { display: inline; margin: 0pt; padding: 0pt; }
@@ -59,7 +63,7 @@ li.badge a.label {
      text-decoration: none;
      width: 128px;
 }
-li.badge a.label:before { content: "✸ "; }
+li.badge a.label:before { content: "✸ "; font-size: 1.5em; }
 li.badge span.badge_title, li.badge span.relation, li.badge span.user {
     display: block; padding: 2px; }
 
@@ -80,6 +84,7 @@ ul.awards li.award a.award_image { position: absolute; left: 0pt; }
 ul.awards li.award span.badge_title, li.award span.relation, li.award span.user {
      background: none repeat scroll 0pt 0pt #000000;
      border-radius: 8px 8px 8px 8px;
+     font-size: 1em;
      color: #FFFFFF;
      display: block;
      opacity: 0.75;
@@ -91,22 +96,23 @@ ul.awards li.award span.badge_title, li.award span.relation, li.award span.user 
 }
 
 ul.awards li.award span.badge_title { border-radius: 0pt 0pt 8px 8px;
-    bottom: 0pt; left: 0pt; width: 128px; }
+    bottom: 0pt; left: 0pt; width: 128px; white-space: normal }
 
-ul.awards li.award span.badge_title:before { content: "✸ "; }
+ul.awards li.award span.badge_title:before { content: "✸ "; font-size: 1.5em; }
 
 ul.awards li.award span.relation {
      border-radius: 8px 8px 8px 8px;
-     bottom: 32px;
+     bottom: 40px;
+     bottom: 4em;
      left: 80px;
      opacity: 0.75;
      width: 96px;
 }
 
-ul.awards li.award span.relation:after { content: " ⇨"; }
+ul.awards li.award span.relation:after { content: " ⇨"; font-size: 1.25em; }
 ul.awards li.award span.user { border-radius: 0pt 0pt 8px 8px;
-     bottom: 0pt; right: 0pt; width: 128px; }
-ul.awards li.award span.user:before { content: "☺ "; }
+     bottom: 0pt; right: 0pt; width: 128px; white-space: normal }
+ul.awards li.award span.user:before { content: "☺ "; font-size: 1.25em; }
 ul.awardees { margin: 0pt; padding: 0pt; }
 
 ul.awardees li.awardee {
@@ -136,6 +142,12 @@ ul.awardees li.awardee .label {
 }
 
 ul.awardees li.awardee .label:before { content: "☺ "; }
+
+dl.badge a.image img { border-radius: 8px; }
+
+dl.badge img.avatar, dl.award img.avatar, dl.nomination img.avatar { 
+    width: 64px; height: 64px; border-radius: 4px; margin: -0.5em 0.5em 0 0;
+    padding: 0; vertical-align: text-top }
 
 form { }
 form fieldset { border: 1px solid #CCCCCC; margin: 1em 0.25em; padding: 0.5em; }
@@ -187,3 +199,51 @@ dl dd ul li {
      margin: 0pt;
      padding: 0.25em 0pt;
 }
+
+/* NOTIFICATION */
+
+div.notice {
+    margin: 0;
+    padding: 5px;
+    border-bottom: 1px solid #eee;
+}
+div.unseen_notice {
+    margin: 0;
+    padding: 5px;
+    background: #DFC;
+    border-bottom: 1px solid #CCC;
+}
+h2.notice_date {
+    font-size: 12pt;
+    color: #666;
+    border-bottom: 1px solid #999;
+}
+span.notice_type {
+    color: #666;
+}
+span.notice_message {
+}
+span.notice_time {
+    color: #999;
+    font-size: 90%;
+}
+div.notice_settings {
+    background: #DEF;
+    padding: 8px;
+    margin: 20px 0;
+}
+div.notice_settings h2 {
+    margin: 0 0 5px 0;
+    padding: 0;
+}
+table.notice_settings td {
+    line-height: 90%;
+    padding: 5px 10px;
+    
+}
+span.notice_type_description {
+    color: #666;
+    font-size: 80%;
+    font-style: italic;
+}
+
