@@ -9,6 +9,6 @@ You have received an award for the badge, "{{ badge_title }}".
 
 Check out the details, here:
 
-    {{ protocol }}://{{ domain }}{{ award_url }}
+    {{ protocol or 'http' }}://{{ domain }}{{ award_url }}
     
 {% endtrans %}

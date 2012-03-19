@@ -6,6 +6,6 @@ The badge "{{ badge_title }}" was edited.
 
 Review the changes here:
 
-    {{ protocol }}://{{ domain }}{{ badge_url }}
+    {{ protocol or 'http' }}://{{ domain }}{{ badge_url }}
 
 {% endtrans %}

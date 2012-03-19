@@ -9,6 +9,6 @@ The badge "{{ badge_title }}" was awarded to {{ user_name }}.
 
 Check out the details, here:
 
-    {{ protocol }}://{{ domain }}{{ award_url }}
+    {{ protocol or 'http' }}://{{ domain }}{{ award_url }}
     
 {% endtrans %}

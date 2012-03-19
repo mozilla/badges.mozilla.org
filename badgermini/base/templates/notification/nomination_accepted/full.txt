@@ -7,6 +7,6 @@
 
 Check out the details, here:
 
-    {{ protocol }}://{{ domain }}{{ nomination_url }}
+    {{ protocol or 'http' }}://{{ domain }}{{ nomination_url }}
     
 {% endtrans %}

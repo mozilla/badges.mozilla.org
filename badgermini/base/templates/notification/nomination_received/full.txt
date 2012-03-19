@@ -9,6 +9,6 @@ You were nominated for the badge "{{ badge_title }}".
 
 You can accept the nomination here:
 
-    {{ protocol }}://{{ domain }}{{ nomination_url }}
+    {{ protocol or 'http' }}://{{ domain }}{{ nomination_url }}
     
 {% endtrans %}
