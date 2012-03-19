@@ -1,1 +1,1 @@
-{% trans %}[{{ current_site }}] {{ message }}{% endtrans %}
+{% trans site_name=current_site.display_name %}[{{ site_name }}] {{ message }}{% endtrans %}
