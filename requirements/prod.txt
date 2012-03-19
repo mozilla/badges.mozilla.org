@@ -1,1 +1,2 @@
 -r ../vendor/src/funfactory/funfactory/requirements/prod.txt
+-r ../vendor-local/src/django-badger/badger/requirements/prod.txt
