@@ -4,7 +4,7 @@
             nomination_url=nomination.get_absolute_url(),
             user_name=nomination.nominee %}
 
-{{ user_name }} accepted a nomination for the badge "{{ badge_title }}".
+{{ user_name }} accepted a nomination for the badge {{ badge_title }}.
 
 Check out the details, here:
 

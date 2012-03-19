@@ -6,7 +6,7 @@
             protocol=(protocol or 'http'),
             user_url=award.user.get_absolute_url() %}
 
-You have received an award for the badge, "{{ badge_title }}".
+You have received an award for the badge {{ badge_title }}.
 
 Check out the details, here:
 

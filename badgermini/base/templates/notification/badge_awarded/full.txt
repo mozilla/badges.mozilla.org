@@ -6,7 +6,7 @@
             user_name=award.user,
             user_url=award.user.get_absolute_url() %}
 
-The badge "{{ badge_title }}" was awarded to {{ user_name }}.
+The badge {{ badge_title }} was awarded to {{ user_name }}.
 
 Check out the details, here:
 

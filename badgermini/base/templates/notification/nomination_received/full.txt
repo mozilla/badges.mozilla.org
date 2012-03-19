@@ -6,7 +6,7 @@
             user_name=nomination.nominee,
             user_url=nomination.nominee.get_absolute_url() %}
 
-You were nominated for the badge "{{ badge_title }}".
+You were nominated for the badge {{ badge_title }}.
 
 You can accept the nomination here:
 

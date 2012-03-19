@@ -10,7 +10,7 @@
             approver_user_name=nomination.approver,
             approver_url=nomination.approver.get_absolute_url() %}
 
-{{ approver_user_name }} approved the nomination of {{ user_name }} for the badge "{{ badge_title }}".
+{{ approver_user_name }} approved the nomination of {{ user_name }} for the badge {{ badge_title }}.
 
 Check out the details, here:
 

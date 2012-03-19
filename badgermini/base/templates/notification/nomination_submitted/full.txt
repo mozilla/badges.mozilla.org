@@ -8,7 +8,7 @@
             creator_user_name=nomination.creator,
             creator_url=nomination.creator.get_absolute_url() %}
 
-{{ creator_user_name }} nominated {{ user_name }} for the badge "{{ badge_title }}".
+{{ creator_user_name }} nominated {{ user_name }} for the badge {{ badge_title }}.
 
 You can approve the nomination, here:
 
