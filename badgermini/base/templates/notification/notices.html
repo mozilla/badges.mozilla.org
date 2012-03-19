@@ -14,19 +14,19 @@
         </h1>
     </header>
     
+    <ul class="notices">
     {% if notices %}
-            
-    {% for notice in notices[:50] %}{# TODO: Paginate #}
-        <div id="notice-{{ notice.id }}" class="{{ notice.is_unseen() and 'unseen_notice' or 'notice' }}">
-                <span class="label label-info">{{ _(notice.notice_type.display) }}</span>
-                <span class="notice_message">{{ notice.message|safe }}</span>
+        {% for notice in notices[:50] %}{# TODO: Paginate #}
+            <li id="notice-{{ notice.id }}" class="{{ notice.is_unseen() and 'unseen_notice' or 'notice' }}">
                 <a class="notice_time" href="{{ notice.get_absolute_url() }}">{{ notice.added }}</a>
-            </div>
+                <span class="notice_type label">{{ _(notice.notice_type.display) }}</span>
+                <span class="notice_message">{{ notice.message|safe }}</span>
+            </li>
         {% endfor %}
-        
     {% else %}
-        <p>{{ _("No notices.") }}</p>
+        <li class="notice"><p>{{ _("No notices.") }}</p></li>
     {% endif %}
+    </ul>
 
 </section> 
 {% endblock %}

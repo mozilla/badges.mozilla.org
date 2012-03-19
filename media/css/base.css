@@ -12,7 +12,8 @@
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
-.navbar .logo { float: left; display: block; width: 48px; margin-left: -1em; margin-right: 1em; border-radius: 8px; }
+.navbar .logo { float: left; display: block; width: 48px; margin-left: -1em; 
+    margin-right: 1em; border-radius: 8px; }
 .navbar-fixed-top form { display: inline; margin: 0; padding: 0 }
 .navbar-fixed-top form.search_badges input { padding: 2px; margin: 1px 1px 5px
     1em; height: 18px }
@@ -50,19 +51,10 @@ ul.badges li img { border-radius: 8px 8px 8px 8px; display: block; }
 
 li.badge { display: block; float: left; position: relative; }
 li.badge a.image { display: block; }
-li.badge a.label {
-     background: none repeat scroll 0pt 0pt #222222;
-     border-radius: 0pt 0pt 8px 8px;
-     bottom: 0pt;
-     color: #FFFFFF;
-     display: block;
-     opacity: 0.85;
-     padding: 0.25em 0pt;
-     position: absolute;
-     text-align: center;
-     text-decoration: none;
-     width: 128px;
-}
+li.badge a.label { background: #222222; border-radius: 0pt 0pt 8px 8px; 
+    bottom: 0pt; color: #FFFFFF; display: block; opacity: 0.85;
+    padding: 0.25em 0pt; position: absolute; text-align: center; 
+    text-decoration: none; width: 128px; }
 li.badge a.label:before { content: "✸ "; font-size: 1.5em; }
 li.badge span.badge_title, li.badge span.relation, li.badge span.user {
     display: block; padding: 2px; }
@@ -166,85 +158,33 @@ form ul li ul.errorlist { color: red; margin: 0pt 0pt 0pt 16ex; }
 form ul li input.submit { margin-left: 16ex; padding: 0.25em; }
 
 dl { }
-
-dl dt {
-     background: #eee;
-     border-radius: 8px 8px 8px 8px;
-     float: left;
-     margin: 0pt;
-     min-height: 1.125em;
-     padding: 0.5em 0.5em 0.5em 0pt;
-     text-align: right;
-     width: 15ex;
-}
-
-dl dd {
-     clear: right;
-     display: block;
-     margin: 0pt 0pt 0pt 17ex;
-     min-height: 1.25em;
-     padding: 0.5em 0pt;
-     text-indent: 0pt;
-}
-dl dd:after {
-    content: "\00a0";
-}
-
-dl dd ul {
-     margin: 0pt;
-     padding: 0pt;
-}
-
-dl dd ul li {
-     list-style: none outside none;
-     margin: 0pt;
-     padding: 0.25em 0pt;
-}
+dl dt { background: #eee; border-radius: 8px 8px 8px 8px; float: left;
+    margin: 0pt; min-height: 1.125em; padding: 0.5em 0.5em 0.5em 0pt; 
+    text-align: right; width: 15ex; }
+dl dd { clear: right; display: block; margin: 0pt 0pt 0pt 17ex; 
+    min-height: 1.25em; padding: 0.5em 0pt; text-indent: 0pt; }
+dl dd:after { content: "\00a0"; }
+dl dd ul { margin: 0pt; padding: 0pt; }
+dl dd ul li { list-style: none outside none; margin: 0pt;
+    padding: 0.25em 0pt; }
 
 /* NOTIFICATION */
 
-div.notice {
-    margin: 0;
-    padding: 5px;
-    border-bottom: 1px solid #eee;
-}
-div.unseen_notice {
-    margin: 0;
-    padding: 5px;
-    background: #DFC;
-    border-bottom: 1px solid #CCC;
-}
-h2.notice_date {
-    font-size: 12pt;
-    color: #666;
-    border-bottom: 1px solid #999;
-}
-span.notice_type {
-    color: #666;
-}
-span.notice_message {
-}
-span.notice_time, a.notice_time {
-    color: #999;
-    font-size: 0.85em;
-    margin-left: 0.25em;
-}
-div.notice_settings {
-    background: #DEF;
-    padding: 8px;
-    margin: 20px 0;
-}
-div.notice_settings h2 {
-    margin: 0 0 5px 0;
-    padding: 0;
-}
-table.notice_settings td {
-    line-height: 90%;
-    padding: 5px 10px;
-    
-}
-span.notice_type_description {
-    color: #666;
-    font-size: 80%;
-    font-style: italic;
-}
+ul.notices { list-style: none; margin: 0; padding: 0 }
+ul.notices li { }
+.notice { margin: 0; padding: 5px; border-bottom: 1px solid #eee; }
+.unseen_notice { margin: 0; padding: 5px; background: #DFC;
+    border-bottom: 1px solid #CCC; }
+h2.notice_date { font-size: 12pt; color: #666;
+    border-bottom: 1px solid #999; }
+span.notice_type { width: 12em; text-align: center; float: left;
+    padding-right: 0.75em; margin-left: 1em; margin-right: 1em; }
+span.notice_message { }
+span.notice_time, a.notice_time { float: left; color: #999;
+    font-size: 0.85em; margin-right: 0.25em; }
+
+div.notice_settings { background: #DEF; padding: 8px; margin: 20px 0; }
+div.notice_settings h2 { margin: 0 0 5px 0; padding: 0; }
+table.notice_settings td { line-height: 90%; padding: 5px 10px; }
+span.notice_type_description { color: #666; font-size: 80%;
+    font-style: italic; }
