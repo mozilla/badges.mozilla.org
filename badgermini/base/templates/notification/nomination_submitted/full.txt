@@ -1,1 +1,16 @@
-{% trans %}{{ notice }}{% endtrans %}
+{% trans domain=current_site.domain,
+            badge_url=nomination.badge.get_absolute_url(),
+            badge_title=nomination.badge.title,
+            nomination_url=nomination.get_absolute_url(),
+            user_name=nomination.nominee,
+            user_url=nomination.nominee.get_absolute_url(),
+            creator_user_name=nomination.creator,
+            creator_url=nomination.creator.get_absolute_url() %}
+
+{{ creator_user_name }} nominated {{ user_name }} for the badge "{{ badge_title }}".
+
+You can approve the nomination, here:
+
+    {{ protocol }}://{{ domain }}{{ nomination_url }}
+    
+{% endtrans %}

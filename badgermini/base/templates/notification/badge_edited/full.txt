@@ -1,1 +1,11 @@
-{% trans %}{{ notice }}{% endtrans %}
+{% trans domain=current_site.domain,
+            badge_url=badge.get_absolute_url(),
+            badge_title=badge.title %}
+
+The badge "{{ badge_title }}" was edited.
+
+Review the changes here:
+
+    {{ protocol }}://{{ domain }}{{ badge_url }}
+
+{% endtrans %}

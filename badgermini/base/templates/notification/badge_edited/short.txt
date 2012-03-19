@@ -1,1 +1,1 @@
-{% trans %}{{ notice }}{% endtrans %}
+{% trans %}Badge edited{% endtrans %}

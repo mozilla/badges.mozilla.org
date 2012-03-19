@@ -125,6 +125,7 @@ ul.awardees li.awardee {
 }
 
 ul.awardees li.awardee .avatar_image img { border-radius: 8px 8px 8px 8px; }
+ul.awardees li.awardee a.label span.user { white-space: normal; }
 
 ul.awardees li.awardee .label {
      background: none repeat scroll 0pt 0pt #000000;
@@ -141,9 +142,9 @@ ul.awardees li.awardee .label {
      z-index: 10;
 }
 
-ul.awardees li.awardee .label:before { content: "☺ "; }
+ul.awardees li.awardee .label:before { content: "☺ "; font-size: 1.25em; }
 
-dl.badge a.image img { border-radius: 8px; }
+dl.badge a.image img, dl.profile img.avatar { border-radius: 8px; }
 
 dl.badge img.avatar, dl.award img.avatar, dl.nomination img.avatar { 
     width: 64px; height: 64px; border-radius: 4px; margin: -0.5em 0.5em 0 0;
@@ -223,9 +224,10 @@ span.notice_type {
 }
 span.notice_message {
 }
-span.notice_time {
+span.notice_time, a.notice_time {
     color: #999;
-    font-size: 90%;
+    font-size: 0.85em;
+    margin-left: 0.25em;
 }
 div.notice_settings {
     background: #DEF;
@@ -246,4 +248,3 @@ span.notice_type_description {
     font-size: 80%;
     font-style: italic;
 }
-

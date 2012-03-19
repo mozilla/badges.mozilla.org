@@ -12,7 +12,7 @@
 
 <section class="row-fluid">
 
-    <section class="span4" id="detail">
+    <section class="span3" id="detail">
         <header class="page-header">
             <h2>{{ _('Profile: {user}') | f(user=user) }}</h2>
         </header>
@@ -22,7 +22,7 @@
             {% else %}
                 <dt class="username">Username:</dt><dd>{{ user.username }}</dd>
             {% endif %}
-            <dt class="avatar">Avatar:</dt><dd><img src="{{ user_avatar(profile.user) }}" /></dd>
+            <dt class="avatar">Avatar:</dt><dd><img class="avatar" src="{{ user_avatar(profile.user) }}" /></dd>
             {% if profile.location %}
                 <dt class="location">Location:</dt><dd>{{ profile.location }}</dd>
             {% endif %}
@@ -34,14 +34,14 @@
             <dt class="actions">Actions:</dt><dd><ul>
                 {% if profile.allows_edit(request.user) %}
                     <li><a href="{{ url('profiles.profile_edit', profile.user.username) }}">{{ _('Edit profile') }}</a>
-                    <li><a href="{{ url('notification_notices') }}">{{ _("View Notices") }}</a></li>
+                    <li><a href="{{ url('notification_notices') }}">{{ _("View notices") }}</a></li>
                     <li><a href="{{ url('notification_notice_settings') }}">{{ _("Notification settings") }}</a></li>
                 {% endif %}
             </ul></dd>
         </dl>
     </section>
 
-    <section class="span8 related">
+    <section class="span9 related">
 
     {# TODO: Move this into Nomination model? #}
     {% if request.user == profile.user or request.user.is_superuser or request.user.is_staff %}
