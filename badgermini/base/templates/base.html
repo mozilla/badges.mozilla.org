@@ -66,6 +66,13 @@
       <div class="row-fluid">
         <div class="span12">
           <section>
+            {% if messages %}
+                <header class="messages">
+                    {% for message in messages %}
+                        <div class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %}">{{ message }}</div>
+                    {% endfor %}
+                </header>
+            {% endif %}
             {# {% block subnav %}{% endblock %} #}
             {% block content %}{% endblock %}
           </section>

@@ -4,5 +4,5 @@
 
 -r ../vendor/src/funfactory/funfactory/requirements/compiled.txt
 -r ../vendor/src/funfactory/funfactory/requirements/dev.txt
--r ../vendor/src/django-badger/badger/requirements/compiled.txt
--r ../vendor/src/django-badger/badger/requirements/dev.txt
+-r ../vendor-local/src/django-badger/badger/requirements/compiled.txt
+-r ../vendor-local/src/django-badger/badger/requirements/dev.txt

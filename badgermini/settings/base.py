@@ -68,6 +68,7 @@ AUTHENTICATION_BACKENDS = (
 AUTH_PROFILE_MODULE = "profiles.UserProfile"
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
+    'django.contrib.messages.context_processors.messages',
     'django_browserid.context_processors.browserid_form',
     'notification.context_processors.notification',
 ]
@@ -87,10 +88,11 @@ INSTALLED_APPS = [
     'notification',
     'csp',
     'django_browserid',
-    'south',
+    #'south',
 ]
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
+    'django.contrib.messages.middleware.MessageMiddleware',
     'commonware.response.middleware.StrictTransportMiddleware',
     'csp.middleware.CSPMiddleware',
 ]
@@ -127,6 +129,8 @@ DOMAIN_METHODS = {
 #    # may use.
 #    ('media/js/**.js', 'javascript'),
 # ]
+
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'
 
 # Always generate a CSRF token for anonymous users
 ANON_ALWAYS = True
