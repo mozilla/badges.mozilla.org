@@ -19,7 +19,7 @@
             <h2>
                 <span>{{ _("Recent badges") }}</span>
                 <small>(
-                    {% if request.user.is_authenticated() %}
+                    {% if badger_allows_add_by(request.user) %}
                         <a class="action" href="{{ url('badger_multiplayer.views.create') }}">{{ _("New") }}</a>,
                     {% endif %}
                     <a href="{{ url('badger.views.badges_list') }}">{{ _("More...") }}</a>

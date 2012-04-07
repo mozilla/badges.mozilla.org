@@ -13,7 +13,7 @@
     <header class="page-header">
         <h2>
             <span>{{ _("Badges") }}</span>
-            {% if request.user.is_authenticated() %}
+            {% if badger_allows_add_by(request.user) %}
                 <small>(<a class="action" href="{{ url('badger_multiplayer.views.create') }}">{{ _('Create new badge') }}</a>)</small>
             {% endif %}
         </h2>

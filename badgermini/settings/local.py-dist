@@ -71,3 +71,5 @@ SECRET_KEY = ''
 # Common Event Format logging parameters
 #CEF_PRODUCT = 'Playdoh'
 #CEF_VENDOR = 'Mozilla'
+
+BADGER_ALLOW_ADD_BY_ANYONE = False

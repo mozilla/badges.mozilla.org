@@ -187,3 +187,5 @@ CSP_FRAME_SRC = ("'self'",
                  'https://platform.twitter.com',
                  'https://www.facebook.com',)
 CSP_OPTIONS = ('eval-script',)
+
+BADGER_ALLOW_ADD_BY_ANYONE = False
