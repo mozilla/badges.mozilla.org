@@ -21,6 +21,9 @@ html[xmlns] .clearfix { display: block; }
 /* For some reason the bootstrap navbar isn't pushing content down without this */
 .navbar-fixed-top { position: static; }
 
+.navbar .nav .claim { display: inline; }
+.navbar .nav .claim .claim_code { margin: 0.5em 1em; }
+
 .navbar a.notices { font-weight: bold; }
 .navbar a.notices:before { content:"\2709\00a0"; font-size: 1.25em; font-weight: normal }
 

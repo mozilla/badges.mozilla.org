@@ -7,15 +7,25 @@
 <section class="row-fluid">
 
     <section class="span3">
+    
         <header class="page-header">
             <h2>{{ _("Claim an award") }}</h2>
         </header>
 
+        <p><b>Claim code:</b> <code>{{ deferred_award.claim_code }}</code></p> 
+
         <form id="claim_award" method="POST" action="">
             {{ csrf() }}
-            <p>{{ _("If you're reading this, then you can claim an award for this badge!") }}</p>
-            <input type="submit" class="submit" value="{{ _("Claim your award") }}">
+            <p>{{ _("You can claim an award for this badge!") }}</p>
+            <input type="submit" class="submit" value="{{ _("Click here to claim your award") }}">
         </form>
+
+        <div>
+            <p>{{ _("Or, scan this QR Code to claim this badge from a mobile device:") }}</p>
+            {% set self_url = request.build_absolute_uri(deferred_award.get_claim_url()) %}
+            {{ qr_code_image(self_url, alt="Scan to claim!", size="250") }}
+        </div>
+
     </section>
 
     <section class="span9" id="detail">

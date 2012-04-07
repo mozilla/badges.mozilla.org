@@ -149,7 +149,9 @@ CSP_IMG_SRC = ("'self'",
                'http://cf.cdn.vid.ly',
                'http://www.gravatar.com',
                'https://www.gravatar.com',
-               'https://secure.gravatar.com',)
+               'https://secure.gravatar.com',
+               'http://chart.apis.google.com',
+               'https://chart.apis.google.com',)
 CSP_STYLE_SRC = ("'self'",
                  'http://localhost',
                  'http://localhost:8000',

@@ -16,6 +16,10 @@
         </header>
         <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
             {{ csrf() }}
+            {% set next = request.GET.get('next', False) %}
+            {% if next %}
+                <input type="hidden" name="next" value="{{ next }}" />
+            {% endif %}
             {{ browserid_form.as_p()|safe }}
             <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
         </form>
