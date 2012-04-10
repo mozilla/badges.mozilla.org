@@ -50,7 +50,8 @@ ul.badges li img { border-radius: 8px 8px 8px 8px; display: block; }
 
 /* HACK: Undo what bootstrap does */
 .badge, .badge:hover { padding: 0; font-size: inherit; font-weight: inherit;
-    color: inherit; background-color: transparent; border-radius: inherit; }
+    color: inherit; background-color: transparent; border-radius: inherit;
+    cursor: default }
 
 li.badge { display: block; float: left; position: relative; }
 li.badge a.image { display: block; }
