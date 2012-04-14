@@ -157,7 +157,7 @@ form ul li label {
      text-align: right;
      width: 15ex;
 }
-form ul li p.notes, form ul li p.help { margin: 0pt 0pt 0pt 20ex; padding: 0.25em; }
+form ul li p.notes, form ul li p.help { margin: 0pt 0pt 0pt 16.5ex; padding: 0.25em; }
 form ul li ul.errorlist { color: red; margin: 0pt 0pt 0pt 16ex; }
 form ul li input.submit { margin-left: 16ex; padding: 0.25em; }
 
