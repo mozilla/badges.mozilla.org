@@ -12,20 +12,20 @@
             {% set show_approve = not nomination.is_approved() and nomination.allows_approve_by(request.user) %}
             {% set show_accept = not nomination.is_accepted() and nomination.allows_accept(request.user) %}
             {% if show_approve or show_accept %}
-                <dt>{{ _("Actions:") }}</dt><dd class="btn-group">
+                <dt>{{ _("Actions:") }}</dt><dd><ul class="btn-list">
                     {% if show_approve %}
-                        <form method="POST">
+                    <li><form method="POST">
                             {{ csrf() }}
                             <input type="hidden" name="action" value="approve_by" />
-                            <button class="btn">{{ _('Approve nomination') }}</button>
-                        </form>
+                            <button class="btn btn-large btn-primary">{{ _('Approve nomination') }}</button>
+                        </form></li>
                     {% endif %}
                     {% if show_accept %}
-                        <form method="POST">
+                        <li><form method="POST">
                             {{ csrf() }}
                             <input type="hidden" name="action" value="accept" />
-                            <button class="btn">{{ _('Accept nomination') }}</button>
-                        </form>
+                            <button class="btn btn-large btn-primary">{{ _('Accept nomination') }}</button>
+                        </form></li>
                     {% endif %}
                 </ul></dd>
             {% endif %}
