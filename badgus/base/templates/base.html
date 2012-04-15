@@ -2,7 +2,7 @@
 <html LANG="{{ LANG }}" dir="{{ DIR }}">
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
-    <title>{% block page_title %}{{ _('Badger') }}{% endblock %}</title>
+    <title>{% block page_title %}{{ settings.SITE_TITLE }}{% endblock %}</title>
     {% block site_css %}
       {{ css('bootstrap') }}
       {{ css('base') }}
@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
           </a>
           <a href="{{ url('home') }}"><img width="42" height="42" align="bottom" src="{{MEDIA_URL}}img/logo.png" class="logo" /></a>
-          <a class="brand" href="{{ url('home') }}">{{ _('Badger') }}</a>
+          <a class="brand" href="{{ url('home') }}">{{ settings.SITE_TITLE }}</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="{{ url('badger.views.badges_list') }}">{{ _('Badges') }}</a></li>

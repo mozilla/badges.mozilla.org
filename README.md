@@ -1,9 +1,9 @@
 badg.us
 =======
 
-badg.us is a badge service based on [django-badger][] and [playdoh][gh-django].
+badg.us is a badge service based on [django-badger][] and [playdoh][].
 
-[django]: http://www.djangoproject.com/
+[playdoh]: https://github.com/mozilla/playdoh
 [django-badger]: https://github.com/lmorchard/django-badger
 
 Development
@@ -15,6 +15,7 @@ Here's how I get it running on my MacBook:
     git submodule update --init --recursive
     virtualenv --no-site-packages venv
     . ./venv/bin/activate
+    pip install -r requirements/compiled.txt
     pip install -r requirements/dev.txt
     # Set up a mysql database
     # Edit badgermini/settings/local.py
