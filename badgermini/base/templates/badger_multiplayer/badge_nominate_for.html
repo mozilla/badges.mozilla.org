@@ -8,14 +8,14 @@
 
     <section class="span3">
         <header class="page-header">
-            <h2>{{ _("Submit a nomination") }}</h2>
+            <h2>{{ _("Submit badge nominations") }}</h2>
         </header>
 
         <form id="nominate_badge" method="POST" action="" enctype="multipart/form-data">
             {{ csrf() }}
             <ul>
                 {{ form.as_ul() }}
-                <li><input type="submit" class="btn submit" value="{{ _("Nominate for badge") }}"></li>
+                <li><input type="submit" class="btn submit" value="{{ _("Submit nominations") }}"></li>
             </ul>
         </form>
     </section>
