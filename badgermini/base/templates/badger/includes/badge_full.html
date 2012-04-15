@@ -1,6 +1,8 @@
 <dl class="badge" data-slug="{{ badge.slug }}">
-    <dt>{{_("Title:")}}</dt>
-        <dd class="title"><strong>{{ badge.title }}</strong></dd>
+    {% if badge_show_title %}
+        <dt>{{_("Title:")}}</dt>
+            <dd class="title"><strong>{{ badge.title }}</strong></dd>
+    {% endif %}
     {% if award and award.image %}
         <dt>{{_("Image:")}}</dt>
             <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ award.image.url }}" width="256" height="256" /></a></dd>
