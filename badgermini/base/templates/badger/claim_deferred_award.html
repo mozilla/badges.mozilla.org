@@ -28,7 +28,7 @@
                 <h3>{{ _("Grant") }}</h3>
                 <p>{{ _("You can grant this award to someone else") }}
                 {{ grant_form.as_p() }}
-                <input type="submit" class="btn submit" value="{{ _("Grant this award") }}">
+                <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Grant this award") }}">
             </form>
         {% endif %}
 
@@ -48,7 +48,7 @@
             {% else %}
                 <p>{{ _("You can claim this award for yourself") }}</p>
             {% endif %}
-            <input type="submit" class="btn submit" value="{{ _("Claim this award") }}">
+            <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Claim this award") }}">
         </form>
 
         <div>
