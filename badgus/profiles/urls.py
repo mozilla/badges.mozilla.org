@@ -2,7 +2,7 @@ from django.conf.urls.defaults import *
 
 from django.conf import settings
 
-urlpatterns = patterns('badgermini.profiles.views',
+urlpatterns = patterns('badgus.profiles.views',
     url(r'^home/?$', 'home', name='profiles.home'),
     url(r'^profile/(?P<username>[^/]+)/?$', 'profile_view',
         name='profiles.profile_view'),

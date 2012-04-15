@@ -1,2 +1,3 @@
 -r ../vendor/src/funfactory/funfactory/requirements/prod.txt
--r ../vendor-local/src/django-badger/badger/requirements/prod.txt
+
+-e git://github.com/jtauber/django-notification.git#egg=django-notification

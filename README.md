@@ -1,18 +1,25 @@
-playdoh
+badg.us
 =======
 
-Mozilla's Playdoh is a web application template based on [Django][django].
-
-Patches are welcome! Feel free to fork and contribute to this project on
-[github][gh-playdoh].
-
-Full [documentation][docs] is available as well.
-
+badg.us is a badge service based on [django-badger][] and [playdoh][gh-django].
 
 [django]: http://www.djangoproject.com/
-[gh-playdoh]: https://github.com/mozilla/playdoh
-[docs]: http://playdoh.rtfd.org/
+[django-badger]: https://github.com/lmorchard/django-badger
 
+Development
+-----------
+
+Here's how I get it running on my MacBook:
+
+    git clone 
+    git submodule update --init --recursive
+    virtualenv --no-site-packages venv
+    . ./venv/bin/activate
+    pip install -r requirements/dev.txt
+    # Set up a mysql database
+    # Edit badgermini/settings/local.py
+    ./manage.py syncdb
+    ./manage.py runserver 0.0.0.0:8000
 
 License
 -------
@@ -20,4 +27,3 @@ This software is licensed under the [New BSD License][BSD]. For more
 information, read the file ``LICENSE``.
 
 [BSD]: http://creativecommons.org/licenses/BSD/
-

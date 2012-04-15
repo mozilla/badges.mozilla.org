@@ -40,7 +40,7 @@ MINIFY_BUNDLES = {
 }
 
 # Defines the views served for root URLs.
-ROOT_URLCONF = 'badgermini.urls'
+ROOT_URLCONF = 'badgus.urls'
 
 # Authentication
 BROWSERID_CREATE_USER = True
@@ -74,13 +74,13 @@ TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
 ]
 
 INSTALLED_APPS = [
-    'badgermini.base', # Mainly to override registration templates, FIXME
+    'badgus.base', # Mainly to override registration templates, FIXME
 ] + list(INSTALLED_APPS) + [
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
 
-    'badgermini.profiles',
+    'badgus.profiles',
     
     'badger',
     'badger_multiplayer',
@@ -107,9 +107,9 @@ JINGO_EXCLUDE_APPS = [
 # handles the extraction. The Tower library expects this.
 DOMAIN_METHODS = {
     'messages': [
-        ('**/badgermini/**.py',
+        ('**/badgus/**.py',
             'tower.management.commands.extract.extract_tower_python'),
-        ('**/badgermini/**/templates/**.html',
+        ('**/badgus/**/templates/**.html',
             'tower.management.commands.extract.extract_tower_template')
     ],
 }

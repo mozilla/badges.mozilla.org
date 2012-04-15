@@ -3,7 +3,7 @@ import os
 from setuptools import setup, find_packages
 
 
-setup(name='badgermini',
+setup(name='badgus',
       version='1.0',
       description='Django application.',
       long_description='',
