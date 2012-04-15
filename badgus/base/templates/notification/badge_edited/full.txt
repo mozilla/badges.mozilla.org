@@ -3,7 +3,7 @@
             badge_url=badge.get_absolute_url(),
             badge_title=badge.title %}
 
-The badge {{ badge_title }} was edited.
+The badge "{{ badge_title }}" was edited.
 
 Review the changes here:
 

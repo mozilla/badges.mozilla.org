@@ -8,6 +8,7 @@ from django.http import (HttpResponseRedirect, HttpResponse,
         HttpResponseForbidden, HttpResponseNotFound)
 from django.views.decorators.http import (require_GET, require_POST,
                                           require_http_methods)
+from django.contrib.auth import REDIRECT_FIELD_NAME, login as auth_login, logout as auth_logout
 from django.contrib.auth.decorators import login_required
 
 from django.shortcuts import get_object_or_404, render_to_response
@@ -34,6 +35,13 @@ def home(request):
 
     return HttpResponseRedirect(reverse('profiles.profile_view',
             args=(request.user.username,)))
+
+
+@require_GET
+def logout(request):
+    """Simple logout view that bounces back to home page"""
+    auth_logout(request)
+    return HttpResponseRedirect('/')
 
 
 @require_GET

@@ -43,7 +43,7 @@
                         {% if notice_unseen_count %}
                             <a class="notices" href="{{ url('notification_notices') }}">{{ notice_unseen_count }}</a>,
                         {% endif %}
-                        <a href="{{ url('django.contrib.auth.views.logout') }}">{{_('Sign out')}}</a>
+                        <a href="{{ url('profiles.logout') }}">{{_('Sign out')}}</a>
                     )
                 {% else %}
                     {% block signin %}
