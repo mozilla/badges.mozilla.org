@@ -165,7 +165,7 @@ dl dt { background: #eee; border-radius: 8px 8px 8px 8px; float: left;
     text-align: right; width: 15ex; }
 dl dd { clear: right; display: block; margin: 0pt 0pt 0pt 17ex; 
     min-height: 1.25em; padding: 0.5em 0pt; text-indent: 0pt; }
-dl dd.btn-list { padding: 0; }
+dl dd.actions { padding: 0; }
 dl dd.btn-group { padding: 0 0 0.125em 0; }
 dl dd.btn-group form { display: inline; padding: 0; margin: 0 }
 dl dd:after { content: "\00a0"; }

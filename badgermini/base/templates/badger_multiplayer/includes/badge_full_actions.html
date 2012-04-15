@@ -1,6 +1,6 @@
-{% if badge.allows_nominate_for(request.user) %}
-    <a class="btn nominate_badge" href="{{ url('badger_multiplayer.views.nominate_for', badge.slug) }}">{{ _('Submit nominations') }}</a>
-{% endif %}
 {% if badge.allows_edit_by(request.user) %}
-    <a class="btn edit_badge" href="{{ url('badger_multiplayer.views.edit', badge.slug) }}">{{ _('Edit badge') }}</a>
+    <li><a class="btn btn-large btn-primary edit_badge" href="{{ url('badger_multiplayer.views.edit', badge.slug) }}">{{ _('Edit badge') }}</a></li>
+{% endif %}
+{% if badge.allows_nominate_for(request.user) %}
+    <li><a class="btn btn-large btn-primary nominate_badge" href="{{ url('badger_multiplayer.views.nominate_for', badge.slug) }}">{{ _('Submit nominations') }}</a></li>
 {% endif %}

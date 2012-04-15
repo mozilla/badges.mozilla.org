@@ -6,21 +6,21 @@
 
 <section class="row-fluid">
 
-    <section class="span3">
+    <section class="span4">
         <header class="page-header">
-            <h2>{{ _("Issue awards") }}</h2>
+            <h2>{{ _("Issue badge awards") }}</h2>
         </header>
 
         <form id="award_badge" method="POST" action="" enctype="multipart/form-data">
             {{ csrf() }}
             <ul>
                 {{ form.as_ul() }}
-                <li><input type="submit" class="btn submit" value="{{ _("Issue badge awards") }}"></li>
+                <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Issue badge awards") }}"></li>
             </ul>
         </form>
     </section>
 
-    <section class="span9" id="detail">
+    <section class="span8" id="detail">
         <header class="page-header">
             <h2>{{ _('Badge') }}</h2>
         </header>
