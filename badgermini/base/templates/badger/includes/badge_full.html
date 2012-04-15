@@ -1,6 +1,17 @@
 <dl class="badge" data-slug="{{ badge.slug }}">
     <dt>{{_("Title:")}}</dt>
-        <dd class="title">{{ badge.title }}</dd>
+        <dd class="title"><strong>{{ badge.title }}</strong></dd>
+    <dt>{{_("Actions:")}}</dt>
+    <dd class="actions btn-group">
+        {% if badge.allows_award_to(request.user) %}
+            <a class="btn award_badge" href="{{ url('badger.views.award_badge', badge.slug) }}">{{ _('Issue awards') }}</a>
+        {% endif %}
+        {# TODO: Can this be done extensibly? with a registry? #}
+        {% set modules = [ "badger_multiplayer" ] %}
+        {% for module in modules %}
+            {% include module ~ "/includes/badge_full_actions.html" %}
+        {% endfor %}
+    </dd>
     {% if award and award.image %}
         <dt>{{_("Image:")}}</dt>
             <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ award.image.url }}" width="256" height="256" /></a></dd>
@@ -18,15 +29,4 @@
         <dd>{{ badge.created }}</dd>
     <dt>{{_("Modified:")}}</dt>
         <dd>{{ badge.modified }}</dd>
-    <dt>{{_("Actions")}}:</dt>
-    <dd><ul class="btn-list">
-        {% if badge.allows_award_to(request.user) %}
-            <li><a class="btn award_badge" href="{{ url('badger.views.award_badge', badge.slug) }}">{{ _('Issue awards') }}</a></li>
-        {% endif %}
-        {# TODO: Can this be done extensibly? with a registry? #}
-        {% set modules = [ "badger_multiplayer" ] %}
-        {% for module in modules %}
-            {% include module ~ "/includes/badge_full_actions.html" %}
-        {% endfor %}
-    </ul></dd>
 </dl>

@@ -12,7 +12,7 @@
 
 <section class="row-fluid">
 
-    <section class="span3" id="detail">
+    <section class="span4" id="detail">
         <header class="page-header">
             <h2>{{ _('Profile: {user}') | f(user=user) }}</h2>
         </header>
@@ -41,7 +41,7 @@
         </dl>
     </section>
 
-    <section class="span9 related">
+    <section class="span8 related">
 
     {# TODO: Move this into Nomination model? #}
     {% if request.user == profile.user or request.user.is_superuser or request.user.is_staff %}

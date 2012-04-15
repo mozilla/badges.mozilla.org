@@ -4,7 +4,7 @@
 
 {% block content %}
 <section class="row-fluid">
-    <section class="nomination span3">
+    <section class="nomination span4">
         <header class="page-header">
             <h2>{{ _("Nomination detail") }}</h2>
         </header>
@@ -12,20 +12,20 @@
             {% set show_approve = not nomination.is_approved() and nomination.allows_approve_by(request.user) %}
             {% set show_accept = not nomination.is_accepted() and nomination.allows_accept(request.user) %}
             {% if show_approve or show_accept %}
-                <dt>{{ _("Actions:") }}</dt><dd><ul class="btn-list">
+                <dt>{{ _("Actions:") }}</dt><dd class="btn-group">
                     {% if show_approve %}
-                        <li><form method="POST">
+                        <form method="POST">
                             {{ csrf() }}
                             <input type="hidden" name="action" value="approve_by" />
                             <button class="btn">{{ _('Approve nomination') }}</button>
-                        </form></li>
+                        </form>
                     {% endif %}
                     {% if show_accept %}
-                        <li><form method="POST">
+                        <form method="POST">
                             {{ csrf() }}
                             <input type="hidden" name="action" value="accept" />
                             <button class="btn">{{ _('Accept nomination') }}</button>
-                        </form></li>
+                        </form>
                     {% endif %}
                 </ul></dd>
             {% endif %}
@@ -52,7 +52,7 @@
         </dl>
     </section>
 
-    <section class="badge span9">
+    <section class="badge span8">
         <header class="page-header">
             <h2>{{ _("Badge") }}</h2>
         </header>
