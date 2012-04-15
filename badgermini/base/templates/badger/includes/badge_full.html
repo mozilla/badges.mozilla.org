@@ -19,17 +19,14 @@
     <dt>{{_("Modified:")}}</dt>
         <dd>{{ badge.modified }}</dd>
     <dt>{{_("Actions")}}:</dt>
-    <dd><ul>
-
+    <dd><ul class="btn-list">
         {% if badge.allows_award_to(request.user) %}
-            <li><a class="award_badge" href="{{ url('badger.views.award_badge', badge.slug) }}">{{ _('Issue award') }}</a></li>
+            <li><a class="btn award_badge" href="{{ url('badger.views.award_badge', badge.slug) }}">{{ _('Issue award') }}</a></li>
         {% endif %}
-        
         {# TODO: Can this be done extensibly? with a registry? #}
         {% set modules = [ "badger_multiplayer" ] %}
         {% for module in modules %}
             {% include module ~ "/includes/badge_full_actions.html" %}
         {% endfor %}
-
     </ul></dd>
 </dl>

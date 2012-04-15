@@ -12,11 +12,9 @@
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
-.navbar .logo { float: left; display: block; width: 48px; margin-left: -1em; 
+.navbar .logo { float: left; display: block; width: 42px; margin-left: -1.25em; 
     margin-right: 1em; border-radius: 8px; }
-.navbar-fixed-top form { display: inline; margin: 0; padding: 0 }
-.navbar-fixed-top form.search_badges input { padding: 2px; margin: 1px 1px 5px
-    1em; height: 18px }
+.navbar-fixed-top form { margin: 0; padding: 0.5em 0 0.5em 0; display: inline }
 
 /* For some reason the bootstrap navbar isn't pushing content down without this */
 .navbar-fixed-top { position: static; }
@@ -167,6 +165,7 @@ dl dt { background: #eee; border-radius: 8px 8px 8px 8px; float: left;
     text-align: right; width: 15ex; }
 dl dd { clear: right; display: block; margin: 0pt 0pt 0pt 17ex; 
     min-height: 1.25em; padding: 0.5em 0pt; text-indent: 0pt; }
+dl dd.btn-list { padding: 0; }
 dl dd:after { content: "\00a0"; }
 dl dd ul { margin: 0pt; padding: 0pt; }
 dl dd ul li { list-style: none outside none; margin: 0pt;
@@ -192,3 +191,5 @@ div.notice_settings h2 { margin: 0 0 5px 0; padding: 0; }
 table.notice_settings td { line-height: 90%; padding: 5px 10px; }
 span.notice_type_description { color: #666; font-size: 80%;
     font-style: italic; }
+
+#home #intro .claim #intro_code { font-family: monospace; text-align: center; font-size: 2em; width: 90%; height: 1.5em; display: block }

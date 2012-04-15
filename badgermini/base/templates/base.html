@@ -22,19 +22,18 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a href="{{ url('home') }}"><img width="64" align="bottom" src="{{MEDIA_URL}}img/logo.png" class="logo" /></a>
+          <a href="{{ url('home') }}"><img width="42" height="42" align="bottom" src="{{MEDIA_URL}}img/logo.png" class="logo" /></a>
           <a class="brand" href="{{ url('home') }}">{{ _('Badger') }}</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li><a href="{{ url('badger.views.badges_list') }}">{{ _('Badges') }}</a></li>
               <li><a href="{{ url('badger.views.awards_list') }}">{{ _('Awards') }}</a></li>
-              <li><form class="claim" method="GET" 
-                        action="{{ url('badger.views.claim_deferred_award') }}">
-                  <input type="text" size="16" class="claim_code" 
-                         name="code" placeholder="enter claim code" 
-                         value="{{ request.GET.get('code','') }}" />
-              </form></li>
             </ul>
+            <form class="navbar-search pull-left search_badges" method="GET"
+                    action="{{ url('badger.views.badges_list') }}">
+                <input type="text" name="q" id="id_q" class="search-query span2"
+                    value="{{ request.GET.get('q', '') }}" placeholder="{{ _('Search') }}" />
+            </form>
             <div class="navbar-text pull-right">
                 {% if request.user.is_authenticated() %}
                     {% trans user_url=request.user.get_absolute_url(), user_name=request.user %}
@@ -59,13 +58,6 @@
                     </form>
                     {% endblock %}
                 {% endif %}
-
-                <form class="search_badges" method="GET"
-                        action="{{ url('badger.views.badges_list') }}">
-                    <input type="text" name="q" id="id_q" 
-                        value="{{ request.GET.get('q', '') }}"
-                        placeholder="{{ _('search badges') }}" />
-                </form>
             </div>
           </div><!--/.nav-collapse -->
         </div>
