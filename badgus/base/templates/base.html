@@ -52,6 +52,8 @@
                         {% set next = request.GET.get('next', False) %}
                         {% if next %}
                             <input type="hidden" name="next" value="{{ next }}" />
+                        {% else %}
+                            <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
                         {% endif %}
                         {{ browserid_form.as_p()|safe }}
                         <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>

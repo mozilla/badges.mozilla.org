@@ -21,6 +21,19 @@
                 <dd><code>{{ deferred_award.claim_code }}</code></dd>
         </dl>
 
+        {% if user.is_anonymous() %}
+            <div>
+                <h3>{{ _("Claim") }}</h3>
+                <p>{{ _("Sign in to claim this badge award") }}</p>
+                <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
+                    {{ csrf() }}
+                    <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
+                    {{ browserid_form.as_p()|safe }}
+                    <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+                </form>
+            </div>
+        {% endif %}
+
         {% if deferred_award.allows_grant_by(request.user) %}
             <form id="grant_award" method="POST" action="">
                 <input type="hidden" name="is_grant" value="1" />
@@ -32,6 +45,7 @@
             </form>
         {% endif %}
 
+        {% if deferred_award.allows_claim_by(request.user) %}
         {% set email_mismatch = (deferred_award.email and request.user.email != deferred_award.email) %}
         <form id="claim_award" method="POST" action="" class="{{ email_mismatch and 'email-mismatch ' or '' }}">
             {{ csrf() }}
@@ -49,6 +63,7 @@
             {% endif %}
             <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Claim this award") }}">
         </form>
+        {% endif %}
 
     </section>
 
