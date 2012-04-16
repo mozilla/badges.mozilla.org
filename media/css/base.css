@@ -225,3 +225,16 @@ a.tag:hover { background-color: #356635; text-decoration: none; }
 a.tag .count:before { content: "("; }
 a.tag .count { font-size: 0.75em; }
 a.tag .count:after { content: ")"; }
+
+.claim_groups form { display: inline }
+
+#claims_list .deferred_awards { list-style: none; }
+#claims_list .deferred_awards li { width: 200px; float: left; position: relative;
+    border: 1px solid #ccc; border-radius: 8px; padding: 1em; margin: 1em; }
+#claims_list .deferred_awards li h3 { text-align: center; }
+#claims_list .deferred_awards li a.code { display: block; text-align: center;
+    padding: 0.125em; }
+#claims_list .deferred_awards li a.code code {font-size: 2.25em; display: block; }
+#claims_list .deferred_awards li img.qrcode { display: block; margin: 0 0 0 0; }
+#claims_list .deferred_awards li code.url { display: block; font-size: 0.9em;
+    text-align: center; margin: 0.5em 0 0 0 }

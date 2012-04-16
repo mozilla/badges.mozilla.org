@@ -51,11 +51,6 @@
             <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Claim this award") }}">
         </form>
 
-        <div>
-            {% set self_url = request.build_absolute_uri(deferred_award.get_claim_url()) %}
-            {{ qr_code_image(self_url, alt="Scan to claim!", size="200") }}
-        </div>
-
     </section>
 
     <section class="span8" id="detail">
