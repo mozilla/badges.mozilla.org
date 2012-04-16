@@ -49,13 +49,13 @@
         <header class="page-header">
             <h2>
                 <span>{{ _("Recent badges") }}</span>
-                <small>(
+                <small>
                     {% if badger_allows_add_by(request.user) %}
-                        <a class="action" href="{{ url('badger_multiplayer.views.create') }}">{{ _("New") }}</a>,
+                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') }}">{{ _("New") }}</a>,
                     {% endif %}
                     <a href="{{ url('badger.views.badges_list') }}">{{ _("More...") }}</a>
                     <a href="{{ url('badger_multiplayer.feeds.badges_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
-                )</small>
+                </small>
             </h2>
         </header>
         {% set badge_list = badge_list[:12] %}
@@ -66,10 +66,10 @@
         <header class="page-header">
             <h2>
                 <span>{{ _("Recent awards") }}</span>
-                <small>(
+                <small>
                     <a href="{{ url('badger.views.awards_list') }}">{{ _("More...") }}</a>
                     <a href="{{ url('badger.feeds.awards_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
-                )</small>
+                </small>
             </h2>
         </header>
         {% set award_list = award_list[:10] %}
