@@ -82,6 +82,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.admin',
 
+    'taggit',
+
     'badgus.profiles',
     
     'badger',

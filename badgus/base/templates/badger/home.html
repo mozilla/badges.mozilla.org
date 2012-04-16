@@ -31,6 +31,18 @@
                      value="{{ request.GET.get('code','') }}" />
             </form>
         </div>
+
+        {% if badge_tags %}
+        <div class="tags">
+            <h3>Top tags:</h3>
+            <ul class="tags top_tags">
+                {% for item in badge_tags %}
+                <li><a class="tag" href="{{ url('badger.badges_list', tag_name=item.tag.name) }}">{{ item.tag.name }} <span class="count">{{ item.count }}</span></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
     </section>
 
     <section id="recent_badges" class="span4 item_flow">
