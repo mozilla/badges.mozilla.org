@@ -10,7 +10,7 @@
         <dt>{{_("Image:")}}</dt>
             <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ badge.image.url }}" width="256" height="256" /></a></dd>
     {% endif %}
-    {% if badge.tags %}
+    {% if badge.tags and badge.tags.count %}
         <dt>{{ _("Tags:") }}</dt>
         <dd><ul class="tags">
             {% for tag in badge.tags.all() %}

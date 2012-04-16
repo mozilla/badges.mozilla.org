@@ -14,6 +14,9 @@
         <h2>
             {% if tag_name %}
                 <span>{{ _('Badges tagged "{tag_name}"') | f(tag_name=tag_name) }}</span>
+                {% if badger_allows_add_by(request.user) %}
+                    <small>(<a class="action" href="{{ url('badger_multiplayer.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>)</small>
+                {% endif %}
             {% elif query_string %}
                 <span>{{ _('Badges matching "{query_string}"') | f(query_string=query_string) }}</span>
             {% else %}
