@@ -50,11 +50,11 @@
             <h2>
                 <span>{{ _("Recent badges") }}</span>
                 <small>
-                    {% if badger_allows_add_by(request.user) %}
-                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') }}">{{ _("New") }}</a>,
-                    {% endif %}
                     <a href="{{ url('badger.views.badges_list') }}">{{ _("More...") }}</a>
                     <a href="{{ url('badger_multiplayer.feeds.badges_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    {% if badger_allows_add_by(request.user) %}
+                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') }}">{{ _("New badge") }}</a>
+                    {% endif %}
                 </small>
             </h2>
         </header>

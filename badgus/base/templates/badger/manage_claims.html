@@ -17,7 +17,7 @@
             <input type="hidden" name="is_generate" value="1" />
             <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Generate") }}">
             <select name="amount">
-                {% for x in (5, 10, 25, 50, 100) %}
+                {% for x in (5, 10, 30, 60, 90, 120, 150) %}
                     <option value="{{ x }}">{{ x }} claim codes</option>
                 {% endfor %}
             </select>
@@ -37,6 +37,8 @@
                         &#8212;
                         <span class="count">{{ item.count }} claim codes</span>
                     </a>
+                    &#8212;
+                    <a class="btn btn-success" href="{{ url('badger.claims_list_pdf', slug=badge.slug, claim_group=item.claim_group) }}" title="{{ _("Download claim codes as printable PDF") }}">{{ _("PDF") }}</a>
                 </li>
             {% else %}
                 <li>No claim code groups available.</li>
