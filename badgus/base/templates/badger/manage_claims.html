@@ -15,12 +15,12 @@
         <form id="create_claims" method="POST" action="">
             {{ csrf() }}
             <input type="hidden" name="is_generate" value="1" />
-            <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Generate") }}">
             <select name="amount">
-                {% for x in (5, 10, 30, 60, 90, 120, 150) %}
+                {% for x in (6, 15, 30, 60, 90, 120, 150) %}
                     <option value="{{ x }}">{{ x }} claim codes</option>
                 {% endfor %}
             </select>
+            <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Generate") }}">
         </form>
         <ul class="claim_groups">
             {% for item in claim_groups %}
