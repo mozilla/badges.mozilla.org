@@ -3,20 +3,15 @@
 {% block pageid %}badges{% endblock %}
 
 {% block content %}
-{% if request.user.is_authenticated() %}
-<section id="things_to_do">
-    
-</section>
-{% endif %}
 
 <section class="badges_list" class="item_flow">
     <header class="page-header">
         <h2>
             {% if tag_name %}
-                <span>{{ _('Badges tagged "{tag_name}"') | f(tag_name=tag_name) }}</span>
+            <span>{% trans %}Badges tagged <a href="" class="tag"><i class="icon-tag icon-white"></i> {{tag_name}}</a>{% endtrans %}</span>
                 {% if badger_allows_add_by(request.user) %}
                     <small>
-                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>
+                        <a class="action btn btn-large btn-primary" href="{{ url('badger_multiplayer.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>
                     </small>
                 {% endif %}
             {% elif query_string %}
