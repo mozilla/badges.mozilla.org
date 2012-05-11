@@ -16,7 +16,7 @@
                 <span>{{ _('Badges tagged "{tag_name}"') | f(tag_name=tag_name) }}</span>
                 {% if badger_allows_add_by(request.user) %}
                     <small>
-                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') | urlparams(tags=tag_name) }}">{{ _('New badge') }}</a>
+                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>
                     </small>
                 {% endif %}
             {% elif query_string %}
@@ -25,7 +25,7 @@
                 <span>{{ _("Badges") }}</span>
                 {% if badger_allows_add_by(request.user) %}
                     <small>
-                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') }}">{{ _('New badge') }}</a>
+                        <a class="action btn btn-primary" href="{{ url('badger_multiplayer.views.create') }}">{{ _('Create new badge') }}</a>
                     </small>
                 {% endif %}
             {% endif %}
