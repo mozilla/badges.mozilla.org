@@ -23,7 +23,7 @@
             <p>This is a service for <a href="http://decafbad.com/2010/07/badger-article/">making and awarding badges</a>.
                 It's <a href="https://github.com/lmorchard/django-badger">Open&nbsp;Source</a> and experimental!</p>
             {% if request.user.is_authenticated() %}
-                <p><a class="action btn btn-success btn-large" style="display: block" href="{{ request.user.get_absolute_url() }}">{{ _("☺  View your badges") }}</a></p>
+                <p><a class="action btn btn-success btn-large" style="display: block" href="{{ request.user.get_absolute_url() }}">{{ _("☺  View your profile") }}</a></p>
             {% else %}
                 {% block signin %}
                 <form class="browserid" action="{{url('browserid_verify')}}" method="POST">

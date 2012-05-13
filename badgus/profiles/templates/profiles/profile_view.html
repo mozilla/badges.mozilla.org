@@ -83,7 +83,7 @@
     <section id="recent_awards" class="item_flow">
         <header class="page-header">
             <h3>
-                <span>{{ _('Recent awards') }}</span>
+                <span>{{ _('Recent awards for {user}') | f(user=user) }}</span>
                 <small>(
                     <a href="{{ url('badger.views.awards_by_user', profile.user.username) }}">More...</a>
                     <a href="{{ url('badger.feeds.awards_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
@@ -99,7 +99,7 @@
     <section id="recent_badges" class="item_flow">
         <header class="page-header">
             <h3>
-                <span>{{ _('Recent badges') }}</span>
+                <span>{{ _('Badges created by {user}') | f(user=user) }}</span>
                 <small>(
                     <a href="{{ url('badger_multiplayer.views.badges_by_user', profile.user.username) }}">More...</a>
                     <a href="{{ url('badger_multiplayer.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
