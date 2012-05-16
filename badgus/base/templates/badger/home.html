@@ -42,8 +42,8 @@
         </div>
 
         <div class="span4">
-            <h3>Have a claim code?</h3>
-            <p>Type it here and hit return to claim your award:</p>
+            <h3>{{ _("Have a claim code?") }}</h3>
+            <p>{{ _("Type it here and hit return to claim your award:") }}</p>
             <form class="claim" method="GET" action="{{ url('badger.views.claim_deferred_award') }}">
               <input type="text" size="16" class="claim_code" 
                      name="code" id="intro_code" 
@@ -54,8 +54,8 @@
         </div>
 
         <div class="span4">
-            <h3>Have an idea for a badge?</h3>
-            <p>Click here to start:</p>
+            <h3>{{ _("Have an idea for a badge?") }}</h3>
+            <p>{{ _("Click here to start:") }}</p>
             <p><a class="action btn btn-primary btn-large" style="display: block" href="{{ url('badger_multiplayer.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
         </div>
 
@@ -79,7 +79,7 @@
     <section id="recent_badges" class="span5 item_flow">
         <header class="page-header">
             <h2>
-                <span>{{ _("Recent badges") }}</span>
+                <span>{{ _("Recently created badges") }}</span>
                 <small>
                     <a href="{{ url('badger.views.badges_list') }}">{{ _("More...") }}</a>
                     <a href="{{ url('badger_multiplayer.feeds.badges_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
@@ -94,7 +94,7 @@
     <section id="recent_awards" class="span7 item_flow">
         <header class="page-header">
             <h2>
-                <span>{{ _("Recent awards") }}</span>
+                <span>{{ _("Recently awarded badges") }}</span>
                 <small>
                     <a href="{{ url('badger.views.awards_list') }}">{{ _("More...") }}</a>
                     <a href="{{ url('badger.feeds.awards_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
