@@ -43,13 +43,15 @@
 
         <div class="span4">
             <h3>{{ _("Have a claim code?") }}</h3>
-            <p>{{ _("Type it here and hit return to claim your award:") }}</p>
+            <p>{{ _("Type it here to claim your award:") }}</p>
             <form class="claim" method="GET" action="{{ url('badger.views.claim_deferred_award') }}">
-              <input type="text" size="16" class="claim_code" 
-                     name="code" id="intro_code" 
-                     placeholder="enter claim code" 
-                     style="display: block"
-                     value="{{ request.GET.get('code','') }}" />
+                <input type="hidden" name="claim" value="1" />
+                <input type="text" size="16" class="claim_code" 
+                       name="code" id="intro_code" 
+                       placeholder="enter claim code" 
+                       style="display: block; width: 98%"
+                       value="{{ request.GET.get('code','') }}" />
+                <button class="action btn btn-primary btn-large" style="display: block; width: 100%">{{ _('Claim award from code') }}</button>
             </form>
         </div>
 
