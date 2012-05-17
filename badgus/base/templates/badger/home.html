@@ -45,6 +45,7 @@
             <h3>{{ _("Have a claim code?") }}</h3>
             <p>{{ _("Type it here to claim your award:") }}</p>
             <form class="claim" method="POST" action="{{ url('badger.views.claim_deferred_award') }}">
+                {{ csrf() }}
                 <input type="text" size="16" class="claim_code" 
                        name="code" id="intro_code" 
                        placeholder="enter claim code" 
