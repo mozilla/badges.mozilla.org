@@ -8,7 +8,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django import test
 
-from profiles.models import UserProfile
+from badgus.profiles.models import UserProfile
 
 
 class UserProfileTest(test.TestCase):

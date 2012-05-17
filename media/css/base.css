@@ -249,3 +249,5 @@ a.tag .count:after { content: ")"; }
 #claims_list .deferred_awards li img.qrcode { display: block; margin: 0 0 0 0; }
 #claims_list .deferred_awards li code.url { display: block; font-size: 0.9em;
     text-align: center; margin: 0.5em 0 0 0 }
+
+#badge_detail textarea { height: 5.5em; }

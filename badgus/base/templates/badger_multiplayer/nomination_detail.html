@@ -4,7 +4,15 @@
 
 {% block content %}
 <section class="row-fluid">
-    <section class="nomination span4">
+
+    <section class="badge span4">
+        <header class="page-header">
+            <h2>{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
+        </header>
+        {% include "badger/includes/badge_full.html" %}
+    </section>
+
+    <section class="nomination span8">
         <header class="page-header">
             <h2>{{ _("Nomination detail") }}</h2>
         </header>
@@ -52,12 +60,6 @@
         </dl>
     </section>
 
-    <section class="badge span8">
-        <header class="page-header">
-            <h2>{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
-        </header>
-        {% include "badger/includes/badge_full.html" %}
-    </section>
 </section>
 
 {% endblock %}
