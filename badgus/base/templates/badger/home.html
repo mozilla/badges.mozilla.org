@@ -13,56 +13,66 @@
 
 {% block content %}
 
-<div class="hero-unit">
+<section class="home-intro hero-unit">
     <h1><span>{{ _("Welcome to badg.us!") }}</span></h1>
-    <br />
 
     <div class="row-fluid">
 
-        <div class="span4">
-            <p>This is a service for <a href="http://decafbad.com/2010/07/badger-article/">making and awarding badges</a>.
-                It's <a href="https://github.com/lmorchard/django-badger">Open&nbsp;Source</a> and experimental!</p>
-            {% if request.user.is_authenticated() %}
-                <p><a class="action btn btn-success btn-large" style="display: block" href="{{ request.user.get_absolute_url() }}">{{ _("☺  View your profile") }}</a></p>
-            {% else %}
-                {% block signin %}
-                <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
+        <section class="item span4">
+            <section class="blurb">
+                <p>This is a service for <a href="http://decafbad.com/2010/07/badger-article/">making and awarding badges</a>.
+                    It's <a href="https://github.com/lmorchard/django-badger">Open&nbsp;Source</a> and experimental!</p>
+            </section>
+            <section class="action">
+                {% if request.user.is_authenticated() %}
+                    <p><a class="action btn btn-success btn-large" href="{{ request.user.get_absolute_url() }}">{{ _("☺  View your profile") }}</a></p>
+                {% else %}
+                    {% block signin %}
+                    <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
+                        {{ csrf() }}
+                        {% set next = request.GET.get('next', False) %}
+                        {% if next %}
+                            <input type="hidden" name="next" value="{{ next }}" />
+                        {% else %}
+                            <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
+                        {% endif %}
+                        {{ browserid_form.as_p()|safe }}
+                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+                    </form>
+                    {% endblock %}
+                {% endif %}
+            </section>
+        </section>
+
+        <section class="item span4">
+            <section class="blurb">
+                <h3>{{ _("Have a claim code?") }}</h3>
+                <p>{{ _("Type it here to claim your award:") }}</p>
+            </section>
+            <section class="action">
+                <form class="claim" method="POST" action="{{ url('badger.views.claim_deferred_award') }}">
                     {{ csrf() }}
-                    {% set next = request.GET.get('next', False) %}
-                    {% if next %}
-                        <input type="hidden" name="next" value="{{ next }}" />
-                    {% else %}
-                        <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
-                    {% endif %}
-                    {{ browserid_form.as_p()|safe }}
-                    <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+                    <input type="text" size="16" class="text-input claim-code" 
+                           name="code" id="intro_code" 
+                           placeholder="enter claim code" 
+                           value="{{ request.GET.get('code','') }}" />
+                    <input type="submit" class="action btn btn-primary btn-large" value="{{ _('Claim award from code') }}" />
                 </form>
-                {% endblock %}
-            {% endif %}
-        </div>
+            </section>
+        </section>
 
-        <div class="span4">
-            <h3>{{ _("Have a claim code?") }}</h3>
-            <p>{{ _("Type it here to claim your award:") }}</p>
-            <form class="claim" method="POST" action="{{ url('badger.views.claim_deferred_award') }}">
-                {{ csrf() }}
-                <input type="text" size="16" class="claim_code" 
-                       name="code" id="intro_code" 
-                       placeholder="enter claim code" 
-                       style="display: block; width: 98%"
-                       value="{{ request.GET.get('code','') }}" />
-                <button class="action btn btn-primary btn-large" style="display: block; width: 100%">{{ _('Claim award from code') }}</button>
-            </form>
-        </div>
-
-        <div class="span4">
-            <h3>{{ _("Have an idea for a badge?") }}</h3>
-            <p>{{ _("Click here to start:") }}</p>
-            <p><a class="action btn btn-primary btn-large" style="display: block" href="{{ url('badger_multiplayer.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
-        </div>
+        <section class="item span4">
+            <section class="blurb">
+                <h3>{{ _("Have an idea for a badge?") }}</h3>
+                <p>{{ _("Click here to start:") }}</p>
+            </section>
+            <section class="action">
+                <p><a class="action btn btn-primary btn-large" href="{{ url('badger_multiplayer.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
+            </section>
+        </section>
 
     </div>
-</div>
+</section>
 
 {% if badge_tags %}
 <section class="row-fluid">
