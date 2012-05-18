@@ -179,6 +179,9 @@ form ul li div.clearablefileinput .clear label { float: inherit;
     display: inline; margin: inherit; text-align: inherit; width: auto }
 form#edit_badge ul li div.clearablefileinput .clear { display: none; }
 
+ul.btn-list { list-style: none; margin: 0; padding: 0 }
+ul.btn-list li { display: inline; }
+
 dl { }
 dl dt { background: #eee; border-radius: 8px 8px 8px 8px; float: left;
     margin: 0pt; min-height: 1.125em; padding: 0.25em 0.25em 0.25em 0pt; 
