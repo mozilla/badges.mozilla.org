@@ -61,7 +61,7 @@
         {% if badge.allows_award_to(request.user) %}
             <section>
                 <header class="page-header">
-                    <h2>{{ _("Issue awards by email") }}</h2>
+                    <h2>{{ _("Issue badge awards by email") }}</h2>
                 </header>
                 <form id="award_badge" method="POST"
                       action="{{ url('badger.views.award_badge', slug=badge.slug) }}">
@@ -77,7 +77,7 @@
         {% if badge.allows_manage_deferred_awards_by(request.user) %}
             <section class="claims_list">
                 <header class="page-header">
-                    <h2>{{ _("Issue awards with claim codes") }}</h2>
+                    <h2>{{ _("Issue badge awards with claim codes") }}</h2>
                 </header>
                 <form id="create_claims" method="POST" action="">
                     {{ csrf() }}
