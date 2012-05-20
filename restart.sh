@@ -20,3 +20,17 @@ fi;
 PID=`cat $PIDFILE`
 echo "Restarted as PID $PID"
 popd >/dev/null
+
+# This is handy with a .git/hooks/post-receive like:
+#
+# unset GIT_DIR
+# cd ..
+# git reset --hard
+# git submodule sync
+# git submodule update --init --recursive
+# ./restart.sh
+#
+# And don't forget this in .git/config
+#
+#     [receive]
+#         denyCurrentBranch = ignore
