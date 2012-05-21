@@ -79,9 +79,7 @@
     <section class="span12">
         <ul class="tags top_tags">
             {% for item in badge_tags %}
-                {% if item.count > 1 %}
-                    <li><a class="tag" href="{{ url('badger.badges_list', tag_name=item.tag.name) }}"><i class="icon-tag icon-white"></i> {{ item.tag.name }} <span class="count">{{ item.count }}</span></a></li>
-                {% endif %}
+                <li><a class="tag" href="{{ url('badger.badges_list', tag_name=item.tag.name) }}"><i class="icon-tag icon-white"></i> {{ item.tag.name }} <span class="count">{{ item.count }}</span></a></li>
             {% endfor %}
         </ul>
     </section>
