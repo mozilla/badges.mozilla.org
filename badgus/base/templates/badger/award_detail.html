@@ -35,7 +35,7 @@
 
     <section class="award span8">
         <header class="page-header">
-            <h2>{{ _('Award details') }}</h2>
+            <h2>{{ _('Awarded badge details') }}</h2>
         </header>
         {% include "badger/includes/award_full.html" %}
         <dl class="share">
@@ -62,7 +62,7 @@
 
                 {% if award.user == request.user %}
                     <li><form class="obi_issuer">
-                        <button class="btn issue">{{_("Add this badge to your Open Badge Backpack")}}</button>
+                        <button class="btn issue">{{_("Add this badge to your Mozilla Open Badge Backpack")}}</button>
                     </form></li>
                 {% endif %}
 
