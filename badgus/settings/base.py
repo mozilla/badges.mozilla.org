@@ -90,7 +90,7 @@ INSTALLED_APPS = [
     'badger_multiplayer',
 
     'notification',
-    'csp',
+    #'csp',
     'django_browserid',
     #'south',
 ]
@@ -98,7 +98,7 @@ INSTALLED_APPS = [
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
     'django.contrib.messages.middleware.MessageMiddleware',
     'commonware.response.middleware.StrictTransportMiddleware',
-    'csp.middleware.CSPMiddleware',
+    #'csp.middleware.CSPMiddleware',
 ]
 
 # Because Jinja2 is the default template loader, add any non-Jinja templated
@@ -155,7 +155,10 @@ CSP_IMG_SRC = ("'self'",
                'https://www.gravatar.com',
                'https://secure.gravatar.com',
                'http://chart.apis.google.com',
-               'https://chart.apis.google.com',)
+               'https://chart.apis.google.com',
+               'http://plusone.google.com', 'https://plusone.google.com',
+               'http://ssl.gstatic.com', 'https://ssl.gstatic.com',
+               'http://apis.google.com/', 'https://apis.google.com/')
 CSP_STYLE_SRC = ("'self'",
                  'http://localhost',
                  'http://localhost:8000',
@@ -164,7 +167,10 @@ CSP_STYLE_SRC = ("'self'",
                  'https://www.mozilla.org',
                  'http://beta.openbadges.org',
                  'https://beta.openbadges.org',
-                 'https://fonts.googleapis.com')
+                 'https://fonts.googleapis.com',
+                 'http://plusone.google.com', 'https://plusone.google.com',
+                 'http://ssl.gstatic.com', 'https://ssl.gstatic.com',
+                 'http://apis.google.com', 'https://apis.google.com')
 CSP_FONT_SRC = ("'self'",
                 'https://themes.googleusercontent.com',)
 CSP_SCRIPT_SRC = ("'self'",
@@ -177,8 +183,11 @@ CSP_SCRIPT_SRC = ("'self'",
                   'https://beta.openbadges.org',
                   'http://browserid.org',
                   'https://browserid.org',
-                  'https://platform.twitter.com',
-                  'https://connect.facebook.net',)
+                  'http://platform.twitter.com', 'https://platform.twitter.com',
+                  'http://apis.google.com', 'https://apis.google.com',
+                  'http://plusone.google.com', 'https://plusone.google.com',
+                  'http://ssl.gstatic.com', 'https://ssl.gstatic.com',
+                  'http://connect.facebook.net', 'https://connect.facebook.net',)
 CSP_FRAME_SRC = ("'self'",
                  'http://localhost',
                  'http://localhost:8000',
@@ -187,8 +196,10 @@ CSP_FRAME_SRC = ("'self'",
                  'https://www.mozilla.org',
                  'http://beta.openbadges.org',
                  'https://beta.openbadges.org',
-                 'http://platform.twitter.com',
-                 'https://platform.twitter.com',
+                 'http://apis.google.com', 'https://apis.google.com',
+                 'http://plusone.google.com', 'https://plusone.google.com',
+                 'http://ssl.gstatic.com', 'https://ssl.gstatic.com',
+                 'http://platform.twitter.com', 'https://platform.twitter.com',
                  'https://www.facebook.com',)
 CSP_OPTIONS = ('eval-script',)
 
