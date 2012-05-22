@@ -14,7 +14,7 @@
 {% block content %}
 
 <section class="home-intro hero-unit">
-    <h1><span>{{ _("Welcome to badg.us!") }}</span></h1>
+    <h1><span>{{ _("Welcome to {site_title}!") | f(site_title=settings.SITE_TITLE) }}</span></h1>
 
     <div class="row-fluid">
 
