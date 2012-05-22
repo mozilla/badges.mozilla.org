@@ -5,14 +5,14 @@ from .profiles import urls as profiles_urls
 
 from django.views.generic.simple import direct_to_template
 
-from django.contrib import admin
-admin.autodiscover()
+from funfactory import monkeypatches
+monkeypatches.patch()
 
 import badger
 badger.autodiscover()
 
-from funfactory import monkeypatches
-monkeypatches.patch()
+from django.contrib import admin
+admin.autodiscover()
 
 from badger import Progress
 #from badger_multiplayer.models import Badge, Award, Nomination
