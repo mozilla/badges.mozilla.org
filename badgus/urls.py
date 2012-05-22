@@ -11,6 +11,9 @@ admin.autodiscover()
 import badger
 badger.autodiscover()
 
+from funfactory import monkeypatches
+monkeypatches.patch()
+
 from badger import Progress
 #from badger_multiplayer.models import Badge, Award, Nomination
 from badger.models import Badge, Award
