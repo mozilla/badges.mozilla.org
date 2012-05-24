@@ -45,7 +45,7 @@ ul.badges { margin: 0pt; padding: 0pt; }
 #home .home-intro { }
 #home .home-intro h1 { margin-bottom: 0.25em; }
 #home .home-intro .item { }
-#home .home-intro .item .blurb { display: block; min-height: 5.5em; }
+#home .home-intro .item .blurb { display: block; min-height: 7.0em; }
 #home .home-intro .item .action { }
 #home .home-intro .item .action form { display: block; width: 100% }
 #home .home-intro .item .action .btn { display: block; width: 94% }
