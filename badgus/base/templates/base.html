@@ -37,6 +37,7 @@
               <li><a href="{{ url('badger.views.badges_list') }}">{{ _('Badges') }}</a></li>
               <li><a href="{{ url('badger.views.awards_list') }}">{{ _('Awards') }}</a></li>
               <li><a href="https://github.com/lmorchard/badg.us/wiki/FAQ" target="_blank">{{ _('FAQ') }}</a></li>
+              <li><a href="http://goo.gl/mod/Umab" target="_blank">Suggestions</a></li>
               {% set allow_staff = (user.is_staff or user.is_superuser) %}
               {% if allow_staff %}
                   <li><a href="{{ url('badger.views.staff_tools') }}">{{ _('Staff Tools') }}</a></li>
