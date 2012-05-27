@@ -15,7 +15,7 @@
      <meta property="og:site_name" content="{{ settings.SITE_TITLE }}">
      <meta property="og:image" content="{{ request.build_absolute_uri(badge.image.url) }}">
      <meta property="og:title" content="{{ badge.title }}">
-     <meta property="og:description" content="{{ badge.description }}"> 
+     <meta property="og:description" content="{{ award.user }} earned the badge &quot;{{ badge.title }}&quot; on {{ settings.SITE_TITLE }}!"> 
      <meta property="article:published_time" content="{{ award.created.isoformat() }}Z"> 
      <meta property="article:author" content="{{ award.creator }}">
      {% for tag in badge.tags.all() %}

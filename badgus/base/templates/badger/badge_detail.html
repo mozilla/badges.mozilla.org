@@ -1,5 +1,7 @@
 {% extends "badger/base.html" %}
 
+{% set badge_url = request.build_absolute_uri(badge.get_absolute_url()) %}
+
 {% block pageid %}badge_detail{% endblock %}
 
 {% block extrahead %}
@@ -9,6 +11,18 @@
     <link rel="alternate" type="application/json"
         title="{{ _('{title} (JSON)') | f(title=badge) }}"
         href="{{ url('badger.detail_json', slug=badge.slug) }}" />
+
+     <meta property="og:type" content="article"> 
+     <meta property="og:url" content="{{ badge_url }}">
+     <meta property="og:site_name" content="{{ settings.SITE_TITLE }}">
+     <meta property="og:image" content="{{ request.build_absolute_uri(badge.image.url) }}">
+     <meta property="og:title" content="{{ badge.title }}">
+     <meta property="og:description" content="{{ badge.description }}"> 
+     <meta property="article:published_time" content="{{ badge.modified.isoformat() }}Z"> 
+     <meta property="article:author" content="{{ badge.creator }}">
+     {% for tag in badge.tags.all() %}
+     <meta property="article:tag" content="{{ tag.name }}">
+     {% endfor %}
 {% endblock %}
 
 {% block content %}
