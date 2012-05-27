@@ -78,13 +78,14 @@
             <section class="claims_list">
                 <header class="page-header">
                     <h2>{{ _("Issue badge awards with claim codes") }}</h2>
+                    <p>PDF prints sheets of <a href="https://www.google.com/search?q=Avery+22805" target="_blank">Avery 22805 labels</a>, 24 per page</p>
                 </header>
                 <form id="create_claims" method="POST" action="">
                     {{ csrf() }}
                     <input type="hidden" name="is_generate" value="1" />
                     <select name="amount">
                         <option value="1">1 reusable claim code</option>
-                        {% for x in (6, 15, 30, 60, 90, 120, 150) %}
+                        {% for x in (6, 12, 24, 48, 72, 96, 120, 144,) %}
                             <option value="{{ x }}">{{ _('{num} single-use claim codes') | f(num=x) }}</option>
                         {% endfor %}
                     </select>
