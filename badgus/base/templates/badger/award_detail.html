@@ -1,7 +1,7 @@
 {% extends "badger/base.html" %}
 
 {% set user = award.user %}
-{% set award_url = request.build_absolute_uri(award.get_absolute_url()) %}
+{% set award_url = request.build_absolute_uri(url('badger.views.award_detail', award.badge.slug, award.id)) %}
 
 {% block pageid %}award_detail{% endblock %}
 
