@@ -2,6 +2,14 @@
 
 {% set user = award.user %}
 {% set award_url = request.build_absolute_uri(url('badger.views.award_detail', award.badge.slug, award.id)) %}
+{% if award.image %}
+    {% set image_url = award.image.url %}
+{% elif badge.image %}
+    {% set image_url = badge.image.url %}
+{% else %}
+    {# TODO: Put the URL for default badge image in settings #}
+    {% set image_url = "/media/img/default-badge.png" %}
+{% endif %}
 
 {% block pageid %}award_detail{% endblock %}
 
@@ -13,7 +21,7 @@
      <meta property="og:type" content="article"> 
      <meta property="og:url" content="{{ award_url }}">
      <meta property="og:site_name" content="{{ settings.SITE_TITLE }}">
-     <meta property="og:image" content="{{ request.build_absolute_uri(badge.image.url) }}">
+     <meta property="og:image" content="{{ request.build_absolute_uri(image_url) }}">
      <meta property="og:title" content="{{ badge.title }}">
      <meta property="og:description" content="{{ award.user }} earned the badge &quot;{{ badge.title }}&quot; on {{ settings.SITE_TITLE }}!"> 
      <meta property="og:updated_time" content="{{ award.created.isoformat() }}Z"> 
