@@ -92,7 +92,7 @@ INSTALLED_APPS = [
     'notification',
     #'csp',
     'django_browserid',
-    #'south',
+    'south',
 ]
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
