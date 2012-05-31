@@ -13,6 +13,8 @@ if [ -f $PIDFILE ]; then
 	cat $PIDFILE | xargs kill -9;
 	rm $PIDFILE;
 fi;
+./manage.py syncdb
+./manage.py migrate
 ./manage.py runfcgi host=127.0.0.1 port=$PORT demonize=true \
 	pidfile=$PIDFILE maxrequests=$MAXREQUESTS maxchildren=$MAXCHILDREN \
 	maxspare=$MAXSPARE minspare=$MINSPARE \
