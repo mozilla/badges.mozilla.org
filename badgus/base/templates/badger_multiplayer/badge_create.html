@@ -8,13 +8,40 @@
     <header class="page-header">
         <h2>{{ _("Create a badge") }}</h2>
     </header>
-    <form id="create_badge" method="POST" action="" enctype="multipart/form-data">
-        {{ csrf() }}
-        <ul>
-            {{ form.as_ul() }}
-            <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Create badge") }}"></li>
-        </ul>
-    </form>
+    <section class="row-fluid">
+        <section class="span6">
+            <form id="create_badge" method="POST" action="" enctype="multipart/form-data">
+                {{ csrf() }}
+                <ul>
+                    {{ form.as_ul() }}
+                    <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Create badge") }}"></li>
+                </ul>
+            </form>
+        </section>
+        <section class="span6">
+            <h3>Example badge:</h3>
+            <p>{% trans %}
+                This isn't a real badge, but it shows a few things you can do.
+            {% endtrans %}</p>
+            {# TODO: Put the URL for default badge image in settings #}
+            {% set image_url = "/media/img/default-badge.png" %}
+            <dl class="badge">
+                <dt>{{_("Title:")}}</dt>
+                    <dd class="title"><strong>{{ _('Test Badger') }}</strong></dd>
+                <dt>{{_("Image:")}}</dt>
+                    <dd class="image"><span class="image"><img src="{{ image_url }}" width="256" height="256" /></span></dd>
+                <dt>{{_("Description:")}}</dt>
+                    <dd class="description">{{ _("For having qualities like a test pilot, but more badgery.") }}</dd>
+                <dt>{{ _("Tags:") }}</dt>
+                    <dd><ul class="tags">
+                        {% set tags = [ 'tests', 'yourevent', 'badgers' ] %}
+                        {% for tag in tags %}
+                            <li><a class="tag" href="{{ url('badger.badges_list', tag_name=tag) }}"><i class="icon-tag icon-white"></i> {{ tag }}</a></li>
+                        {% endfor %}
+                    </ul></dd>
+            </dl>
+        </section>
+    </section>
 </section>
 
 {% endblock %}
