@@ -5,6 +5,10 @@ from funfactory.settings_base import *
 
 SITE_TITLE = 'badg.us'
 
+# Make sure South stays out of the way during testing
+#SOUTH_TESTS_MIGRATE = False
+#SKIP_SOUTH_TESTS = True
+
 # Bundles is a dictionary of two dictionaries, css and js, which list css files
 # and js files that can be bundled together by the minify app.
 MINIFY_BUNDLES = {
