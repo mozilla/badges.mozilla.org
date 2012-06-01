@@ -37,8 +37,13 @@
                     <dd class="image"><span class="image"><img src="{{ image_url }}" width="256" height="256" /></span>
                         <p><i>{% trans %}
                             This should be a square image, around 256x256
-                            pixels. The system will automatically crop and resize
-                            images that fall outside these guidelines.
+                            pixels. The system will automatically crop and
+                            resize images that fall outside these guidelines.
+                            Also, consider using simple artwork that stays
+                            distinctive at a variety of sizes and viewing
+                            distances. Lots of small details and words are hard
+                            to see when the badge image is either small or far
+                            away.
                         {% endtrans %}</i></p>
                     </dd>
                 <dt>{{_("Description:")}}</dt>
@@ -52,17 +57,19 @@
                     </dd>
                 <dt>{{ _("Tags:") }}</dt>
                     <dd><ul class="tags">
-                        {% set tags = [ 'tests', 'yourevent', 'badgers' ] %}
+                        {% set tags = [ 'tests', 'A2makerfaire2012', 'badgers' ] %}
                         {% for tag in tags %}
                             <li><a class="tag" href="{{ url('badger.badges_list', tag_name=tag) }}"><i class="icon-tag icon-white"></i> {{ tag }}</a></li>
                         {% endfor %}
                         </ul>
+                        {% set example_tag_url = url('badger.badges_list', tag_name='a2makerfaire2012') %}
                         <p><i>{% trans %}
-                            Use tags to group your badge with others. Events
+                            Use tags to group your badge with others. These are
+                            like <a href="https://support.twitter.com/articles/49309-what-are-hashtags-symbols" target="_blank">hashtags on Twitter</a>.
+                            These <a href="http://twitter.pbworks.com/w/page/1779812/Hashtags" target="_blank">are best used sparingly</a>:
+                            Try not to enter more than 2-5 concise topics or keywords. Events
                             often use tags to help gather badges that will be
-                            offered (eg. <kbd>A2makerfaire2012</kbd>). Use this
-                            sparingly, and try not to fill it up with large
-                            numbers of keywords or topics.
+                            offered (eg.  <a href="{{ example_tag_url }}" target="_blank">A2makerfaire2012</a>). 
                         {% endtrans %}</i></p>
                     </dd>
             </dl>
