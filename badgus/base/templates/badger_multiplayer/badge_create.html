@@ -5,11 +5,11 @@
 {% block content %}
 
 <section>
-    <header class="page-header">
-        <h2>{{ _("Create a badge") }}</h2>
-    </header>
     <section class="row-fluid">
         <section class="span6">
+            <header class="page-header">
+                <h2>{{ _("Create a badge") }}</h2>
+            </header>
             <form id="create_badge" method="POST" action="" enctype="multipart/form-data">
                 {{ csrf() }}
                 <ul>
@@ -18,8 +18,10 @@
                 </ul>
             </form>
         </section>
-        <section class="span6">
-            <h3>Example badge:</h3>
+        <section class="span6 sample-badge">
+            <header class="page-header">
+                <h2>Example badge:</h2>
+            </header>
             <p>{% trans %}
                 This isn't a real badge, but it shows a few things you can do.
             {% endtrans %}</p>
@@ -27,18 +29,42 @@
             {% set image_url = "/media/img/default-badge.png" %}
             <dl class="badge">
                 <dt>{{_("Title:")}}</dt>
-                    <dd class="title"><strong>{{ _('Test Badger') }}</strong></dd>
+                    <dd class="title"><strong>{{ _('Test Badger') }}</strong>
+                    <p><i>{% trans %}
+                        Try to keep this to 5 words, or less.
+                    {% endtrans %}</i></p></dd>
                 <dt>{{_("Image:")}}</dt>
-                    <dd class="image"><span class="image"><img src="{{ image_url }}" width="256" height="256" /></span></dd>
+                    <dd class="image"><span class="image"><img src="{{ image_url }}" width="256" height="256" /></span>
+                        <p><i>{% trans %}
+                            This should be a square image, around 256x256
+                            pixels. The system will automatically crop and resize
+                            images that fall outside these guidelines.
+                        {% endtrans %}</i></p>
+                    </dd>
                 <dt>{{_("Description:")}}</dt>
-                    <dd class="description">{{ _("For having qualities like a test pilot, but more badgery.") }}</dd>
+                    <dd class="description">{{ _("For having qualities like a test pilot, but more badgery.") }}
+                        <p><i>{% trans %}
+                            Use this to describe why someone would earn this
+                            badge. Explain the conditions and criteria a person
+                            would need to satisfy to receive this badge as an
+                            award.
+                        {% endtrans %}</i></p>
+                    </dd>
                 <dt>{{ _("Tags:") }}</dt>
                     <dd><ul class="tags">
                         {% set tags = [ 'tests', 'yourevent', 'badgers' ] %}
                         {% for tag in tags %}
                             <li><a class="tag" href="{{ url('badger.badges_list', tag_name=tag) }}"><i class="icon-tag icon-white"></i> {{ tag }}</a></li>
                         {% endfor %}
-                    </ul></dd>
+                        </ul>
+                        <p><i>{% trans %}
+                            Use tags to group your badge with others. Events
+                            often use tags to help gather badges that will be
+                            offered (eg. <kbd>A2makerfaire2012</kbd>). Use this
+                            sparingly, and try not to fill it up with large
+                            numbers of keywords or topics.
+                        {% endtrans %}</i></p>
+                    </dd>
             </dl>
         </section>
     </section>
