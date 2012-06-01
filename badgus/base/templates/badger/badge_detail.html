@@ -105,7 +105,7 @@
                     <input type="hidden" name="is_generate" value="1" />
                     <select name="amount">
                         <option value="1">1 reusable claim code</option>
-                        {% for x in (6, 12, 24, 48, 72, 96, 120, 144,) %}
+                        {% for x in (6, 12, 24, 48, 72, 96) %}
                             <option value="{{ x }}">{{ _('{num} single-use claim codes') | f(num=x) }}</option>
                         {% endfor %}
                     </select>
