@@ -40,6 +40,24 @@
             <h2 class="badge-title">{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
         </header>
         {% include "badger/includes/badge_full.html" %}
+        {% if not award %}
+        <dl class="share">
+            <dt>{{ _('Share:') }}</dt>
+            <dd><ul>
+                <li><a href="https://twitter.com/share" class="twitter-share-button" 
+                       data-text="&quot;{{ badge.title }}&quot; on {{ settings.SITE_TITLE }}!" 
+                       data-size="large"
+                       data-url="{{ badge_url }}" data-hashtags="badgus">...</a></li>
+
+                <li><div class="g-plus" data-href="{{ badge_url }}" data-action="share"
+                         data-annotation="bubble" data-height="24"></div></li>
+
+                <li><div class="fb-like" data-href="{{ badge_url }}" data-send="true"
+                         data-width="450" data-show-faces="false"></div></li>
+
+            </ul></dd>
+        </dl>
+        {% endif %}
     </section>
 
     {% if award_list %}
@@ -148,4 +166,34 @@
 
 </section>
 
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '235454449896211', // App ID
+      channelUrl : '{{ request.build_absolute_uri('/media/fb-channel.html') }}', // Channel File
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
+    // Additional initialization code here
+  };
+
+  // Load the SDK Asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+</script>
+
+{% endblock %}
+
+{% block js %}
+    <script type="text/javascript"
+        src="//platform.twitter.com/widgets.js"></script>
+    <script type="text/javascript"
+        src="https://apis.google.com/js/plusone.js"></script>
 {% endblock %}
