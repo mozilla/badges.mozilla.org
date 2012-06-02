@@ -154,8 +154,11 @@ ul.awardees li.awardee .label:before { content: "☺ "; font-size: 1.25em; }
 dl.badge a.image img, dl.profile img.avatar { border-radius: 8px; }
 
 dl.badge img.avatar, dl.award img.avatar, dl.nomination img.avatar { 
-    width: 64px; height: 64px; border-radius: 4px; margin: -0.5em 0.5em 0 0;
-    padding: 0; vertical-align: text-top }
+    width: 64px; height: 64px; border-radius: 4px; margin: 0.5em 0.5em 0 0;
+    padding: 0; vertical-align: text-top; display: block }
+
+dl.award dd.awarded_to a {  }
+dl.award dd.awarded_to img.avatar { width: 160px; height: 160px; }
 
 form { }
 form fieldset { border: 1px solid #CCCCCC; margin: 1em 0.25em; padding: 0.5em; }

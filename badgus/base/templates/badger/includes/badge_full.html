@@ -6,6 +6,7 @@
     {# TODO: Put the URL for default badge image in settings #}
     {% set image_url = "/media/img/default-badge.png" %}
 {% endif %}
+{% if not award %}
 <ul class="btn-list">
     {# TODO: Can this be done extensibly? with a registry? #}
     {% set modules = [ "badger_multiplayer" ] %}
@@ -13,6 +14,7 @@
         {% include module ~ "/includes/badge_full_actions.html" %}
     {% endfor %}
 </ul>
+{% endif %}
 <dl class="badge" data-slug="{{ badge.slug }}">
     {% if badge_show_title %}
         <dt>{{_("Title:")}}</dt>

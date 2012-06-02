@@ -33,23 +33,33 @@
 {% endblock %}
 
 {% block content %}
+<header class="page-header">
+    <h2 class="badge-title">
+        {% if award.user == request.user %}
+            {{ _("Your Awarded Badge: {badge_title}") | f(badge_title=badge.title) }}
+        {% else %}
+            {{ _("Awarded Badge: {badge_title}") | f(badge_title=badge.title) }}
+        {% endif %}
+    </h2>
+</header>
 <section class="row-fluid">
 
     <section class="badge span4">
-        <header class="page-header">
-            <h2 class="badge-title">{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
-        </header>
         {% include "badger/includes/badge_full.html" %}
     </section>
 
     <section class="award span8">
-        <header class="page-header">
-            <h2>{{ _('Awarded badge details') }}</h2>
-        </header>
         {% include "badger/includes/award_full.html" %}
         <dl class="share">
             <dt>{{ _('Share:') }}</dt>
             <dd><ul>
+
+                {% if award.user == request.user %}
+                    <li><form class="obi_issuer">
+                        <button class="btn issue" style="width: 18em"><img class="obi_icons" width="32" style="margin: 0 0em 0em 0; float: left" src="http://openbadges.org/img/index/backpack.png" />
+                            <strong>{{_("Add this badge to your Mozilla&nbsp;Badge&nbsp;Backpack")}}</strong></button>
+                    </form></li>
+                {% endif %}
 
                 {% if award.user == request.user %}
                     <li><a href="https://twitter.com/share" class="twitter-share-button"
@@ -68,12 +78,6 @@
 
                 <li><div class="fb-like" data-href="{{ award_url }}" data-send="true"
                          data-width="450" data-show-faces="false"></div></li>
-
-                {% if award.user == request.user %}
-                    <li><form class="obi_issuer">
-                        <button class="btn issue">{{_("Add this badge to your Mozilla Open Badge Backpack")}}</button>
-                    </form></li>
-                {% endif %}
 
             </ul></dd>
         </dl>
