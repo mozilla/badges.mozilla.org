@@ -1,7 +1,7 @@
+lib/python
 src/django-badger
 src/django-badger-multiplayer
 src/django-browserid
 src/django-south
 src/django-csp
 src/django-notification
-src/django-taggit
