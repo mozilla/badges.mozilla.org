@@ -142,7 +142,7 @@ class UserProfile(models.Model):
 
     @property
     def bio_html(self):
-        return bleach.linkify(self.bio)
+        return bleach.clean(bleach.linkify(self.bio))
 
     def username_changes_remaining(self):
         return MAX_USERNAME_CHANGES - self.username_changes
