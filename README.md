@@ -26,6 +26,7 @@ Here's how I get it running on my MacBook:
     # Set up a mysql database
     # Edit badgermini/settings/local.py
     ./manage.py syncdb
+    ./manage.py migrate
     ./manage.py compress_assets
     ./manage.py runserver 0.0.0.0:8000
 
