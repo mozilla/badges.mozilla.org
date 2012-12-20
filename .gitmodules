@@ -13,9 +13,6 @@
 [submodule "vendor-local/src/django-csp"]
 	path = vendor-local/src/django-csp
 	url = git://github.com/mozilla/django-csp.git
-[submodule "vendor-local/src/django-badger-multiplayer"]
-	path = vendor-local/src/django-badger-multiplayer
-	url = git://github.com/lmorchard/django-badger-multiplayer.git
 [submodule "vendor-local/src/django-notification"]
 	path = vendor-local/src/django-notification
 	url = git://github.com/jtauber/django-notification.git
