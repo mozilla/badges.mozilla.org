@@ -51,13 +51,13 @@
             <div class="navbar-text pull-right">
                 {% if request.user.is_authenticated() %}
                     {% trans user_url=request.user.get_absolute_url(), user_name=request.user %}
-                        Welcome back, <a href="{{user_url}}">{{user_name}}</a>
+                        Welcome back, <a class="signed-in-user" href="{{user_url}}">{{user_name}}</a>
                     {% endtrans %}
                     (
                         {% if notice_unseen_count %}
                             <a class="notices" href="{{ url('notification_notices') }}">{{ notice_unseen_count }}</a>,
                         {% endif %}
-                        <a href="{{ url('profiles.logout') }}">{{_('Sign out')}}</a>
+                        <a class="browserid-signout" href="{{ url('profiles.logout') }}">{{_('Sign out')}}</a>
                     )
                 {% else %}
                     {% block signin %}
@@ -112,7 +112,7 @@
     </div><!--/.fluid-container-->
 
     {% block site_js %}
-      <script src="https://browserid.org/include.js" type="text/javascript"></script>
+      <script src="https://login.persona.org/include.js"></script>
       {{ js('base') }}
       {{ js('bootstrap') }}
     {% endblock %}

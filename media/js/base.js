@@ -15,15 +15,32 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 $(document).ready(function () {
 
-    $('.browserid-signin').click(function (e) {
-        e.preventDefault();
-        navigator.id.getVerifiedEmail(function(assertion) {
-            if (assertion) {
-                var $e = $('#id_assertion');
-                $e.val(assertion.toString());
-                $e.parent().submit();
+    var signed_in_user = $('.signed-in-user').text();
+    var signout_url = $('.browserid-signout').attr('href');
+
+    $('.browserid-signin').click(function () {
+        navigator.id.request();
+        return false;
+    });
+
+    $('.browserid-signout').click(function () {
+        navigator.id.logout();
+        return false;
+    });
+
+    navigator.id.watch({
+        loggedInUser: signed_in_user,
+        onlogin: function (assertion) {
+            if (!assertion) { return; }
+            var el = $('#id_assertion');
+            el.val(assertion.toString());
+            el.parent().submit();
+        },
+        onlogout: function () {
+            if (signed_in_user && signout_url) { 
+                location.href = signout_url;
             }
-        });
+        }
     });
 
     $("form.obi_issuer button.issue").click(function () {
