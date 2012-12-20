@@ -30,11 +30,17 @@ Here's how I get it running on my MacBook:
     ./manage.py compress_assets
     ./manage.py runserver 0.0.0.0:8000
 
-Under Ubuntu 12.10, all the above worked after first installing some packages:
+Under Ubuntu 12.10 (64 bit), all the above worked after first installing some
+packages and rejiggering some files:
 
     sudo apt-get install build-essential python-dev python-pip \
         python-virtualenv mysql-server libmysqlclient-dev libxml2-dev \
-        libxslt-dev memcached
+        libxslt-dev memcached libjpeg8 libjpeg62-dev libfreetype6 \
+        libfreetype6-dev
+
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libjpeg.so /usr/lib
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libfreetype.so /usr/lib
+    sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
 
 License
 -------
