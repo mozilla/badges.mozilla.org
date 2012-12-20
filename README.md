@@ -24,11 +24,17 @@ Here's how I get it running on my MacBook:
     pip install -r requirements/compiled.txt
     pip install -r requirements/dev.txt
     # Set up a mysql database
-    # Edit badgermini/settings/local.py
+    # Edit badgus/settings/local.py
     ./manage.py syncdb
     ./manage.py migrate
     ./manage.py compress_assets
     ./manage.py runserver 0.0.0.0:8000
+
+Under Ubuntu 12.10, all the above worked after first installing some packages:
+
+    sudo apt-get install build-essential python-dev python-pip \
+        python-virtualenv mysql-server libmysqlclient-dev libxml2-dev \
+        libxslt-dev memcached
 
 License
 -------
