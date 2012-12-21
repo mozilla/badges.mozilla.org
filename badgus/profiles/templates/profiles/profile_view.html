@@ -101,8 +101,8 @@
             <h3>
                 <span>{{ _('Badges created by {user}') | f(user=user) }}</span>
                 <small>(
-                    <a href="{{ url('badger_multiplayer.views.badges_by_user', profile.user.username) }}">More...</a>
-                    <a href="{{ url('badger_multiplayer.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    <a href="{{ url('badger.views.badges_by_user', profile.user.username) }}">More...</a>
+                    <a href="{{ url('badger.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
                 )</small>
             </h3>
         </header>

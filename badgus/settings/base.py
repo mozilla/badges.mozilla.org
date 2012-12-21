@@ -91,7 +91,6 @@ INSTALLED_APPS = [
     'badgus.profiles',
     
     'badger',
-    'badger_multiplayer',
 
     'notification',
     #'csp',
