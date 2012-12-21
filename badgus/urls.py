@@ -21,7 +21,6 @@ from badger.models import Badge, Award
 urlpatterns = patterns('',
     url(r'^$', 'badger.views.home', name='home'),
     (r'^notification/', include('notification.urls')),
-    (r'^badges/', include('badger_multiplayer.urls')),
     (r'^badges/', include('badger.urls')),    
     (r'^browserid/', include('django_browserid.urls')),
     (r'^profiles/', include(profiles_urls)),
