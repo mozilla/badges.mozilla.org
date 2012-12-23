@@ -60,6 +60,13 @@ class UserEditForm(MyForm):
                 _('Changes remaining: %s') % remaining)
         self.initial['username'] = profile.user.username
 
+    def clean_username(self):
+        data = self.cleaned_data['username']
+        if User.objects.filter(username=data).count() > 0:
+            err_str = _('New username already taken by another profile')
+            raise forms.ValidationError(err_str)
+        return data
+
 
 class UserProfileEditForm(MyModelForm):
 

@@ -155,6 +155,8 @@ class UserProfile(models.Model):
     def change_username(self, username, user=None):
         if not self.can_change_username(user):
             return False
+        if User.objects.filter(username=username).count() > 0:
+            return False
         if username != self.user.username:
             self.user.username = username
             self.user.save()
