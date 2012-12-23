@@ -90,22 +90,6 @@
 
     <section class="span4">
 
-        {% if badge.allows_nominate_for(request.user) %}
-            <section>
-                <header class="page-header">
-                    <h2>{{ _("Submit nominations by email") }}</h2>
-                </header>
-                <form id="award_badge" method="POST"
-                      action="{{ url('badger.views.nominate_for', slug=badge.slug) }}">
-                    {{ csrf() }}
-                    <ul>
-                        {{ sections.nominate.form.as_ul() }}
-                        <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Submit nominations") }}"></li>
-                    </ul>
-                </form>
-            </section>
-        {% endif %}
-
         {% if badge.allows_award_to(request.user) %}
             <section>
                 <header class="page-header">
@@ -117,6 +101,22 @@
                     <ul>
                         {{ sections.award.form.as_ul() }}
                         <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Issue badge awards") }}"></li>
+                    </ul>
+                </form>
+            </section>
+        {% endif %}
+
+        {% if badge.allows_nominate_for(request.user) %}
+            <section>
+                <header class="page-header">
+                    <h2>{{ _("Submit nominations by email") }}</h2>
+                </header>
+                <form id="award_badge" method="POST"
+                      action="{{ url('badger.views.nominate_for', slug=badge.slug) }}">
+                    {{ csrf() }}
+                    <ul>
+                        {{ sections.nominate.form.as_ul() }}
+                        <li><input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Submit nominations") }}"></li>
                     </ul>
                 </form>
             </section>
