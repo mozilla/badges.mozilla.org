@@ -51,6 +51,14 @@
     <section class="award span8">
         {% include "badger/includes/award_full.html" %}
         <dl class="share">
+            {% if award.allows_delete_by(request.user) %}
+            <dt>{{_("Actions:")}}</dt>
+                <dd>
+                    <ul class="btn-list">
+                        <li><a class="btn btn-large btn-danger delete_award" href="{{ url('badger.views.award_delete', badge.slug, award.id) }}">{{ _('Delete award') }}</a></li>
+                    </ul>
+                </dd>
+            {% endif %}
             <dt>{{ _('Share:') }}</dt>
             <dd><ul>
 

@@ -18,7 +18,7 @@
             <h2>{{ _("Delete badge") }}</h2>
         </header>
 
-        <form id="nominate_badge" method="POST" action="" enctype="multipart/form-data">
+        <form id="delete_badge" method="POST" action="" enctype="multipart/form-data">
             {{ csrf() }}
             {% if awards_count %}
                 <p>{% trans badge_url=badge.get_absolute_url(), awards_count=awards_count %}
@@ -32,9 +32,9 @@
                     No one has been awarded this badge, yet.
                 {% endtrans %}</p>
             {% endif %}
-            <p>{{ _("Are you sure?") }}</p>
+            <p>{{ _("Delete this badge, are you sure?") }}</p>
             <ul>
-                <li><input type="submit" class="btn btn-large btn-danger submit" value="{{ _("Delete badge") }}"></li>
+                <li><input type="submit" class="btn btn-large btn-danger submit" value="{{ _("Yes, delete badge") }}"></li>
             </ul>
         </form>
     </section>
