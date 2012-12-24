@@ -6,7 +6,7 @@ badg.us is a badge service based on [django-badger][] and [playdoh][].
 [playdoh]: https://github.com/mozilla/playdoh
 [django-badger]: https://github.com/lmorchard/django-badger
 
-![Travis-CI status](https://secure.travis-ci.org/lmorchard/badg.us.png)
+[![Travis-CI status](https://secure.travis-ci.org/lmorchard/badg.us.png)](https://travis-ci.org/lmorchard/badg.us)
 
 Bugs and Ideas
 --------------
