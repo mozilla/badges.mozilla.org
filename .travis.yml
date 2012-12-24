@@ -13,6 +13,7 @@ before_install:
     - sudo ln -s /usr/lib/x86_64-linux-gnu/libz.so /usr/lib
     - git submodule update --init --recursive
     - cp badgus/settings/local.py-travis badgus/settings/local.py
+    - mysql -e 'create database badgus;'
 
 install:
     - pip install -r requirements/compiled.txt --use-mirrors
