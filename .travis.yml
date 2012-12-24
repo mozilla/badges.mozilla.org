@@ -16,6 +16,7 @@ before_install:
     - mysql -e 'create database badgus;'
 
 install:
+    - pip install -r requirements/compiled.txt --use-mirrors
     - pip install -r requirements/dev.txt --use-mirrors
 
 script: python manage.py test badger
