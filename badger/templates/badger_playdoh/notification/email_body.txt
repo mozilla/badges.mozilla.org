@@ -1,5 +1,0 @@
-{{ message|safe }}
-
---
-{% trans %}To see other notices or change how you receive notifications,
-please go to {{ notices_url }}{% endtrans %}
