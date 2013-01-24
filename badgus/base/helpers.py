@@ -9,7 +9,7 @@ ALLOWED_TAGS = [
 ]
 
 ALLOWED_ATTRIBUTES = {
-    "img": ["src"]
+    "img": ["width", "height", "src"]
 }
 
 @register.filter
