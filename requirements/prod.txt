@@ -1,4 +1,5 @@
 python-memcached==1.48
+bleach=1.1.5
 -r ../vendor/src/funfactory/funfactory/requirements/prod.txt
 
 -e git://github.com/jtauber/django-notification.git#egg=django-notification

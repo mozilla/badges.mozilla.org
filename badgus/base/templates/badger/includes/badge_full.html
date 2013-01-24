@@ -25,7 +25,7 @@
         <dd class="image"><a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ image_url }}" width="256" height="256" /></a></dd>
     {% if badge.description %}
         <dt>{{_("Description:")}}</dt>
-            <dd class="description">{{ badge.description }}</dd>
+            <dd class="description">{{ badge.description | bleach_markup }}</dd>
     {% endif %}
     {% if badge.tags and badge.tags.count() %}
         <dt>{{ _("Tags:") }}</dt>

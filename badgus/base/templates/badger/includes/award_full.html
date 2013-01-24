@@ -14,6 +14,6 @@
         <dd class="issued">{{ award.created }}</dd>
     {% if award.description %}
         <dt>{{_("Explanation:")}}</dt>
-        <dd class="description">{{ award.description }}</dd>
+        <dd class="description">{{ award.description | bleach_markup }}</dd>
     {% endif %}
 </dl>

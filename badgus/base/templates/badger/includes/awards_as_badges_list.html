@@ -2,6 +2,8 @@
     {% for award in award_list %}
         {% if award.image %}
             {% set img_url = award.image.url %}
+        {% elif award.badge.image %}
+            {% set img_url = award.badge.image.url %}
         {% else %}
             {% set img_url = "/media/img/default-badge.png" %}
         {% endif %}
