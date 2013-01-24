@@ -4,10 +4,13 @@ import jinja2
 
 # TODO: Allow configurable whitelists
 ALLOWED_TAGS = [
-    'a', 'abbr', 'br', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'li',
+    'a', 'abbr', 'br', 'acronym', 'b', 'blockquote', 'code', 'em', 'i', 'img', 'li',
     'ol', 'p', 'strong', 'ul'
 ]
 
+ALLOWED_ATTRIBUTES = {
+    "img": ["src"]
+}
 
 @register.filter
 def bleach_markup(val):
@@ -16,7 +19,9 @@ def bleach_markup(val):
         import bleach
         val = val.replace('\n', '<br />')
         val = bleach.linkify(val)
-        val = bleach.clean(val, tags=ALLOWED_TAGS)
+        val = bleach.clean(val,
+                           tags=ALLOWED_TAGS,
+                           attributes=ALLOWED_ATTRIBUTES)
         return jinja2.Markup(val)
     except ImportError:
         return val
