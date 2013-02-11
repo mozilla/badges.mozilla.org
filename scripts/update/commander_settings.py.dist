@@ -1,0 +1,13 @@
+SRC_DIR = ''
+WWW_DIR = ''
+
+DEPLOY_SCRIPT = ""
+REMOTE_UPDATE_SCRIPT = ""
+
+WEB_HOSTGROUP = ''
+
+UPDATE_REF = 'origin/master'
+SSH_KEY = None
+
+REMOTE_WSGI = ''
+REMOTE_HOSTNAME = 'badges.mozilla.org'
