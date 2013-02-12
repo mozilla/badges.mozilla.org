@@ -1,8 +1,9 @@
 """
-Deployment for badges.mozilla.org in production.
+Deploy this project in dev/stage/production.
 
-Requires commander (https://github.com/oremj/commander) which is installed on
-the systems that need it.
+Requires commander_ which is installed on the systems that need it.
+
+.. _commander: https://github.com/oremj/commander
 """
 
 import os
@@ -11,118 +12,75 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 from commander.deploy import task, hostgroups
-
 import commander_settings as settings
 
 
 @task
 def update_code(ctx, tag):
+    """Update the code to a specific git reference (tag/sha/etc)."""
     with ctx.lcd(settings.SRC_DIR):
-        ctx.local("git fetch")
-        ctx.local("git checkout -f %s" % tag)
-        ctx.local("git submodule sync")
-        ctx.local("git submodule update --init --recursive")
+        ctx.local('git fetch')
+        ctx.local('git checkout -f %s' % tag)
+        ctx.local('git submodule sync')
+        ctx.local('git submodule update --init --recursive')
+
+
+@task
+def update_info(ctx):
+    """Write info about the current state to a publicly visible file."""
+    with ctx.lcd(settings.SRC_DIR):
+        ctx.local('date')
+        ctx.local('git branch -a')
+        ctx.local('git log -3')
+        ctx.local('git status')
+        ctx.local('git submodule status')
+        ctx.local('git rev-parse HEAD > media/revision.txt')
+
+@task
+def update_db(ctx):
+    with ctx.lcd(settings.SRC_DIR):
+        ctx.local("python2.6 manage.py syncdb")
+        ctx.local('python2.6 manage.py migrate')
+        ctx.local('python2.6 manage.py migrate --list')
+
+@task
+def clean(ctx):
+    """Clean .gitignore and .pyc files."""
+    with ctx.lcd(settings.SRC_DIR):
         ctx.local("find . -type f -name '.gitignore' -or -name '*.pyc' -delete")
 
 
 @task
-def update_locales(ctx):
-    with ctx.lcd(os.path.join(settings.SRC_DIR, 'locale')):
-        ctx.local('find . -name "*.mo" -delete')
-        ctx.local("svn up")
-        ctx.local("./compile.sh .")
-
-
-@task
-def update_assets(ctx):
-    with ctx.lcd(settings.SRC_DIR):
-        ctx.local("LANG=en_US.UTF-8 python2.6 manage.py collectstatic --noinput")
-        ctx.local("LANG=en_US.UTF-8 python2.6 manage.py compress_assets")
-        ctx.local("LANG=en_US.UTF-8 python2.6 manage.py update_product_details")
-
-
-@task
-def database(ctx):
-    with ctx.lcd(settings.SRC_DIR):
-        ctx.local("python2.6 manage.py syncdb")                             # South (new)
-        ctx.local("python2.6 manage.py migrate")                            # South (new)
-
-#@task
-#def update_es_indexes(ctx):
-#    with ctx.lcd(settings.SRC_DIR):
-#        ctx.local("python2.6 manage.py cron index_all_profiles")
-
-
-#@task
-#def install_cron(ctx):
-#    with ctx.lcd(settings.SRC_DIR):
-#        ctx.local("python2.6 ./scripts/crontab/gen-crons.py -k %s -u apache > /etc/cron.d/.%s" %
-#                  (settings.WWW_DIR, settings.CRON_NAME))
-#        ctx.local("mv /etc/cron.d/.%s /etc/cron.d/%s" % (settings.CRON_NAME, settings.CRON_NAME))
-
-
-@task
 def checkin_changes(ctx):
+    """Use the local, IT-written deploy script to check in changes."""
     ctx.local(settings.DEPLOY_SCRIPT)
 
 
 @hostgroups(settings.WEB_HOSTGROUP, remote_kwargs={'ssh_key': settings.SSH_KEY})
 def deploy_app(ctx):
-    ctx.remote(settings.REMOTE_UPDATE_SCRIPT)
-    ctx.remote("/bin/touch %s" % settings.REMOTE_WSGI)
-
-@hostgroups(settings.WEB_HOSTGROUP, remote_kwargs={'ssh_key': settings.SSH_KEY})
-def prime_app(ctx):
-    for http_port in range(80, 82):
-        ctx.remote("for i in {1..10}; do curl -so /dev/null -H 'Host: %s' -I http://localhost:%s/ & sleep 1; done" % (settings.REMOTE_HOSTNAME, http_port))
-
-@hostgroups(settings.CELERY_HOSTGROUP, remote_kwargs={'ssh_key': settings.SSH_KEY})
-def update_celery(ctx):
-    ctx.remote(settings.REMOTE_UPDATE_SCRIPT)
-    ctx.remote('/sbin/service %s restart' % settings.CELERY_SERVICE)
+    """Call the remote update script to push changes to webheads."""
+    ctx.remote('touch %s' % settings.REMOTE_WSGI)
 
 
-@task
-def update_info(ctx):
-    with ctx.lcd(settings.SRC_DIR):
-        ctx.local("date")
-        ctx.local("git branch")
-        ctx.local("git log -3")
-        ctx.local("git status")
-        ctx.local("git submodule status")
-        ctx.local("python ./manage.py migrate --list")
-        with ctx.lcd("locale"):
-            ctx.local("svn info")
-            ctx.local("svn status")
-
-        ctx.local("git rev-parse HEAD > media/revision.txt")
+# https://github.com/mozilla/chief/blob/master/chief.py#L48
 
 
 @task
 def pre_update(ctx, ref=settings.UPDATE_REF):
+    """1. Update code to pick up changes to this file."""
     update_code(ref)
     update_info()
+    clean()
 
 
 @task
 def update(ctx):
-    update_assets()
-    update_locales()
-    database()
+    """2. Nothing to do here yet."""
+    update_db()
 
 
 @task
 def deploy(ctx):
-    # install_cron()
+    """3. Deploy stuff."""
     checkin_changes()
     deploy_app()
-    prime_app()
-    # update_celery()
-    # update_es_indexes()
-
-
-@task
-def update_badges_mozilla_org(ctx, tag):
-    """Do typical badges.mozilla.org update"""
-    pre_update(tag)
-    update()
