@@ -122,7 +122,7 @@ def deploy(ctx):
 
 
 @task
-def update_badges.mozilla.org(ctx, tag):
+def update_badges_mozilla_org(ctx, tag):
     """Do typical badges.mozilla.org update"""
     pre_update(tag)
     update()
