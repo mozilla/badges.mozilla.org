@@ -4,13 +4,13 @@ badg.us
 badg.us is a badge service based on [django-badger][] and [playdoh][].
 
 [playdoh]: https://github.com/mozilla/playdoh
-[django-badger]: https://github.com/lmorchard/django-badger
+[django-badger]: https://github.com/mozilla/django-badger
 
 Bugs and Ideas
 --------------
-Feel free to file them [as issues on the django-badger project][issues]!
+Feel free to file them [as issues on the badges.mozilla.org project][issues]!
 
-[issues]: https://github.com/lmorchard/django-badger/issues
+[issues]: https://github.com/mozilla/badges.mozilla.org/issues
 
 Development
 -----------
