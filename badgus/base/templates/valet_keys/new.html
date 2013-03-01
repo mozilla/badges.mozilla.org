@@ -1,0 +1,47 @@
+{% extends "valet_keys/base.html" %}
+
+{% block intro %}{{ _("Valet Keys: <b>Create Key</b>" | safe) }}{% endblock %}
+
+{% block subcontent %}
+    {% if not key %}
+        <p class="alert">
+            {% trans %}
+                <span class="label label-warning">Note:</span>
+                Try to be as clear as you can be in this description.
+                This will be your only means of identifying this key later,
+                other than the date and time of its creation.
+            {% endtrans %}
+        </p>
+        <form method="POST" action="" class="key">
+            {{ csrf() }}
+            {{ form.as_p() }}
+            <button type="submit" name="action_create" class="btn btn-success">{{ _("Create new key") }}</button>
+            <a class="btn" href="{{ url('valet_keys.list') }}">{{ _('Cancel') }}</a>
+        </form>
+    {% else %}
+        <p class="alert">
+            {% trans %}
+                <span class="label label-warning">Note:</span>
+                Reloading this page will create a new key. This information
+                will never be displayed again, and cannot be recovered if lost.
+            {% endtrans %}
+        </p>
+        {% trans %}
+            <p>Your new key has been created. Please make a note of the details
+            below (e.g. by copying them into your application's settings).</p>
+        {% endtrans %}
+        <dl class="key">
+            <dt>{{ _("User name") }}</dt>
+            <dd class="key"><code>{{ key.key }}</code></dd>
+            <dt>{{ _("Password") }}</dt>
+            <dd class="secret"><code>{{ secret }}</code></dd>
+            <dt>{{ _("Created") }}</dt>
+            <dd>{{ key.created }}</dd>
+            <dt>{{ _("Description") }}</dt>
+            <dd class="description">{{ key.description }}</dd>
+        </dl>
+        <p>
+            <a class="btn btn-large btn-success" href="{{ url('valet_keys.list') }}">{{ _('Return to the key list') }}</a>
+        </p>
+    {% endif %}
+{% endblock %}

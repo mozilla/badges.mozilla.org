@@ -1,0 +1,43 @@
+{% extends "valet_keys/base.html" %}
+
+{% block intro %}{{ _("Valet Keys: <b>Your Keys</b>" | safe) }}{% endblock %}
+
+{% block subcontent %}
+<p>{% trans %}
+    These are your API keys. They're useful for building applications that
+    perform tasks on MDN on your behalf. If you have stopped using any of
+    them, or suspect one has been exposed to parties you don't trust with your
+    account, click the <span class="button">X</span> to delete the key.  It's
+    easy to create a replacement key at any time.
+{% endtrans %}</p>
+<p><a class="btn btn-large btn-success" href="{{ url('valet_keys.new') }}">{{ _('Create a new key') }}</a></p>
+{% if not keys %}
+    <p>{{ _("You have no API keys, yet.") }}</p>
+{% else %}
+    <table class="keys" cellpadding="4">
+        <tr>
+            <th>Actions</th>
+            <th>Created at</th>
+            <th>Description</th>
+        </tr>
+        {% for key in keys %}
+        <tr id="key-{{ key.pk }}" class="key{% if key.is_disabled %} disabled{% endif %}">
+            <td class="actions">
+                <a class="btn btn-info"
+                   title="{{ _('View key usage history') }}"
+                   href="{{ url('valet_keys.history', pk=key.pk) }}">{{ _('History ({count})') | f(count=key.history.count()) }}</a>
+                {% if not key.is_disabled %}
+                    <a class="btn btn-danger"
+                       title="{{ _('Disable key') }}"
+                       href="{{ url('valet_keys.views.disable', pk=key.pk) }}">{{ _('X') }}</a>
+                {% endif %}
+            </td>
+            <td class="created">{{ key.created }}</td>
+            <td class="description">
+                <span>{{ key.description }}</span>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+{% endblock %}

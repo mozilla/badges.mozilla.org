@@ -261,3 +261,5 @@ a.tag .count:after { content: ")"; }
     text-align: center; margin: 0.5em 0 0 0 }
 
 #badge_detail textarea { height: 5.5em; }
+
+table.keys tr.disabled td.description span { text-decoration: line-through; }

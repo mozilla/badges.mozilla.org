@@ -1,0 +1,18 @@
+{% extends "valet_keys/base.html" %}
+
+{% block intro %}{{ _("Valet Keys: <b>Disable Key</b>" | safe) }}{% endblock %}
+
+{% block subcontent %}
+    <dl class="key" id="key-{{ key.pk }}">
+        <dt>{{ _("Created") }}</dt>
+        <dd class="created">{{ key.created }}</dd>
+        <dt>{{ _("Description") }}</dt>
+        <dd class="description">{{ key.description }}</dd>
+    </dl>
+    <form method="POST" action="" class="key">
+        {{ csrf() }}
+        <p>Are you sure? This cannot be undone.</p>
+        <button type="submit" name="action_disable" class="btn btn-danger">{{ _("Disable") }}</button>
+        <a class="btn" href="{{ url('valet_keys.list') }}">{{ _('Cancel') }}</a>
+    </form>
+{% endblock %}
