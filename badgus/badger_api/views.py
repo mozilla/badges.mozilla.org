@@ -111,7 +111,7 @@ def _parse_request_data(request):
 def _bad_request(msg):
     resp = HttpResponse()
     resp.status_code = 400
-    resp.content = msg
+    resp.content = unicode(msg).encode('utf-8')
     return resp
 
 
