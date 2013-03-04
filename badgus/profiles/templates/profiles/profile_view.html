@@ -32,8 +32,9 @@
             <dt class="actions">Actions:</dt><dd><ul class="btn-list">
                 {% if profile.allows_edit(request.user) %}
                     <li><a class="btn btn-large btn-primary" href="{{ url('profiles.profile_edit', profile.user.username) }}">{{ _('Edit profile') }}</a>
-                    <li><a class="btn btn-large btn-primary" href="{{ url('notification_notices') }}">{{ _("View notices") }}</a></li>
-                    <li><a class="btn btn-large btn-primary" href="{{ url('notification_notice_settings') }}">{{ _("Notification settings") }}</a></li>
+                    <li><a class="btn btn-large btn-primary" href="{{ url('notification_notices') }}">{{ _("View notifications") }}</a></li>
+                    <li><a class="btn btn-large btn-primary" href="{{ url('notification_notice_settings') }}">{{ _("Manage notification settings") }}</a></li>
+                    <li><a class="btn btn-large btn-primary" href="{{ url('valet_keys.views.list') }}" title="{{ _("Valet keys are credentials for use with the API") }}">{{ _("Manage valet keys") }}</a></li>
                 {% endif %}
             </ul></dd>
             <dt class="created">Created:</dt><dd>{{ profile.created }}</dd>

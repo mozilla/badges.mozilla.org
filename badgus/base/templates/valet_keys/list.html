@@ -4,15 +4,15 @@
 
 {% block subcontent %}
 <p>{% trans %}
-    These are your API keys. They're useful for building applications that
-    perform tasks on MDN on your behalf. If you have stopped using any of
+    These are your valet keys. They're useful for building applications that
+    perform tasks on your behalf. If you have stopped using any of
     them, or suspect one has been exposed to parties you don't trust with your
     account, click the <span class="button">X</span> to delete the key.  It's
     easy to create a replacement key at any time.
 {% endtrans %}</p>
 <p><a class="btn btn-large btn-success" href="{{ url('valet_keys.new') }}">{{ _('Create a new key') }}</a></p>
 {% if not keys %}
-    <p>{{ _("You have no API keys, yet.") }}</p>
+    <p>{{ _("You have no valet keys, yet.") }}</p>
 {% else %}
     <table class="keys" cellpadding="4">
         <tr>
