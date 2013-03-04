@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+    <header class="page-header">
+        <h2 class="intro">{% block intro %}{{ _("Valet Keys: <b>...</b>" | safe) }}{% endblock %}</h2>
+    </header>
+    {% block subcontent %}{% endblock %}
+</section>
+{% endblock %}

@@ -87,10 +87,13 @@ INSTALLED_APPS = [
     'django.contrib.admin',
 
     'taggit',
+    'valet_keys',
 
     'badgus.profiles',
     
     'badger',
+
+    'badgus.badger_api',
 
     'notification',
     #'csp',

@@ -15,16 +15,17 @@ from django.contrib import admin
 admin.autodiscover()
 
 from badger import Progress
-#from badger_multiplayer.models import Badge, Award, Nomination
 from badger.models import Badge, Award
 
 urlpatterns = patterns('',
     url(r'^$', 'badger.views.home', name='home'),
     (r'^notification/', include('notification.urls')),
-    (r'^badges/', include('badger.urls')),    
+    (r'^badges/', include('badgus.badger_api.urls')),
+    (r'^badges/', include('badger.urls')),
     (r'^browserid/', include('django_browserid.urls')),
     (r'^profiles/', include(profiles_urls)),
-    (r'^accounts/', include('django.contrib.auth.urls')),    
+    (r'^accounts/', include('django.contrib.auth.urls')),
+    (r'^keys/', include('valet_keys.urls')),
     (r'^admin/', include(admin.site.urls)),
 )
 
