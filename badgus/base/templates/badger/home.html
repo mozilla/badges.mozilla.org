@@ -14,17 +14,17 @@
 {% block content %}
 
 <section class="home-intro hero-unit">
-    <h1><span>{{ _("Welcome to {site_title}!") | f(site_title=settings.SITE_TITLE) }}</span></h1>
+    <h1><span>{{ settings.SITE_TITLE }}</span></h1>
 
     <div class="row-fluid">
 
-        <section class="item span4">
+        <section class="item span3">
             <section class="blurb">
-                <p>This is an experimental service
-                    for issuing <a href="http://decafbad.com/2010/07/badger-article/">badges</a>,
-                    powered by <a href="https://github.com/lmorchard/django-badger">Open&nbsp;Source</a>.
-                    Check <a href="https://github.com/lmorchard/badg.us/wiki/FAQ">the FAQ</a>!
-                    Submit <a href="http://goo.gl/mod/Umab">suggestions</a>!
+                <h3>Welcome!</h3>
+                <p>This is a service for creating and issuing badges,
+                    based on <a href="https://github.com/mozilla/badges.mozilla.org">Open&nbsp;Source</a>
+                    software and the <a href="http://www.openbadges.org/">Mozilla OpenBadges</a>
+                    standard.
                 </p>
             </section>
             <section class="action">
@@ -48,7 +48,15 @@
             </section>
         </section>
 
-        <section class="item span4">
+        <section class="item span3">
+            <h3>Looking for Mozilla Open Badges?</h3>
+            <p><a href="http://www.openbadges.org/"><img src="{{MEDIA_URL}}img/openbadges-logo.png"></a></p>
+            <p>Free software + an open technical standard to create, issue and
+            verify digital badges across the web.</p>
+            <p><a href="http://www.openbadges.org/">Check out Open Badges 1.0</a></p>
+        </section>
+
+        <section class="item span3">
             <section class="blurb">
                 <h3>{{ _("Have a claim code?") }}</h3>
                 <p>{{ _("Type it here to claim your badge:") }}</p>
@@ -65,7 +73,7 @@
             </section>
         </section>
 
-        <section class="item span4">
+        <section class="item span3">
             <section class="blurb">
                 <h3>{{ _("Have an idea for a badge?") }}</h3>
                 <p>{{ _("Click here to start:") }}</p>
