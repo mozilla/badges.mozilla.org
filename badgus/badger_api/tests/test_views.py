@@ -132,6 +132,24 @@ class BadgerApiViewsTests(BadgerTestCase):
         ok_(invalid_email in data['errors'])
         eq_('INVALID', data['errors'][invalid_email])
 
+    def test_no_description(self):
+        """Awards can be issued with no description"""
+        award_user = self._get_user(username="awardee1",
+                                    email="awardee1@example.com")
+
+        data = {"emails": [award_user.email]}
+
+        resp = self.client.post(self.awards_url, json.dumps(data),
+                                content_type='application/json',
+                                HTTP_AUTHORIZATION=self.basic_auth)
+
+        eq_('application/json', resp['Content-Type'])
+        data = json.loads(resp.content)
+        
+        ok_(award_user.email in data['successes'])
+        ok_(award_user.email not in data['errors'])
+        ok_(self.badge.is_awarded_to(award_user))
+
     def test_already_awarded(self):
         """Can award badges from API"""
         description = "Is a hoopy frood."

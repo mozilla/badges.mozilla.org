@@ -50,7 +50,7 @@ def awards_list(request, slug=None):
     (data, files, response) = _parse_request_data(request)
     if response: return response
 
-    description = data.get('description', None)
+    description = data.get('description', '')
     emails = data.get('emails', [])
 
     if not emails:
