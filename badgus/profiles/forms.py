@@ -62,7 +62,8 @@ class UserEditForm(MyForm):
 
     def clean_username(self):
         data = self.cleaned_data['username']
-        if User.objects.filter(username=data).count() > 0:
+        if (data != self.initial['username'] and
+                User.objects.filter(username=data).count() > 0):
             err_str = _('New username already taken by another profile')
             raise forms.ValidationError(err_str)
         return data
