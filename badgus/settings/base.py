@@ -210,3 +210,5 @@ CSP_FRAME_SRC = ("'self'",
 CSP_OPTIONS = ('eval-script',)
 
 BADGER_ALLOW_ADD_BY_ANYONE = False
+
+DEFAULT_FROM_EMAIL = 'notifications@badges.mozilla.org'
