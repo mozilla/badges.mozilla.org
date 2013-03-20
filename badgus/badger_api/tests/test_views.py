@@ -153,15 +153,18 @@ class BadgerApiViewsTests(BadgerTestCase):
     def test_already_awarded(self):
         """Can award badges from API"""
         description = "Is a hoopy frood."
+        invite_email = 'someguy@example.com'
         award_user = self._get_user(username="awardee1",
                                     email="awardee1@example.com")
 
         award = self.badge.award_to(email=award_user.email)
+        deferred_award = self.badge.award_to(email=invite_email)
 
         # Construct the request data...
         data = dict(
             description = description,
             emails = [
+                invite_email,
                 award_user.email,
             ],
         )
@@ -179,6 +182,8 @@ class BadgerApiViewsTests(BadgerTestCase):
         ok_('errors' in data)
         ok_(award_user.email in data['errors'])
         eq_('ALREADYAWARDED', data['errors'][award_user.email])
+        ok_(invite_email in data['errors'])
+        eq_('ALREADYAWARDED', data['errors'][invite_email])
 
     def test_disallowed_badge_award(self):
         """User should not be able to POST an award to a badge for which the
