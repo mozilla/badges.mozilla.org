@@ -48,8 +48,8 @@
             </form>
             <div class="navbar-text pull-right">
                 {% if request.user.is_authenticated() %}
-                    {% trans user_url=request.user.get_absolute_url(), user_name=request.user %}
-                        Welcome back, <a class="signed-in-user" href="{{user_url}}">{{user_name}}</a>
+                    {% trans user_url=request.user.get_absolute_url(), user_name=request.user, user_email=request.user.email %}
+                        Welcome back, <a class="signed-in-user" data-email="{{user_email}}" href="{{user_url}}">{{user_name}}</a>
                     {% endtrans %}
                     (
                         {% if notice_unseen_count %}
