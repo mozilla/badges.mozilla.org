@@ -6,10 +6,21 @@
             <strong>{{ _("(That's you!)") }}</strong>
         {% endif %}
     </dd>
-    <dt>{{_("Awarded by:")}}</dt>
-        <dd class="awarded_by"><a href="{{ award.creator.get_absolute_url() }}" 
-            class="username"><img src="{{ user_avatar(award.creator) }}" class="avatar"
-                alt="{{ award.creator }}" width="128" height="128" />{{ award.creator }}</a></dd>
+    {% if award.nomination %}
+        <dt><a href="{{ award.nomination.get_absolute_url() }}">{{_('Nominated by:')}}</a></dt>
+            <dd class="nominated_by"><a href="{{ award.nomination.creator.get_absolute_url() }}" class="username"><img src="{{ user_avatar(award.nomination.creator) }}" class="avatar" alt="{{ award.nomination.creator }}" width="128" height="128" />{{ award.nomination.creator }}</a></dd>
+        <dt>{{_('Approved by:')}}</dt>
+        {% if award.badge.nominations_autoapproved %}
+            <dd class="nomination_approved_by"><span class="autoapproved">{{_('(auto-approved)')}}</span></dd>
+        {% elif award.nomination.approver %}
+            <dd class="nomination_approved_by"><a href="{{ award.nomination.approver.get_absolute_url() }}" class="username"><img src="{{ user_avatar(award.nomination.approver) }}" class="avatar" alt="{{ award.nomination.approver }}" width="128" height="128" />{{ award.nomination.approver }}</a></dd>
+        {% endif %}
+    {% else %}
+        <dt>{{_("Awarded by:")}}</dt>
+            <dd class="awarded_by"><a href="{{ award.creator.get_absolute_url() }}" 
+                class="username"><img src="{{ user_avatar(award.creator) }}" class="avatar"
+                    alt="{{ award.creator }}" width="128" height="128" />{{ award.creator }}</a></dd>
+    {% endif %}
     <dt>{{_("Awarded at:")}}</dt>
         <dd class="issued">{{ award.created }}</dd>
     {% if award.description %}
