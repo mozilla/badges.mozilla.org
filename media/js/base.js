@@ -15,7 +15,7 @@ var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga
 
 $(document).ready(function () {
 
-    var signed_in_user = $('.signed-in-user').text();
+    var signed_in_email = $('.signed-in-user').data('email');
     var signout_url = $('.browserid-signout').attr('href');
 
     $('.browserid-signin').click(function () {
@@ -29,7 +29,7 @@ $(document).ready(function () {
     });
 
     navigator.id.watch({
-        loggedInUser: signed_in_user,
+        loggedInUser: signed_in_email,
         onlogin: function (assertion) {
             if (!assertion) { return; }
             var el = $('#id_assertion');
@@ -37,7 +37,7 @@ $(document).ready(function () {
             el.parent().submit();
         },
         onlogout: function () {
-            if (signed_in_user && signout_url) { 
+            if (signed_in_email && signout_url) { 
                 location.href = signout_url;
             }
         }
