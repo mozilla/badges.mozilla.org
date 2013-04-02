@@ -6,8 +6,11 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>{% block page_title %}{{ settings.SITE_TITLE }}{% endblock %}</title>
     {% block site_css %}
-      {{ css('bootstrap') }}
-      {{ css('base') }}
+      {% compress css %}
+        <link href="{{ static('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+        <link href="{{ static('bootstrap/css/bootstrap-responsive.css') }}" rel="stylesheet">
+        <link href="{{ static('css/base.css') }}" rel="stylesheet">
+      {% endcompress %}
     {% endblock %}
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -30,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a href="{{ url('home') }}"><img width="42" height="42" align="bottom" src="{{MEDIA_URL}}img/logo.png" class="logo" /></a>
+          <a href="{{ url('home') }}"><img width="42" height="42" align="bottom" src="{{ static('img/logo.png') }}" class="logo" /></a>
           <a class="brand" href="{{ url('home') }}">{{ settings.SITE_TITLE }}</a>
           <div class="nav-collapse">
             <ul class="nav">
@@ -111,8 +114,13 @@
 
     {% block site_js %}
       <script src="https://login.persona.org/include.js"></script>
-      {{ js('base') }}
-      {{ js('bootstrap') }}
+      {% compress js %}
+        <script src="{{ static('js/libs/jquery-1.7.1.min.js') }}"></script>
+        <script src="{{ static('js/libs/jquery.cookie.js') }}"></script>
+        <script src="{{ static('js/libs/browserid.js') }}"></script>
+        <script src="{{ static('js/base.js') }}"></script>
+        <script src="{{ static('bootstrap/js/bootstrap.js') }}"></script>
+      {% endcompress %}
     {% endblock %}
     {% block js %}{% endblock %}
 
