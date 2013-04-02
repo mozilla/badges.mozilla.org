@@ -15,7 +15,7 @@
 	url = git://github.com/mozilla/django-csp.git
 [submodule "vendor-local/src/django-notification"]
 	path = vendor-local/src/django-notification
-	url = git://github.com/jtauber/django-notification.git
+	url = git://github.com/lmorchard/django-notification.git
 [submodule "vendor-local/src/django-valet-keys"]
 	path = vendor-local/src/django-valet-keys
 	url = git://github.com/lmorchard/django-valet-keys.git
