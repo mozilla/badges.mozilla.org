@@ -71,7 +71,7 @@
                             <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
                         {% endif %}
                         {{ browserid_form.as_p()|safe }}
-                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{ static('img/sign_in_blue.png') }}" /></a>
                     </form>
                     {% endblock %}
                 {% endif %}

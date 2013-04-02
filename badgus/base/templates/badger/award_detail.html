@@ -8,7 +8,7 @@
     {% set image_url = badge.image.url %}
 {% else %}
     {# TODO: Put the URL for default badge image in settings #}
-    {% set image_url = "{{MEDIA_URL}}img/default-badge.png" %}
+    {% set image_url = "{{ static('img/default-badge.png') }}" %}
 {% endif %}
 
 {% block pageid %}award_detail{% endblock %}
@@ -64,7 +64,7 @@
 
                 {% if award.user == request.user %}
                     <li><form class="obi_issuer">
-                        <button class="btn issue" style="width: 18em"><img class="obi_icons" width="32" style="margin: 0 0em 0em 0; float: left" src="{{MEDIA_URL}}img/openbadges-breakout.png" />
+                        <button class="btn issue" style="width: 18em"><img class="obi_icons" width="32" style="margin: 0 0em 0em 0; float: left" src="{{ static('img/openbadges-breakout.png') }}" />
                             <strong>{{_("Add this badge to your Mozilla&nbsp;Badge&nbsp;Backpack")}}</strong></button>
                     </form></li>
                 {% endif %}
@@ -98,7 +98,7 @@
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '235454449896211', // App ID
-      channelUrl : '{{ request.build_absolute_uri('{{MEDIA_URL}}fb-channel.html') }}', // Channel File
+      channelUrl : '{{ request.build_absolute_uri(static('fb-channel.html')) }}', // Channel File
       status     : true, // check login status
       cookie     : true, // enable cookies to allow the server to access the session
       xfbml      : true  // parse XFBML

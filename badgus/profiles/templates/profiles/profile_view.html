@@ -87,7 +87,7 @@
                 <span>{{ _('Recently awarded badges for {user}') | f(user=user) }}</span>
                 <small>(
                     <a href="{{ url('badger.views.awards_by_user', profile.user.username) }}">More...</a>
-                    <a href="{{ url('badger.feeds.awards_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    <a href="{{ url('badger.feeds.awards_by_user', 'atom', profile.user.username) }}"><img src="{{ static('img/feed-icon-14x14.png') }}" /></a>
                 )</small>
             </h3>
         </header>
@@ -103,7 +103,7 @@
                 <span>{{ _('Badges created by {user}') | f(user=user) }}</span>
                 <small>(
                     <a href="{{ url('badger.views.badges_by_user', profile.user.username) }}">More...</a>
-                    <a href="{{ url('badger.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    <a href="{{ url('badger.feeds.badges_by_user', 'atom', profile.user.username) }}"><img src="{{ static('img/feed-icon-14x14.png') }}" /></a>
                 )</small>
             </h3>
         </header>
