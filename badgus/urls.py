@@ -22,11 +22,11 @@ urlpatterns = patterns('',
     (r'^notification/', include('notification.urls')),
     (r'^badges/', include('badgus.badger_api.urls')),
     (r'^badges/', include('badger.urls')),
-    (r'^browserid/', include('django_browserid.urls')),
     (r'^profiles/', include(profiles_urls)),
     (r'^accounts/', include('django.contrib.auth.urls')),
     (r'^keys/', include('valet_keys.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^', include('django_browserid.urls')),
 )
 
 ## In DEBUG mode, serve media files through Django.
