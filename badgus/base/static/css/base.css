@@ -12,9 +12,12 @@
 html[xmlns] .clearfix { display: block; }
 * html .clearfix { height: 1%; }
 
+.navbar-inner { background: rgb(44, 44, 44); }
 .navbar .logo { float: left; display: block; width: 42px; margin-left: -1.25em; 
     margin-right: 1em; border-radius: 8px; }
 .navbar-fixed-top form { margin: 0; padding: 0.5em 0 0.5em 0; display: inline }
+.navbar .brand { text-shadow: none; color: #fefefe; }
+.navbar .nav li a { text-shadow: none; }
 
 img { max-width: 100%; }
 

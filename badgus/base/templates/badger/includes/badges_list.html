@@ -3,7 +3,7 @@
         {% if badge.image %}
             {% set img_url = badge.image.url %}
         {% else %}
-            {% set img_url = "/media/img/default-badge.png" %}
+            {% set img_url = static("img/default-badge.png") %}
         {% endif %}
         <li class="badge">
             <a href="{{ badge.get_absolute_url() }}" class="image"><img src="{{ img_url }}"
