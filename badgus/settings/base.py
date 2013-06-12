@@ -221,3 +221,4 @@ BADGER_ALLOW_ADD_BY_ANYONE = False
 
 DEFAULT_FROM_EMAIL = 'notifications@badges.mozilla.org'
 OBI_BASE_URL = "//backpack.openbadges.org/"
+OBI_ISSUER_URL = "//backpack.openbadges.org/issuer.js"
