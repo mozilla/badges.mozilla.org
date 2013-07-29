@@ -4,9 +4,6 @@
 [submodule "vendor-local/src/django-badger"]
 	path = vendor-local/src/django-badger
 	url = git://github.com/mozilla/django-badger.git
-[submodule "vendor-local/src/django-browserid"]
-	path = vendor-local/src/django-browserid
-	url = git://github.com/mozilla/django-browserid.git
 [submodule "vendor-local/src/django-south"]
 	path = vendor-local/src/django-south
 	url = git://github.com/lambdafu/django-south.git
@@ -15,7 +12,7 @@
 	url = git://github.com/mozilla/django-csp.git
 [submodule "vendor-local/src/django-notification"]
 	path = vendor-local/src/django-notification
-	url = git://github.com/jtauber/django-notification.git
+	url = git://github.com/lmorchard/django-notification.git
 [submodule "vendor-local/src/django-valet-keys"]
 	path = vendor-local/src/django-valet-keys
 	url = git://github.com/lmorchard/django-valet-keys.git

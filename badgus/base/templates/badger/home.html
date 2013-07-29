@@ -41,7 +41,7 @@
                             <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
                         {% endif %}
                         {{ browserid_form.as_p()|safe }}
-                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{MEDIA_URL}}img/sign_in_blue.png" /></a>
+                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{ static('img/sign_in_blue.png') }}" /></a>
                     </form>
                     {% endblock %}
                 {% endif %}
@@ -50,7 +50,7 @@
 
         <section class="item span3">
             <h3>Looking for Open Badges?</h3>
-            <p><a href="http://www.openbadges.org/"><img src="{{MEDIA_URL}}img/openbadges-logo.png"></a></p>
+            <p><a href="http://www.openbadges.org/"><img src="{{ static('img/openbadges-logo.png') }}"></a></p>
             <p>Free software + an open technical standard to create, issue and
             verify digital badges across the web.</p>
             <p><a href="http://www.openbadges.org/">Check out Open Badges 1.0</a></p>
@@ -106,7 +106,7 @@
                 <span>{{ _("Recently created badges") }}</span>
                 <small>
                     <a href="{{ url('badger.views.badges_list') }}">{{ _("More...") }}</a>
-                    <a href="{{ url('badger.feeds.badges_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    <a href="{{ url('badger.feeds.badges_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{ static('img/feed-icon-14x14.png') }}" /></a>
                 </small>
             </h2>
         </header>
@@ -121,7 +121,7 @@
                 <span>{{ _("Recently awarded badges") }}</span>
                 <small>
                     <a href="{{ url('badger.views.awards_list') }}">{{ _("More...") }}</a>
-                    <a href="{{ url('badger.feeds.awards_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                    <a href="{{ url('badger.feeds.awards_recent', 'atom') }}"><img alt="{{ _("Atom feed") }}" src="{{ static('img/feed-icon-14x14.png') }}" /></a>
                 </small>
             </h2>
         </header>

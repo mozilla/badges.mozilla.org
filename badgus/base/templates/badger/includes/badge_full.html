@@ -4,7 +4,7 @@
     {% set image_url = badge.image.url %}
 {% else %}
     {# TODO: Put the URL for default badge image in settings #}
-    {% set image_url = "/media/img/default-badge.png" %}
+    {% set image_url = static("img/default-badge.png") %}
 {% endif %}
 {% if not award %}
 <ul class="btn-list">

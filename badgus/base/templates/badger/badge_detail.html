@@ -69,7 +69,7 @@
                     <span>{{ _("Recent badge awards") }}</span>
                     <small>(
                         <a href="{{ url('badger.views.awards_list', badge.slug) }}">{{ _("More...") }}</a>
-                        <a href="{{ url('badger.feeds.awards_by_badge', 'atom', badge.slug) }}"><img src="{{MEDIA_URL}}/img/feed-icon-14x14.png" /></a>
+                        <a href="{{ url('badger.feeds.awards_by_badge', 'atom', badge.slug) }}"><img src="{{ static('img/feed-icon-14x14.png') }}" /></a>
                     )</small>
                 </h2>
             </header>

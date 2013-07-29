@@ -44,6 +44,11 @@ def update_db(ctx):
         ctx.local('python2.6 manage.py migrate --list')
 
 @task
+def update_assets(ctx):
+    with ctx.lcd(settings.SRC_DIR):
+        ctx.local("python2.6 manage.py collectstatic --noinput")
+
+@task
 def clean(ctx):
     """Clean .gitignore and .pyc files."""
     with ctx.lcd(settings.SRC_DIR):
@@ -76,6 +81,7 @@ def pre_update(ctx, ref=settings.UPDATE_REF):
 @task
 def update(ctx):
     """2. Nothing to do here yet."""
+    update_assets()
     update_db()
 
 
