@@ -20,6 +20,8 @@ from badger.models import Badge, Award
 urlpatterns = patterns('',
     url(r'^$', 'badger.views.home', name='home'),
     (r'^notification/', include('notification.urls')),
+    #(r'^$', include('badgus.base.urls')),
+    (r'^badges/create$', 'badgus.base.views.create'),
     (r'^badges/', include('badgus.badger_api.urls')),
     (r'^badges/', include('badger.urls')),
     (r'^profiles/', include(profiles_urls)),

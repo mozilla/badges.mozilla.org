@@ -20,12 +20,14 @@
 
         <section class="item span3">
             <section class="blurb">
-                <h3>Welcome!</h3>
-                <p>This is a service for creating and issuing badges,
-                    based on <a href="https://github.com/mozilla/badges.mozilla.org">Open&nbsp;Source</a>
-                    software and the <a href="http://www.openbadges.org/">Mozilla OpenBadges</a>
-                    standard.
-                </p>
+                <h3>Badges for & by Mozillians!</h3>
+                <p>{% trans %}
+                    This is a service for the Mozilla community,
+                    using the <a href="http://www.openbadges.org/">Mozilla OpenBadges</a>
+                    standard and
+                    <a href="https://github.com/mozilla/badges.mozilla.org">Open&nbsp;Source</a>
+                    software.
+                {% endtrans %}</p>
             </section>
             <section class="action">
                 {% if request.user.is_authenticated() %}
@@ -48,39 +50,51 @@
             </section>
         </section>
 
+        {% if (not config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS) or (not request.user.is_anonymous() and request.user.get_profile().is_vouched_mozillian()) %}
+        <section class="item span3">
+            <section class="blurb">
+                <h3>{{ _("Have an idea for a badge?") }}</h3>
+                <p>{{ _("You have a vouched mozillians.org profile, so you're welcome to create and issue badges here. Click here to start:") }}</p>
+            </section>
+            <section class="action">
+                <p><a class="action btn btn-primary btn-large" href="{{ url('badger.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
+            </section>
+        </section>
+        {% else %}
+        <section class="item span3">
+            <section class="blurb">
+                <h3>{{ _("Want to make badges here?") }}</h3>
+                <p>{{ _("This service requires a vouched profile at mozillians.org associated with the email address you used to sign in here.") }}</p>
+            </section>
+            <section class="action">
+                <p><a class="action btn btn-primary btn-large" href="https://mozillians.org/en-US/about/">{{ _("✸ Learn about mozillians.org") }}</a></p>
+            </section>
+        </section>
+        {% endif %}
+
+        <section class="item span3">
+            <form class="claim" method="POST" action="{{ url('badger.views.claim_deferred_award') }}">
+                {{ csrf() }}
+            <section class="blurb">
+                <h3>{{ _("Have a claim code?") }}</h3>
+                <p>{{ _("Type it here to claim your badge:") }}</p>
+                    <input type="text" size="16" class="text-input claim-code" 
+                           name="code" id="intro_code" 
+                           placeholder="enter claim code" 
+                           value="{{ request.GET.get('code','') }}" />
+            </section>
+            <section class="action">
+                    <input type="submit" class="action btn btn-success btn-large" value="{{ _('Claim award from code') }}" />
+            </section>
+                </form>
+        </section>
+
         <section class="item span3">
             <h3>Looking for Open Badges?</h3>
             <p><a href="http://www.openbadges.org/"><img src="{{ static('img/openbadges-logo.png') }}"></a></p>
             <p>Free software + an open technical standard to create, issue and
             verify digital badges across the web.</p>
             <p><a href="http://www.openbadges.org/">Check out Open Badges 1.0</a></p>
-        </section>
-
-        <section class="item span3">
-            <section class="blurb">
-                <h3>{{ _("Have a claim code?") }}</h3>
-                <p>{{ _("Type it here to claim your badge:") }}</p>
-            </section>
-            <section class="action">
-                <form class="claim" method="POST" action="{{ url('badger.views.claim_deferred_award') }}">
-                    {{ csrf() }}
-                    <input type="text" size="16" class="text-input claim-code" 
-                           name="code" id="intro_code" 
-                           placeholder="enter claim code" 
-                           value="{{ request.GET.get('code','') }}" />
-                    <input type="submit" class="action btn btn-success btn-large" value="{{ _('Claim award from code') }}" />
-                </form>
-            </section>
-        </section>
-
-        <section class="item span3">
-            <section class="blurb">
-                <h3>{{ _("Have an idea for a badge?") }}</h3>
-                <p>{{ _("Click here to start:") }}</p>
-            </section>
-            <section class="action">
-                <p><a class="action btn btn-primary btn-large" href="{{ url('badger.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
-            </section>
         </section>
 
     </div>

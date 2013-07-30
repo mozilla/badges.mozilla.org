@@ -50,14 +50,14 @@ ul.badges { margin: 0pt; padding: 0pt; }
 #home .home-intro { }
 #home .home-intro h1 { margin-bottom: 0.25em; }
 #home .home-intro .item { }
-#home .home-intro .item .blurb { display: block; min-height: 7.0em; }
+#home .home-intro .item .blurb { display: block; min-height: 8.5em; }
 #home .home-intro .item .action { }
-#home .home-intro .item .action form { display: block; width: 100% }
+#home .home-intro .item .action form { display: inline; width: 100%; margin: 0; padding: 0; }
 #home .home-intro .item .action .btn { display: block; width: 94% }
-#home .home-intro .item .action input.btn { display: block; width: 100% }
+#home .home-intro .item .action input.btn { display: block; width: 100%; }
 #home .home-intro .item .action .text-input { display: block; width: 98%;
     font-family: monospace; text-align: center; font-size: 1.5em; 
-    height: 1.5em; }
+    height: 1.45em; }
 
 ul.badges li { border-radius: 8px 8px 8px 8px; border: 1px solid #EEEEEE;
     list-style: none outside none; margin: 0pt 0.75em 0.75em 0pt; padding: 0pt; }

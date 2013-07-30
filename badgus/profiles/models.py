@@ -4,7 +4,14 @@ from os.path import dirname
 from datetime import datetime, timedelta, tzinfo
 from time import time, gmtime, strftime
 
+import logging
+import requests
+import urllib
+import json
+
 from urlparse import urljoin
+
+import constance.config
 
 import bleach
 
@@ -170,6 +177,43 @@ class UserProfile(models.Model):
             if not scaled_file:
                 raise ValidationError(_('Cannot process image'))
             self.avatar.file = scaled_file
+
+    def is_vouched_mozillian(self):
+        MOZILLIANS_API_BASE_URL = constance.config.MOZILLIANS_API_BASE_URL
+        MOZILLIANS_API_APPNAME = constance.config.MOZILLIANS_API_APPNAME
+        MOZILLIANS_API_KEY = constance.config.MOZILLIANS_API_KEY
+
+        if not MOZILLIANS_API_KEY:
+            logging.warning("'MOZILLIANS_API_KEY' not set up.")
+            return False
+
+        email = self.user.email
+
+        # /api/v1/users/?app_name=foobar&app_key=12345&email=test@example.com
+        url = '%s/users/?%s' % (MOZILLIANS_API_BASE_URL, urllib.urlencode({
+            'app_name': MOZILLIANS_API_APPNAME,
+            'app_key': MOZILLIANS_API_KEY,
+            'email': email
+        }))
+
+        resp = requests.get(url)
+        if not resp.status_code == 200:
+            logging.error("Failed request to mozillians.org API: %s" %
+                          resp.status_code)
+            return False
+        else:
+            try:
+                content = json.loads(resp.content)
+            except ValueError:
+                logging.error("Failed parsing mozillians.org response: %s" %
+                              resp.status_code)
+                return False
+
+        for obj in content.get('objects', []):
+            if obj['email'].lower() == email.lower():
+                return obj['is_vouched']
+
+        return False
 
 
 def autocreate_user_profile(self):
