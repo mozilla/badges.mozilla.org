@@ -45,6 +45,9 @@ MINIFY_BUNDLES = {
     }
 }
 
+# HACK: HMAC_KEYS default to make funfactory happier
+HMAC_KEYS = 'this is fake; we use persona and do not store passwords'
+
 # Defines the views served for root URLs.
 ROOT_URLCONF = 'badgus.urls'
 
