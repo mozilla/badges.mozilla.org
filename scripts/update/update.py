@@ -40,6 +40,8 @@ def update_info(ctx):
 def update_db(ctx):
     with ctx.lcd(settings.SRC_DIR):
         ctx.local("python2.6 manage.py syncdb --noinput")
+        # HACK: Skip djcelery migrations. Tables already there... somehow?
+        ctx.local('python2.6 manage.py migrate djcelery --fake --noinput')
         ctx.local('python2.6 manage.py migrate --noinput')
         ctx.local('python2.6 manage.py migrate --list')
 
