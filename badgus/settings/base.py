@@ -262,4 +262,12 @@ CONSTANCE_CONFIG = dict(
         '',
         'Mozillians.org API key',
     ),
+    MOZILLIANS_API_CACHE_KEY_PREFIX = (
+        'mozillians_api',
+        'Mozillians.org API result cache key prefix',
+    ),
+    MOZILLIANS_API_CACHE_TIMEOUT = (
+        1800,
+        'Mozillians.org API result cache timeout',
+    ),
 )

@@ -13,6 +13,7 @@ from django.utils.functional import wraps
 from django.db import models
 from django.contrib.auth.models import User
 from django import test
+from django.core.cache import cache
 
 
 from badgus.base.tests import FakeResponse, override_constance_settings
@@ -88,6 +89,7 @@ class VouchedProfileTests(test.TestCase):
 
         # Iterate through test cases
         for user, status_code, content, expected in cases:
+            cache.clear()
             inputs.update(dict(status_code=status_code, content=content,
                                email=user.email, vouched=expected))
             
