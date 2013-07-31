@@ -20,6 +20,15 @@
 
         <section class="item span3">
             <section class="blurb">
+            {% if not config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS %}
+                <h3>Welcome!</h3>
+                <p>{% trans %}
+                    This is a service for creating and issuing badges,
+                    based on <a href="https://github.com/mozilla/badges.mozilla.org">Open&nbsp;Source</a>
+                    software and the <a href="http://www.openbadges.org/">Mozilla OpenBadges</a>
+                    standard.
+                {% endtrans %}</p>
+            {% else %}
                 <h3>Badges for & by Mozillians!</h3>
                 <p>{% trans %}
                     This is a service for the Mozilla community,
@@ -28,6 +37,7 @@
                     <a href="https://github.com/mozilla/badges.mozilla.org">Open&nbsp;Source</a>
                     software.
                 {% endtrans %}</p>
+            {% endif %}
             </section>
             <section class="action">
                 {% if request.user.is_authenticated() %}
@@ -50,26 +60,36 @@
             </section>
         </section>
 
-        {% if (not config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS) or (not request.user.is_anonymous() and request.user.get_profile().is_vouched_mozillian()) %}
-        <section class="item span3">
-            <section class="blurb">
-                <h3>{{ _("Have an idea for a badge?") }}</h3>
-                <p>{{ _("You have a vouched mozillians.org profile, so you're welcome to create and issue badges here. Click here to start:") }}</p>
+        {% if not config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS %}
+            <section class="item span3">
+                <section class="blurb">
+                    <h3>{{ _("Have an idea for a badge?") }}</h3>
+                    <p>{{ _("Click here to start:") }}</p>
+                </section>
+                <section class="action">
+                    <p><a class="action btn btn-primary btn-large" href="{{ url('badger.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
+                </section> 
+            </section> 
+        {% elif (not request.user.is_anonymous() and request.user.get_profile().is_vouched_mozillian()) %}
+            <section class="item span3">
+                <section class="blurb">
+                    <h3>{{ _("Have an idea for a badge?") }}</h3>
+                    <p>{{ _("You have a vouched mozillians.org profile, so you're welcome to create and issue badges here. Click here to start:") }}</p>
+                </section>
+                <section class="action">
+                    <p><a class="action btn btn-primary btn-large" href="{{ url('badger.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
+                </section>
             </section>
-            <section class="action">
-                <p><a class="action btn btn-primary btn-large" href="{{ url('badger.views.create') }}">{{ _("✸ Create a new badge") }}</a></p>
-            </section>
-        </section>
         {% else %}
-        <section class="item span3">
-            <section class="blurb">
-                <h3>{{ _("Want to make badges here?") }}</h3>
-                <p>{{ _("This service requires a vouched profile at mozillians.org associated with the email address you used to sign in here.") }}</p>
+            <section class="item span3">
+                <section class="blurb">
+                    <h3>{{ _("Want to make badges here?") }}</h3>
+                    <p>{{ _("This service requires a vouched profile at mozillians.org associated with the email address used to sign in with Persona.") }}</p>
+                </section>
+                <section class="action">
+                    <p><a class="action btn btn-primary btn-large" href="https://mozillians.org/en-US/about/">{{ _("✸ Learn about mozillians.org") }}</a></p>
+                </section>
             </section>
-            <section class="action">
-                <p><a class="action btn btn-primary btn-large" href="https://mozillians.org/en-US/about/">{{ _("✸ Learn about mozillians.org") }}</a></p>
-            </section>
-        </section>
         {% endif %}
 
         <section class="item span3">
