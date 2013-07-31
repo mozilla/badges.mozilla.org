@@ -16,3 +16,6 @@
 [submodule "vendor-local/src/django-valet-keys"]
 	path = vendor-local/src/django-valet-keys
 	url = git://github.com/lmorchard/django-valet-keys.git
+[submodule "vendor-local/src/django-constance"]
+	path = vendor-local/src/django-constance
+	url = https://github.com/lmorchard/django-constance.git

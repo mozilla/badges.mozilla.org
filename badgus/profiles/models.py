@@ -4,7 +4,15 @@ from os.path import dirname
 from datetime import datetime, timedelta, tzinfo
 from time import time, gmtime, strftime
 
+import hashlib
+import logging
+import requests
+import urllib
+import json
+
 from urlparse import urljoin
+
+import constance.config
 
 import bleach
 
@@ -29,12 +37,13 @@ except ImportError:
     import Image
 
 from django.conf import settings
+from django.contrib.auth.models import User
+from django.core.cache import cache
+from django.core.files.base import ContentFile
+from django.core.files.storage import FileSystemStorage
 from django.db import models
 from django.db.models.signals import post_save
-from django.contrib.auth.models import User
 from django.dispatch import receiver
-from django.core.files.storage import FileSystemStorage
-from django.core.files.base import ContentFile
 
 
 MAX_USERNAME_CHANGES = getattr(settings, 'PROFILE_MAX_USERNAME_CHANGES', 3)
@@ -170,6 +179,54 @@ class UserProfile(models.Model):
             if not scaled_file:
                 raise ValidationError(_('Cannot process image'))
             self.avatar.file = scaled_file
+
+    def is_vouched_mozillian(self):
+        """Check whether this profile is associated with a vouched
+        mozillians.org profile"""
+
+        MOZILLIANS_API_BASE_URL = constance.config.MOZILLIANS_API_BASE_URL
+        MOZILLIANS_API_APPNAME = constance.config.MOZILLIANS_API_APPNAME
+        MOZILLIANS_API_KEY = constance.config.MOZILLIANS_API_KEY
+        MOZILLIANS_API_CACHE_KEY_PREFIX = constance.config.MOZILLIANS_API_CACHE_KEY_PREFIX
+        MOZILLIANS_API_CACHE_TIMEOUT = constance.config.MOZILLIANS_API_CACHE_TIMEOUT
+
+        if not MOZILLIANS_API_KEY:
+            logging.warning("'MOZILLIANS_API_KEY' not set up.")
+            return False
+
+        email = self.user.email
+        # /api/v1/users/?app_name=foobar&app_key=12345&email=test@example.com
+        url = '%s/users/?%s' % (MOZILLIANS_API_BASE_URL, urllib.urlencode({
+            'app_name': MOZILLIANS_API_APPNAME,
+            'app_key': MOZILLIANS_API_KEY,
+            'email': email
+        }))
+
+        # Cache the HTTP request to the API to minimize hits
+        cache_key = '%s:%s' % (MOZILLIANS_API_CACHE_KEY_PREFIX,
+                               hashlib.md5(url.encode('utf-8')).hexdigest())
+        content = cache.get(cache_key)
+        if not content:
+            resp = requests.get(url)
+            if not resp.status_code == 200:
+                logging.error("Failed request to mozillians.org API: %s" %
+                              resp.status_code)
+                return False
+            else:
+                content = resp.content
+                cache.set(cache_key, content, MOZILLIANS_API_CACHE_TIMEOUT)
+
+        try:
+            content = json.loads(content)
+        except ValueError:
+            logging.error("Failed parsing mozillians.org response")
+            return False
+
+        for obj in content.get('objects', []):
+            if obj['email'].lower() == email.lower():
+                return obj['is_vouched']
+
+        return False
 
 
 def autocreate_user_profile(self):

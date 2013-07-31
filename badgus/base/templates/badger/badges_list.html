@@ -9,10 +9,12 @@
         <h2>
             {% if tag_name %}
             <span>{% trans %}Badges tagged <a href="" class="tag"><i class="icon-tag icon-white"></i> {{tag_name}}</a>{% endtrans %}</span>
-                {% if badger_allows_add_by(request.user) %}
-                    <small>
-                        <a class="action btn btn-large btn-primary" href="{{ url('badger.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>
-                    </small>
+                {% if (not config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS) or (not request.user.is_anonymous() and request.user.get_profile().is_vouched_mozillian()) %}
+                    {% if badger_allows_add_by(request.user) %}
+                        <small>
+                            <a class="action btn btn-large btn-primary" href="{{ url('badger.views.create') | urlparams(tags=tag_name) }}">{{ _('Create new badge') }}</a>
+                        </small>
+                    {% endif %}
                 {% endif %}
             {% elif query_string %}
                 <span>{{ _('Badges matching "{query_string}"') | f(query_string=query_string) }}</span>

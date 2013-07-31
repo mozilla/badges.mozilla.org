@@ -81,6 +81,7 @@ AUTHENTICATION_BACKENDS = (
 AUTH_PROFILE_MODULE = "profiles.UserProfile"
 
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
+    'constance.context_processors.config',
     'django.contrib.messages.context_processors.messages',
     'django_browserid.context_processors.browserid_form',
     'notification.context_processors.notification',
@@ -106,7 +107,12 @@ INSTALLED_APPS = [
     #'csp',
     'django_browserid',
     'south',
+    'constance',
+    'constance.backends.database',
 ]
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_DATABASE_CACHE_BACKEND = 'default'
 
 MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -238,3 +244,30 @@ BADGER_ALLOW_ADD_BY_ANYONE = False
 DEFAULT_FROM_EMAIL = 'notifications@badges.mozilla.org'
 OBI_BASE_URL = "//backpack.openbadges.org/"
 OBI_ISSUER_URL = "//backpack.openbadges.org/issuer.js"
+
+CONSTANCE_CONFIG = dict(
+    BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS = (
+        False, 
+        'Whether to restrict login to vouched mozillians.org members',
+    ),
+    MOZILLIANS_API_BASE_URL = (
+        'https://mozillians.org/api/v1',
+        'Mozillians.org API base URL',
+    ),
+    MOZILLIANS_API_APPNAME = (
+        'badges_mozilla_org',
+        'Mozillians.org API app name',
+    ),
+    MOZILLIANS_API_KEY = (
+        '',
+        'Mozillians.org API key',
+    ),
+    MOZILLIANS_API_CACHE_KEY_PREFIX = (
+        'mozillians_api',
+        'Mozillians.org API result cache key prefix',
+    ),
+    MOZILLIANS_API_CACHE_TIMEOUT = (
+        1800,
+        'Mozillians.org API result cache timeout',
+    ),
+)
