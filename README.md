@@ -25,6 +25,7 @@ Here's how I get it running on my MacBook:
     pip install -r requirements/dev.txt
     # Set up a mysql database
     # Edit badgus/settings/local.py
+    # change db credentials and add HMAC_KEYS
     ./manage.py syncdb
     ./manage.py migrate
     ./manage.py compress_assets
