@@ -268,3 +268,5 @@ a.tag .count:after { content: ")"; }
 #badge_detail textarea { height: 5.5em; }
 
 table.keys tr.disabled td.description span { text-decoration: line-through; }
+
+footer { padding-top: 15px; padding-bottom: 15px; border-top: 1px solid #ccc; }
