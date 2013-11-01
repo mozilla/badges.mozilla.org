@@ -99,14 +99,19 @@
       </div><!--/row-->
 
       <footer>
+        <p>
+          {{ _('The code that runs this site is Open Source and available at <a href="{url}">{url}</a>.')|fe(url='https://github.com/mozilla/badges.mozilla.org') }}
+        </p>
+        <p>
+          {{ _('If you have problems, <a href="{url}">please file an issue</a>.')|fe(url='https://github.com/mozilla/badges.mozilla.org/issues') }}
+        </p>
         {% if false %}
-            <p>&copy; Company 2012</p>
-        <div id="footer">
-          {# These links will add/remove cookies. See JavaScript. #}
-          <a class="desktop-link" href="">{{ _('View Desktop Site') }}</a>
-          &nbsp;|&nbsp;
-          <a class="mobile-link" href="">{{ _('View Mobile Site') }}</a>
-        </div>
+          <div id="footer">
+            {# These links will add/remove cookies. See JavaScript. #}
+            <a class="desktop-link" href="">{{ _('View Desktop Site') }}</a>
+            &nbsp;|&nbsp;
+            <a class="mobile-link" href="">{{ _('View Mobile Site') }}</a>
+          </div>
         {% endif %}
       </footer>
 
