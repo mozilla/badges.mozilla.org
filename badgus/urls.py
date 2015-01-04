@@ -3,8 +3,6 @@ from django.conf.urls import *
 
 from .profiles import urls as profiles_urls
 
-from django.views.generic.simple import direct_to_template
-
 from funfactory import monkeypatches
 monkeypatches.patch()
 

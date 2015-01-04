@@ -3,7 +3,7 @@
 
 from funfactory.settings_base import *
 
-SITE_TITLE = 'badg.us'
+SITE_TITLE = 'dev.badges.mozilla.org'
 
 # Make sure South stays out of the way during testing
 #SOUTH_TESTS_MIGRATE = False
@@ -83,7 +83,6 @@ AUTH_PROFILE_MODULE = "profiles.UserProfile"
 TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'constance.context_processors.config',
     'django.contrib.messages.context_processors.messages',
-    'django_browserid.context_processors.browserid_form',
     'notification.context_processors.notification',
 ]
 
@@ -124,6 +123,7 @@ MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + [
 # apps here:
 JINGO_EXCLUDE_APPS = [
     'admin',
+    'browserid',
 ]
 
 def JINJA_CONFIG():
@@ -271,3 +271,5 @@ CONSTANCE_CONFIG = dict(
         'Mozillians.org API result cache timeout',
     ),
 )
+
+BROWSERID_VERIFY_CLASS = 'django_browserid.views.Verify'

@@ -93,6 +93,12 @@ BADGER_ALLOW_ADD_BY_ANYONE = False
 FACEBOOK_APP_ID = "APP ID"
 FACEBOOK_ADMINS = "ADMIN ID"
 
-# Uncomment this line if you are running a local development install without
-# HTTPS to disable HTTPS-only cookies.
-#SESSION_COOKIE_SECURE = False
+# Uncomment these settings for a non-SSL local dev server
+#
+# SESSION_COOKIE_SECURE = False
+#
+# BROWSERID_AUDIENCES = [
+#     'http://127.0.0.1:8000', 'http://localhost:8000'
+# ]
+# 
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

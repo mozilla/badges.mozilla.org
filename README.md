@@ -1,10 +1,11 @@
-badg.us
-=======
+badges.mozilla.org
+==================
 
-badg.us is a badge service based on [django-badger][] and [playdoh][].
+[![Build Status](https://travis-ci.org/mozilla/badges.mozilla.org.svg)](https://travis-ci.org/mozilla/badges.mozilla.org)
+
+badges.mozilla.org is a badge service based on [playdoh][].
 
 [playdoh]: https://github.com/mozilla/playdoh
-[django-badger]: https://github.com/mozilla/django-badger
 
 Bugs and Ideas
 --------------

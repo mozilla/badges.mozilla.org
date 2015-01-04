@@ -10,12 +10,10 @@ Sphinx==1.0.7
 python-memcached==1.48
 nose==1.0.0
 mock==0.7.2
--e git://github.com/jbalogh/django-nose.git#egg=django_nose
 -e git://github.com/jbalogh/test-utils.git#egg=test-utils
 translate-toolkit==1.8.0
 
 feedparser
-pyquery
 
 tox
 django_nose

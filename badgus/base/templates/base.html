@@ -5,6 +5,7 @@
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
     <title>{% block page_title %}{{ settings.SITE_TITLE }}{% endblock %}</title>
+    {{ browserid_css() }}
     {% block site_css %}
       {% compress css %}
         <link href="{{ static('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -24,7 +25,9 @@
     {% block extrahead %}{% endblock %}
   </head>
   <body id="{% block pageid %}{% endblock %}" class="html-{{ DIR }} {% block bodyclass %}{% endblock %}" data-mobile-cookie="{{ settings.MOBILE_COOKIE }}">
-      
+    
+    {{ browserid_info() }} 
+
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container-fluid">
@@ -58,21 +61,11 @@
                         {% if notice_unseen_count %}
                             <a class="notices" href="{{ url('notification_notices') }}">{{ notice_unseen_count }}</a>,
                         {% endif %}
-                        <a class="browserid-signout" href="{{ url('profiles.logout') }}">{{_('Sign out')}}</a>
+                        {{ browserid_logout(text='Logout') }}
                     )
                 {% else %}
                     {% block signin %}
-                    <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
-                        {{ csrf() }}
-                        {% set next = request.GET.get('next', False) %}
-                        {% if next %}
-                            <input type="hidden" name="next" value="{{ next }}" />
-                        {% else %}
-                            <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
-                        {% endif %}
-                        {{ browserid_form.as_p()|safe }}
-                        <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{ static('img/sign_in_blue.png') }}" /></a>
-                    </form>
+                        {{ browserid_login(text='Login') }}
                     {% endblock %}
                 {% endif %}
             </div>
@@ -118,14 +111,14 @@
     </div><!--/.fluid-container-->
 
     {% block site_js %}
-      <script src="https://login.persona.org/include.js"></script>
       {% compress js %}
-        <script src="{{ static('js/libs/jquery-1.7.1.min.js') }}"></script>
+        <script src="{{ static('js/libs/jquery-1.9.1.min.js') }}"></script>
         <script src="{{ static('js/libs/jquery.cookie.js') }}"></script>
         <script src="{{ static('js/libs/browserid.js') }}"></script>
         <script src="{{ static('js/base.js') }}"></script>
         <script src="{{ static('bootstrap/js/bootstrap.min.js') }}"></script>
       {% endcompress %}
+      {{ browserid_js() }}
     {% endblock %}
     {% block js %}{% endblock %}
 
