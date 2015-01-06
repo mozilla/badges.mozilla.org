@@ -1,7 +1,5 @@
 lib/python
-src/django-badger
 src/django-valet-keys
-src/django-browserid
 src/django-south
 src/django-csp
 src/django-notification

@@ -1,2 +1,3 @@
 -r ../vendor/src/funfactory/funfactory/requirements/compiled.txt
--r ../vendor-local/src/django-badger/requirements/compiled.txt
+
+Pillow==2.7.0

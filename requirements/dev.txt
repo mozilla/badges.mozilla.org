@@ -16,3 +16,10 @@ translate-toolkit==1.8.0
 
 feedparser
 pyquery
+
+tox
+django_nose
+South
+pyquery==1.2.4
+cssselect==0.7.1
+lxml==3.1beta1

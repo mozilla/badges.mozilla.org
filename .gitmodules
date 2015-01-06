@@ -1,9 +1,6 @@
 [submodule "vendor"]
 	path = vendor
 	url = git://github.com/mozilla/playdoh-lib.git
-[submodule "vendor-local/src/django-badger"]
-	path = vendor-local/src/django-badger
-	url = git://github.com/mozilla/django-badger.git
 [submodule "vendor-local/src/django-south"]
 	path = vendor-local/src/django-south
 	url = git://github.com/lambdafu/django-south.git

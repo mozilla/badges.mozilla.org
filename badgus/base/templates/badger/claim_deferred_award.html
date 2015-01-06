@@ -32,12 +32,7 @@
             <div>
                 <h3>{{ _("Claim") }}</h3>
                 <p>{{ _("Sign in to claim this badge award") }}</p>
-                <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
-                    {{ csrf() }}
-                    <input type="hidden" name="next" value="{{ request.build_absolute_uri() }}" />
-                    {{ browserid_form.as_p()|safe }}
-                    <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{ static('img/sign_in_blue.png') }}" /></a>
-                </form>
+                {{ browserid_login(text='Login') }}
             </div>
         {% endif %}
 
