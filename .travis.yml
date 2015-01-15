@@ -11,7 +11,6 @@ before_install:
     - sudo apt-get install build-essential python-dev python-pip python-virtualenv python-imaging mysql-server libmysqlclient-dev libxml2-dev libxslt-dev memcached libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev zlib1g-dev python-jinja2 python-bcrypt python-mysqldb
     - sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib
     - sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib
-    - git submodule update --init --recursive
     - cp badgus/settings/local.py-travis badgus/settings/local.py
     - mysql -e 'create database badgus;'
 

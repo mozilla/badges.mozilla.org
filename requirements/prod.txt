@@ -1,5 +1,72 @@
-python-memcached==1.48
-bleach=1.1.5
--r ../vendor/src/funfactory/funfactory/requirements/prod.txt
+# Django stuff
+Django==1.5.6
+-e git://github.com/jbalogh/django-multidb-router.git#egg=django-multidb-router
+-e git://github.com/jsocol/django-cronjobs.git#egg=django-cronjobs
 
--e git://github.com/jtauber/django-notification.git#egg=django-notification
+# Celery: Message queue
+celery==2.5.5
+amqplib==1.0.2
+anyjson==0.3.3
+django-celery==2.5.5
+django-picklefield==0.2.1
+kombu==2.1.8
+
+# BrowserID
+django-browserid==0.10.1
+requests==1.1.0
+
+# Forms
+-e git://github.com/mozilla/happyforms.git#egg=happyforms
+
+# Templates
+-e git://github.com/jbalogh/jingo.git#egg=jingo
+-e git://github.com/jsocol/jingo-minify.git#egg=jingo-minify
+GitPython==0.1.7
+
+# Various tidbits
+-e git://github.com/jsocol/commonware.git#egg=commonware
+-e git://github.com/mozilla/nuggets.git#egg=nuggets
+
+# Security
+-e git://github.com/fwenzel/django-sha2.git#egg=django-sha2
+-e git://github.com/mozilla/django-session-csrf.git#egg=django-session-csrf
+cef==0.3
+
+# L10n
+Babel>=0.9.4
+-e git://github.com/clouserw/tower.git#egg=tower
+-e git://github.com/fwenzel/django-mozilla-product-details#egg=django-mozilla-product-details
+
+# Mobile
+-e git://github.com/jbalogh/django-mobility@644e0c1c58#egg=django-mobility
+
+python-memcached==1.48
+
+# TODO: Upgrade these versions
+Bleach==1.2.2
+async==0.6.0
+BeautifulSoup==3.2.1
+certifi==0.0.8
+chardet==1.0.1
+httplib2==0.7.4
+django-taggit==0.9.3
+gitdb==0.5.0
+html5lib==0.95
+pyparsing==1.5.5
+
+ordereddict
+versiontools
+
+# TODO: Figure out why this won't install
+# pyqrnative==0.1.4
+
+# TODO: Resolve these into PyPi released versions
+-e git://github.com/lambdafu/django-south.git@a9758e12b0ee7d90b3bc25ad545e8184e8dea916#egg=django-south
+-e git://github.com/mozilla/django-csp.git@149e2662417dced1661abdbde84fb0562d0c0dbc#egg=django-csp
+-e git://github.com/lmorchard/django-notification.git@33fb2325d007a12a96f1ccc69f1602efa8794f46#egg=django-notification
+-e git://github.com/lmorchard/django-valet-keys.git@824023563519764b2edbf0a3148415b851659837#egg=django-valet-keys
+-e git://github.com/lmorchard/django-constance.git@ae92c447ec011dca877c6626527530f83acf40d7#egg=django-constance
+-e git://github.com/jezdez/django-appconf.git@d7ff3bb0c35a0c2ec83afdb31f7bb79e0f1b222c#egg=django-appconf
+-e git://github.com/jezdez/django_compressor.git@90966edf9777a1c0b5f6389b15f5559a89081d39#egg=django_compressor
+
+-e git://github.com/mozilla/funfactory.git@6b797bb7230b1f65f7c9ab34cdf71fe51621d89b#egg=funfactory

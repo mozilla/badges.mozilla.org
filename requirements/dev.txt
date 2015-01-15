@@ -2,12 +2,11 @@
 # needed to run the site, it belongs in requirements/prod.txt. If it's a
 # package for developers (testing, docs, etc.), it goes in this file.
 
--r ../vendor/src/funfactory/funfactory/requirements/prod.txt
+-r prod.txt
 
 # Documentation
 Sphinx==1.0.7
 
-python-memcached==1.48
 nose==1.0.0
 mock==0.7.2
 -e git://github.com/jbalogh/test-utils.git#egg=test-utils
@@ -16,7 +15,7 @@ translate-toolkit==1.8.0
 feedparser
 
 tox
-django_nose
+django-nose
 South
 pyquery==1.2.4
 cssselect==0.7.1

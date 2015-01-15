@@ -1,18 +1,3 @@
 [submodule "vendor"]
 	path = vendor
 	url = git://github.com/mozilla/playdoh-lib.git
-[submodule "vendor-local/src/django-south"]
-	path = vendor-local/src/django-south
-	url = git://github.com/lambdafu/django-south.git
-[submodule "vendor-local/src/django-csp"]
-	path = vendor-local/src/django-csp
-	url = git://github.com/mozilla/django-csp.git
-[submodule "vendor-local/src/django-notification"]
-	path = vendor-local/src/django-notification
-	url = git://github.com/lmorchard/django-notification.git
-[submodule "vendor-local/src/django-valet-keys"]
-	path = vendor-local/src/django-valet-keys
-	url = git://github.com/lmorchard/django-valet-keys.git
-[submodule "vendor-local/src/django-constance"]
-	path = vendor-local/src/django-constance
-	url = https://github.com/lmorchard/django-constance.git

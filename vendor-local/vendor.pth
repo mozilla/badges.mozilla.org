@@ -1,6 +1,0 @@
-lib/python
-src/django-valet-keys
-src/django-south
-src/django-csp
-src/django-notification
-src/django-constance
