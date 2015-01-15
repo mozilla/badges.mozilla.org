@@ -29,7 +29,7 @@ else:
     notification = None
 
 try:
-    from funfactory.urlresolvers import reverse
+    from badgus.base.urlresolvers import reverse
 except ImportError:
     from django.core.urlresolvers import reverse
 

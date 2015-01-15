@@ -17,7 +17,7 @@ from nose.plugins.attrib import attr
 from django.template.defaultfilters import slugify
 
 try:
-    from funfactory.urlresolvers import (get_url_prefix, Prefixer, reverse,
+    from badgus.base.urlresolvers import (get_url_prefix, Prefixer, reverse,
                                          set_url_prefix)
     from tower import activate
 except ImportError, e:

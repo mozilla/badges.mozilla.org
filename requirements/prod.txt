@@ -15,9 +15,6 @@ kombu==2.1.8
 django-browserid==0.10.1
 requests==1.1.0
 
-# Forms
--e git://github.com/mozilla/happyforms.git#egg=happyforms
-
 # Templates
 -e git://github.com/jbalogh/jingo.git#egg=jingo
 -e git://github.com/jsocol/jingo-minify.git#egg=jingo-minify
@@ -68,5 +65,3 @@ versiontools
 -e git://github.com/lmorchard/django-constance.git@ae92c447ec011dca877c6626527530f83acf40d7#egg=django-constance
 -e git://github.com/jezdez/django-appconf.git@d7ff3bb0c35a0c2ec83afdb31f7bb79e0f1b222c#egg=django-appconf
 -e git://github.com/jezdez/django_compressor.git@90966edf9777a1c0b5f6389b15f5559a89081d39#egg=django_compressor
-
--e git://github.com/mozilla/funfactory.git@6b797bb7230b1f65f7c9ab34cdf71fe51621d89b#egg=funfactory

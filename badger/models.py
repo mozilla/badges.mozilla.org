@@ -48,7 +48,7 @@ except ImportError:
     from django.utils.translation import ugettext_lazy as _
 
 try:
-    from funfactory.urlresolvers import reverse
+    from badgus.base.urlresolvers import reverse
 except ImportError:
     from django.core.urlresolvers import reverse
 

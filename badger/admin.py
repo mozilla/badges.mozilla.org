@@ -7,7 +7,7 @@ from django import forms
 from django.db import models
 
 try:
-    from funfactory.urlresolvers import reverse
+    from badgus.base.urlresolvers import reverse
 except ImportError:
     from django.core.urlresolvers import reverse
 

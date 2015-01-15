@@ -3,7 +3,7 @@ from django.conf.urls import *
 
 from .profiles import urls as profiles_urls
 
-from funfactory import monkeypatches
+from .base import monkeypatches
 monkeypatches.patch()
 
 import badger
