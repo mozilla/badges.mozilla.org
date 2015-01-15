@@ -88,11 +88,11 @@ def _parse_request_data(request):
         content_type = request.META.get('CONTENT_TYPE', '')
 
         if content_type.startswith('application/json'):
-            return (json.loads(request.raw_post_data), None, None)
+            return (json.loads(request.body), None, None)
 
         elif content_type.startswith('multipart/form-data'):
             parser = MultiPartParser(request.META,
-                                     StringIO(request.raw_post_data),
+                                     StringIO(request.body),
                                      request.upload_handlers,
                                      request.encoding)
             data, files = parser.parse()

@@ -4,7 +4,6 @@ import urlparse
 
 from django.conf import settings
 
-from django.contrib.auth.models import SiteProfileNotAvailable
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.html import conditional_escape
 
@@ -21,7 +20,6 @@ from jingo import register, env
 from .models import (Badge, Award, Nomination, Progress,
                      BadgeAwardNotAllowedException)
 
-
 @register.function
 def user_avatar(user, secure=False, size=256, rating='pg', default=''):
     try:
@@ -29,8 +27,6 @@ def user_avatar(user, secure=False, size=256, rating='pg', default=''):
         if profile.avatar:
             return profile.avatar.url
     except AttributeError:
-        pass
-    except SiteProfileNotAvailable:
         pass
     except ObjectDoesNotExist:
         pass

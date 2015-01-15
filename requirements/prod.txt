@@ -1,24 +1,15 @@
 # Django stuff
-Django==1.5.6
+Django==1.7.3
 -e git://github.com/jbalogh/django-multidb-router.git#egg=django-multidb-router
 -e git://github.com/jsocol/django-cronjobs.git#egg=django-cronjobs
 
-# Celery: Message queue
-celery==2.5.5
-amqplib==1.0.2
-anyjson==0.3.3
-django-celery==2.5.5
-django-picklefield==0.2.1
-kombu==2.1.8
-
 # BrowserID
-django-browserid==0.10.1
-requests==1.1.0
+django-browserid==0.11
+requests==2.5.1
 
 # Templates
 -e git://github.com/jbalogh/jingo.git#egg=jingo
 -e git://github.com/jsocol/jingo-minify.git#egg=jingo-minify
-GitPython==0.1.7
 
 # Various tidbits
 -e git://github.com/jsocol/commonware.git#egg=commonware
@@ -27,7 +18,7 @@ GitPython==0.1.7
 # Security
 -e git://github.com/fwenzel/django-sha2.git#egg=django-sha2
 -e git://github.com/mozilla/django-session-csrf.git#egg=django-session-csrf
-cef==0.3
+cef==0.5
 
 # L10n
 Babel>=0.9.4
@@ -37,31 +28,34 @@ Babel>=0.9.4
 # Mobile
 -e git://github.com/jbalogh/django-mobility@644e0c1c58#egg=django-mobility
 
-python-memcached==1.48
-
-# TODO: Upgrade these versions
-Bleach==1.2.2
-async==0.6.0
 BeautifulSoup==3.2.1
-certifi==0.0.8
-chardet==1.0.1
-httplib2==0.7.4
-django-taggit==0.9.3
-gitdb==0.5.0
-html5lib==0.95
-pyparsing==1.5.5
+python-memcached==1.53
+async==0.6.2
+certifi==14.05.14
+chardet==2.3.0
+Bleach==1.4.1
+html5lib==0.999
+httplib2==0.9
+pyparsing==2.0.3
+django-taggit==0.12.2
+ordereddict==1.1
+versiontools==1.9.1
+django-picklefield==0.3.1
 
-ordereddict
-versiontools
+django-constance[database]==1.0.1
+django-compressor==1.4
+django-appconf==0.6
+
+# TODO: Maybe remove?
+gitdb==0.6.4
+GitPython==0.3.5
 
 # TODO: Figure out why this won't install
 # pyqrnative==0.1.4
 
 # TODO: Resolve these into PyPi released versions
--e git://github.com/lambdafu/django-south.git@a9758e12b0ee7d90b3bc25ad545e8184e8dea916#egg=django-south
--e git://github.com/mozilla/django-csp.git@149e2662417dced1661abdbde84fb0562d0c0dbc#egg=django-csp
--e git://github.com/lmorchard/django-notification.git@33fb2325d007a12a96f1ccc69f1602efa8794f46#egg=django-notification
--e git://github.com/lmorchard/django-valet-keys.git@824023563519764b2edbf0a3148415b851659837#egg=django-valet-keys
--e git://github.com/lmorchard/django-constance.git@ae92c447ec011dca877c6626527530f83acf40d7#egg=django-constance
--e git://github.com/jezdez/django-appconf.git@d7ff3bb0c35a0c2ec83afdb31f7bb79e0f1b222c#egg=django-appconf
--e git://github.com/jezdez/django_compressor.git@90966edf9777a1c0b5f6389b15f5559a89081d39#egg=django_compressor
+-e git://github.com/lmorchard/django-valet-keys.git@95758605e6f5a63eeaf8d49da19c18f0abf2a320#egg=django-valet-keys
+#-e git://github.com/jezdez/django-appconf.git@d7ff3bb0c35a0c2ec83afdb31f7bb79e0f1b222c#egg=django-appconf
+
+# Temporary forks
+-e git://github.com/lmorchard/django-notification.git@badges-fork#egg=django-notification

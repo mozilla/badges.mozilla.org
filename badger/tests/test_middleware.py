@@ -5,7 +5,7 @@ from nose.tools import assert_equal, with_setup, assert_false, eq_, ok_
 from nose.plugins.attrib import attr
 
 from django.http import HttpRequest, HttpResponse
-from django.utils import simplejson as json
+import json
 from django.test.client import Client
 
 from django.core.urlresolvers import reverse

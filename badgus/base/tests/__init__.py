@@ -1,7 +1,7 @@
 from django.conf import settings, UserSettingsHolder
 from django.utils.functional import wraps
 
-import constance.config
+from constance import config as c_config
 from constance.backends import database as constance_database
 
 
@@ -51,17 +51,17 @@ class override_constance_settings(overrider):
     its caching."""
 
     def enable(self):
-        self.old_cache = constance_database.db_cache
-        constance_database.db_cache = None
-        self.old_settings = dict((k, getattr(constance.config, k))
-                                 for k in dir(constance.config))
+        #self.old_cache = constance_database.db_cache
+        #constance_database.db_cache = None
+        self.old_settings = dict((k, getattr(c_config, k))
+                                 for k in dir(c_config))
         for k, v in self.options.items():
-            constance.config._backend.set(k, v)
+            c_config._backend.set(k, v)
 
     def disable(self):
         for k, v in self.old_settings.items():
-            constance.config._backend.set(k, v)
-        constance_database.db_cache = self.old_cache
+            c_config._backend.set(k, v)
+        #constance_database.db_cache = self.old_cache
 
 
 class override_settings(overrider):

@@ -177,8 +177,6 @@ class BadgerApiViewsTests(BadgerTestCase):
         eq_('application/json', resp['Content-Type'])
         data = json.loads(resp.content)
 
-        print "DATA %s" % data
-
         ok_('errors' in data)
         ok_(award_user.email in data['errors'])
         eq_('ALREADYAWARDED', data['errors'][award_user.email])

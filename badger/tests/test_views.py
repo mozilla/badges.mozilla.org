@@ -6,7 +6,7 @@ from django.conf import settings
 from django.http import HttpRequest
 from django.test.client import Client
 
-from django.utils import simplejson
+import json
 from django.utils.translation import get_language
 
 from django.contrib.auth.models import User
@@ -66,7 +66,7 @@ class BadgerViewsTest(BadgerTestCase):
         url = reverse('badger.detail_json', args=(badge.slug, ))
         r = self.client.get(url, follow=True)
 
-        data = simplejson.loads(r.content)
+        data = json.loads(r.content)
         eq_(badge.title, data['name'])
         eq_(badge.description, data['description'])
         eq_('http://testserver%s' % badge.get_absolute_url(), 
@@ -94,7 +94,7 @@ class BadgerViewsTest(BadgerTestCase):
         url = reverse('badger.award_detail_json', args=(b1.slug, award.pk,))
         r = self.client.get(url, follow=True)
 
-        data = simplejson.loads(r.content)
+        data = json.loads(r.content)
 
         hash_salt = (hashlib.md5('%s-%s' % (award.badge.pk, award.pk))
                             .hexdigest())

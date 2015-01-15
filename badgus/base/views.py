@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import (require_GET, require_POST,
                                           require_http_methods)
 
-import constance.config
+from constance import config as c_config
 
 import badger.views
 
@@ -19,7 +19,7 @@ import badger.views
 def create(request):
 
     # Restrict badge creation to mozillians, if enabled.
-    if constance.config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS:
+    if c_config.BADGER_ALLOW_ADD_ONLY_BY_MOZILLIANS:
         profile = request.user.get_profile()
         if not profile.is_vouched_mozillian():
             return HttpResponseForbidden()

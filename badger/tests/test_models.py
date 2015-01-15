@@ -14,7 +14,7 @@ from django.core.management import call_command
 from django.db.models import loading
 from django.core.files.base import ContentFile
 from django.http import HttpRequest
-from django.utils import simplejson as json
+import json
 from django.test.client import Client
 
 from django.core import mail

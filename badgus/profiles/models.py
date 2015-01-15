@@ -12,7 +12,7 @@ import json
 
 from urlparse import urljoin
 
-import constance.config
+from constance import config as c_config
 
 import bleach
 
@@ -184,11 +184,11 @@ class UserProfile(models.Model):
         """Check whether this profile is associated with a vouched
         mozillians.org profile"""
 
-        MOZILLIANS_API_BASE_URL = constance.config.MOZILLIANS_API_BASE_URL
-        MOZILLIANS_API_APPNAME = constance.config.MOZILLIANS_API_APPNAME
-        MOZILLIANS_API_KEY = constance.config.MOZILLIANS_API_KEY
-        MOZILLIANS_API_CACHE_KEY_PREFIX = constance.config.MOZILLIANS_API_CACHE_KEY_PREFIX
-        MOZILLIANS_API_CACHE_TIMEOUT = constance.config.MOZILLIANS_API_CACHE_TIMEOUT
+        MOZILLIANS_API_BASE_URL = c_config.MOZILLIANS_API_BASE_URL
+        MOZILLIANS_API_APPNAME = c_config.MOZILLIANS_API_APPNAME
+        MOZILLIANS_API_KEY = c_config.MOZILLIANS_API_KEY
+        MOZILLIANS_API_CACHE_KEY_PREFIX = c_config.MOZILLIANS_API_CACHE_KEY_PREFIX
+        MOZILLIANS_API_CACHE_TIMEOUT = c_config.MOZILLIANS_API_CACHE_TIMEOUT
 
         if not MOZILLIANS_API_KEY:
             logging.warning("'MOZILLIANS_API_KEY' not set up.")

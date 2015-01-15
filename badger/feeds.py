@@ -6,7 +6,7 @@ import urllib
 from django.contrib.syndication.views import Feed, FeedDoesNotExist
 from django.utils.feedgenerator import (SyndicationFeed, Rss201rev2Feed,
                                         Atom1Feed, get_tag_uri)
-import django.utils.simplejson as json
+import json
 from django.shortcuts import get_object_or_404
 
 from django.contrib.auth.models import User

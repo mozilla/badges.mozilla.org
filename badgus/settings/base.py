@@ -9,8 +9,10 @@ import socket
 
 from django.utils.functional import lazy
 
-from ..base.manage import ROOT, path
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+def path(*a):
+    return os.path.join(ROOT, *a)
 
 # For backwards compatability, (projects built based on cloning playdoh)
 # we still have to have a ROOT_URLCONF.
@@ -149,7 +151,7 @@ DOMAIN_METHODS = {
 }
 
 # Paths that don't require a locale code in the URL.
-SUPPORTED_NONLOCALES = ['media', 'static', 'admin']
+SUPPORTED_NONLOCALES = ['media', 'static', 'admin', 'browserid']
 
 
 ## Media and templates.
@@ -313,7 +315,6 @@ INSTALLED_APPS = (
 
     # Third-party apps, patches, fixes
     'commonware.response.cookies',
-    'djcelery',
     'django_nose',
     'session_csrf',
 
@@ -368,21 +369,6 @@ PASSWORD_HASHERS = get_password_hashers(BASE_PASSWORD_HASHERS, HMAC_KEYS)
 ## Tests
 TEST_RUNNER = 'test_utils.runner.RadicalTestSuiteRunner'
 
-## Celery
-
-# True says to simulate background tasks without actually using celeryd.
-# Good for local development in case celeryd is not running.
-CELERY_ALWAYS_EAGER = True
-
-BROKER_CONNECTION_TIMEOUT = 0.1
-CELERY_RESULT_BACKEND = 'amqp'
-CELERY_IGNORE_RESULT = True
-CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
-
-# Time in seconds before celery.exceptions.SoftTimeLimitExceeded is raised.
-# The task can catch that and recover but should exit ASAP.
-CELERYD_TASK_SOFT_TIME_LIMIT = 60 * 2
-
 # For absolute urls
 try:
     DOMAIN = socket.gethostname()
@@ -394,11 +380,20 @@ PORT = 80
 ## django-mobility
 MOBILE_COOKIE = 'mobile'
 
+
+##############################
+# TODO: Merge the below stuff with the above stuff, since it came from two different settings files
+##############################
+
+
 SITE_TITLE = 'dev.badges.mozilla.org'
 
 # Make sure South stays out of the way during testing
 #SOUTH_TESTS_MIGRATE = False
 #SKIP_SOUTH_TESTS = True
+SOUTH_MIGRATION_MODULES = {
+    'taggit': 'taggit.south_migrations',
+}
 
 # Bundles is a dictionary of two dictionaries, css and js, which list css files
 # and js files that can be bundled together by the minify app.
@@ -478,6 +473,8 @@ TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
 ]
 
 INSTALLED_APPS = [
+    'constance',
+    'constance.backends.database',
     'badgus.base', # Mainly to override registration templates, FIXME
 ] + list(INSTALLED_APPS) + [
     'django.contrib.sites',
@@ -495,10 +492,7 @@ INSTALLED_APPS = [
 
     'notification',
     #'csp',
-    'django_browserid',
-    'south',
-    'constance',
-    'constance.backends.database',
+    #'south',
 ]
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
@@ -664,3 +658,5 @@ CONSTANCE_CONFIG = dict(
 )
 
 BROWSERID_VERIFY_CLASS = 'django_browserid.views.Verify'
+
+SQL_RESET_SEQUENCES = False
