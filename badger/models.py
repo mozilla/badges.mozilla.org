@@ -29,10 +29,7 @@ from django.template.loader import render_to_string
 
 from django.core.serializers.json import DjangoJSONEncoder
 
-try:
-    import django.utils.simplejson as json
-except ImportError: # Django 1.5 no longer bundles simplejson
-    import json
+import json
 
 # HACK: Django 1.2 is missing receiver and user_logged_in
 try:

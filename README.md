@@ -21,7 +21,6 @@ Here's how I get it running on my MacBook:
     git submodule update --init --recursive
     virtualenv --no-site-packages venv
     . ./venv/bin/activate
-    pip install -r requirements/compiled.txt
     pip install -r requirements/dev.txt
     # Set up a mysql database
     # Edit badgus/settings/local.py

@@ -1,22 +1,21 @@
 language: python
 
 python:
-    - "2.7"
+    - "2.6"
 
 env:
     - DB=mysql
 
 before_install:
     - sudo apt-get update -qq
-    - sudo apt-get install build-essential python-dev python-pip python-virtualenv python-imaging mysql-server libmysqlclient-dev libxml2-dev libxslt-dev memcached libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev zlib1g-dev python-jinja2 python-bcrypt python-mysqldb
+    - sudo apt-get install build-essential python-pip python-virtualenv python-imaging libxml2-dev libjpeg62-dev python-jinja2 python-bcrypt python-mysqldb
     - sudo ln -s /usr/lib/`uname -i`-linux-gnu/libfreetype.so /usr/lib
     - sudo ln -s /usr/lib/`uname -i`-linux-gnu/libz.so /usr/lib
     - cp badgus/settings/local.py-travis badgus/settings/local.py
     - mysql -e 'create database badgus;'
 
 install:
-    - pip install -r requirements/compiled.txt --use-mirrors
-    - pip install -r requirements/dev.txt --use-mirrors
+    - scripts/peep.py install -r requirements/dev.txt
 
 script: python manage.py test -v2 badgus.badger_api.tests
 

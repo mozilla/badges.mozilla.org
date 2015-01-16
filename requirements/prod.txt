@@ -1,61 +1,192 @@
-# Django stuff
-Django==1.7.3
--e git://github.com/jbalogh/django-multidb-router.git#egg=django-multidb-router
--e git://github.com/jsocol/django-cronjobs.git#egg=django-cronjobs
+# sha256: zu6D_0xPoUYSif4HpYeehEAIn63eFQ1AdTaRzdjJQsE
+# sha256: VOtZznhUAcfR_e7SRe_OWX6Q-BHWog9rXGkxwASdY6Y
+Django==1.6.10
 
-# BrowserID
-django-browserid==0.11
+# sha256: gRBAtkfl1WhvhNtBXv1pfmJQAIsRK2kJunesBZ4UDHQ
+MySQL-python==1.2.5
+
+# sha256: LiSsXQBNtXFJdqBKwOgMbfbkfpjDVMssDYL4h51Pj9s
+Jinja2==2.7.3
+
+# sha256: X6E7zlUUaDUNZsSINpSFBXDz2ijWhmu2OLpE_l6r2ng
+py-bcrypt==0.4
+
+# sha256: JukyDnP1ghgmtrJAijv_Cowp5FFZUwBpoRfv0572Gfg
+Pillow==2.7.0
+
+# sha256: eLAxFrrdDbsu1N7clqSj1CE4uUu4n8Lrmffzvf0Zn1Y
+# sha256: drxjpOLV5aDfd8p9GPD1bixGz7YrcRA7qSqSx5-rHgM
+nose==1.3.4
+
+# sha256: uDndLZwRfHAUMMFJlWkYpCOphjtIsJyQ4wpgE-fS9E8
+mock==1.0.1
+
+# sha256: f2UH1ADQft_R6oIF2jaAgAmwxTn1uKbgq1Qze5VebcM
+feedparser==5.1.3
+
+# sha256: RMoeA4y1f-QKwN_4tnsljv4FUXv5tLSwcDX4voMKrAE
+tox==1.8.1
+
+# sha256: NmfSakH-wwNkoO9yWAgyylMogC1VP21ucq9awhyzY2U
+django-nose==1.3
+
+# sha256: RsUeuHi3h-gU7o-XN7CmIREDSutNHAZFCsWo6lpw5gI
+pyquery==1.2.9
+
+# sha256: BTWn4nAUh0snrjpNM-h0njRb36YnZhlSCLeZa_EQBoI
+cssselect==0.9.1
+
+# sha256: BpWUg30DdqG6z1zEKqmhvi4cE5bcYvfQf3NYr-zTSt8
+lxml==3.4.1
+
+# sha256: i8pS00-rg-P2l9AuFWJb12bqLJL7FVXGYFfsElkMwZ0
+https://github.com/jbalogh/test-utils/archive/e42e031d31ea63d593e47d564545149a0f30b95f.zip#egg=test-utils
+
+# sha256: EeMy8qKdhkQ2S0ynm0rAed8yhibsjCesDozEVGlnGco
+translate-toolkit==1.12.0
+
+# TODO: Re-enable Django 1.7 when we have python2.7 on prod!
+# sha256: 8ib7iqQ4RWlo1AP2c53hzy2tEo24b2buK0Hf6-NkXFs
+# sha256: cu3Ue1WudI0p8acdXKS4bnhcn7l0QHzyQrMWjm8bF34
+# Django==1.7.3
+
+# TODO: upgrade this once we work out why the css helper is not loaded
+# sha256: 5F9_ELpYjxzEZRmmHqiV92fi2Zpjfn3lr4cJsSFIXss
+#django-browserid==0.11
+
+# sha256: 1BuH0etCTRi6Lb5zMTHp2HPnCcwR63PaJIw07sHV7W4
+django-browserid==0.10.1
+
+# sha256: e3c179Ox4jI9yfzvBgs4DQX18YvQ8kf16edKYoJ53mY
+# sha256: HwRtz17HEu076GhLnzPJW3bijNHIJdsPXhVXv9h7N0U
 requests==2.5.1
 
-# Templates
--e git://github.com/jbalogh/jingo.git#egg=jingo
--e git://github.com/jsocol/jingo-minify.git#egg=jingo-minify
-
-# Various tidbits
--e git://github.com/jsocol/commonware.git#egg=commonware
--e git://github.com/mozilla/nuggets.git#egg=nuggets
-
-# Security
--e git://github.com/fwenzel/django-sha2.git#egg=django-sha2
--e git://github.com/mozilla/django-session-csrf.git#egg=django-session-csrf
+# sha256: LRy1WDkWc99RCaP-XoT95hYO3IskGz6xmrPTq-m43zE
 cef==0.5
 
-# L10n
-Babel>=0.9.4
--e git://github.com/clouserw/tower.git#egg=tower
--e git://github.com/fwenzel/django-mozilla-product-details#egg=django-mozilla-product-details
+# sha256: nwLQNXGE3h8JPBABK1LnRUoQCL5qXBhat6Mwes6x0S4
+Babel==1.3
 
-# Mobile
--e git://github.com/jbalogh/django-mobility@644e0c1c58#egg=django-mobility
-
+# sha256: aoy0QBER4BG1ecjFKlHNq5cAQcxUOBS72Vd6RSn-HNs
 BeautifulSoup==3.2.1
+
+# sha256: vPcTcdmXu0ajFop7Y6rma1bMyswCWvkxDbQxVoHviGg
 python-memcached==1.53
+
+# sha256: VDjXSekjyRR0H-KkELUoq-JwUwAPv4eLxDdCjQiuCrE
+# sha256: OH-Wj955OxQoZYApFlYYOfVZHYtLFMlBEl6w_Kfk5Y0
+pytz==2014.10
+
+# sha256: rGiU2HbkWHj6rkk7DPYdDijsQXM0RIrApuoiKdg0MFE
 async==0.6.2
+
+# sha256: HhvLrNY1fBUa43zwKQ3MgJch0yziH9a3M5Vo893vG2k
 certifi==14.05.14
+
+# sha256: 5T44s6Sv5tETLeYrdACkrDY0Utxd_PjYjo4MzmY8aKo
 chardet==2.3.0
+
+# sha256: FSrynUWAsRL8UpZoZEknkclR5jgrVgcOleEoxrYUgzs
 Bleach==1.4.1
+
+# sha256: w4h_fih112ZhB_qL7nYf-VuTkazcx80bX9V6I7X7xJ4
 html5lib==0.999
+
+# sha256: OeqMam2fWVwXehYTT8SamQrY04J1jL9GnIZZZi8vUas
 httplib2==0.9
+
+# sha256: Bucp4cv1J0cDsfR7YTXtgzWZnVR_nYzwSLIQ-46_hE8
+# sha256: qciWurBtvzdZrV-2PP2zd3GR4sSuZA5t1p7TdTD2ulY
 pyparsing==2.0.3
+
+# sha256: gZ_Hu2URtQnya0wz8aszI--xx3uhDuILQbbGHq33uX0
+# sha256: oVGVJbu9K12Ka7spNgX4LOXVJizj3h7HBKh_8FbIbcs
 django-taggit==0.12.2
+
+# sha256: HDW0rCBs7y0kgWyJ-Jzyid09OM98RJuz-re_bUPwGx8
 ordereddict==1.1
+
+# sha256: qWkzKIehipyYsN8OpNTKdZcvJMqU8G-4fVkTd-g0FPY
 versiontools==1.9.1
+
+# sha256: 2ZQmvkb9kv5rZLn1xZJuqYWTlOROw--eH3xkfTomZX8
 django-picklefield==0.3.1
 
-django-constance[database]==1.0.1
+# sha256: loAD5YJnaGr9dnMXGuuIc3Xz6aw2JpExMQp6A4xv6vI
+# sha256: RIXIzrFQvxtvNIaVC-VcpzqcNviNggydbY734s9QQco
+django-constance==1.0.1
+
+# sha256: smA0Iw78731g5SZ4kO2mVt_EnFZ_JxJdkH7uT-f5puw
+# sha256: UE5EGWeseGBKs18DABj8mm-icOam6YRx0jEf139wZ0s
 django-compressor==1.4
+
+# sha256: qI7Y-5I6U8cMLEb75FCLX4Fka0sBQB8VaKghZxszIVw
+# sha256: 53T3tTehlADKaH9I01KrdGFzKsQThd2I_a1Hie-tKcU
 django-appconf==0.6
 
-# TODO: Maybe remove?
+# sha256: o-u8J74DWi6HTtkE31FuNfSimneKdkOF3gneng8Tllg
 gitdb==0.6.4
+
+# sha256: M8c3hAnrIk0crKbmv05shhBIJjOhWYfX6kKWrRW2QBQ
 GitPython==0.3.5
+
+# sha256: TEiNy4TP_Yi80rFlGWK3Z_m7JFIGQHyOpngEPNOdPKg
+django-multidb-router==0.6
+
+# sha256: F3KVsUQkAMks22fo4Y-f9ZRvtEL4WBO50IN4I3IuoI0
+django-cronjobs==0.2.3
+
+# sha256: uUMeohGZBz7HGJQTjybYoIOh0XNpND3isezYVNLIYV0
+https://github.com/jbalogh/jingo/archive/fce09043542e71d972cc97d2ae703740741f80d0.zip#egg=jingo
+
+# sha256: akF58qKszaKyc7_Ybeb3AkzuIDBDzJp8BA_nswa74SA
+fancy-tag==0.2.0
+
+# sha256: pOwa_1m5WhS0XrLiN2GgF56YMZ2lp-t2tW6ozce4ccM
+MarkupSafe==0.23
+
+# sha256: QYqTw5en7asj5ViNvAZ6x0pyPts9VBvUk295R252Rdo
+# sha256: 4kBSQR_E-9H2cmNVN8P8IzDZSBsYwDF2lbRiWVEskdU
+six==1.9.0
+
+# sha256: DititJe9Xwr-vAAu2k2Q350gnDDvJX6Gc8kKa1wRnWI
+smmap==0.9.0
+
+# sha256: OxNQQo3tQ4uqhTRD9zfPOTHrRggCTveBe2Dl3bp0nT8
+commonware==0.4.2
+
+# sha256: sGqGRRqZ1sJr-mUIKZnb9ljgh-WW6SkszmiLU-q6qto
+django-sha2==0.4
+
+# sha256: RORjnsBXprap3duGnU46SBj8knjsSQzOOa7whEBZKpM
+django-session-csrf==0.5
+
+# sha256: sTuMGdnDYUP9YU5TXCP9vnsUbLgrjZokbsrLNo4U0t0
+tower==0.4.1
+
+# sha256: uSXhpPQKk_2BhB75pyIrcFPaRiRdL8h2TVNCDc_9AU0
+django-mobility==0.1
 
 # TODO: Figure out why this won't install
 # pyqrnative==0.1.4
 
-# TODO: Resolve these into PyPi released versions
--e git://github.com/lmorchard/django-valet-keys.git@95758605e6f5a63eeaf8d49da19c18f0abf2a320#egg=django-valet-keys
-#-e git://github.com/jezdez/django-appconf.git@d7ff3bb0c35a0c2ec83afdb31f7bb79e0f1b222c#egg=django-appconf
+# TODO: Not needed?
+
+# sha256: PMWVaXVjHhGEYmH6TRD6H8KBdZ6XkuL1IsuzXXldauQ
+https://github.com/mozilla/nuggets/archive/b28d0e5a2cb9318bd72f8fa399f76141c69cf9b2.zip#egg=nuggets
+
+# sha256: N3FuUKlIDsQpOZ3nRted2ZwdWgfoigbYIh6Voifihmw
+https://github.com/fwenzel/django-mozilla-product-details/archive/515d55ddf20688c71b54d77eb157eaee21214859.zip#egg=django-mozilla-product-details
+
+# sha256: znpsIuhnQpKVu_dwbCqyl7TX4Qpv_s3ICpo6JaQC6iY
+https://github.com/jsocol/jingo-minify/archive/51c158a18e6c5ff7c6fd030ffa4cba51117893b5.zip#egg=jingo-minify
+
+# Temporary dev repos
+
+# sha256: 6T2P_EiN3J0B44h-QXaxDh-Tw3U_9_m9DUFTUKNfAd4
+https://github.com/lmorchard/django-valet-keys/archive/95758605e6f5a63eeaf8d49da19c18f0abf2a320.zip#egg=django-valet-keys
 
 # Temporary forks
--e git://github.com/lmorchard/django-notification.git@badges-fork#egg=django-notification
+
+# sha256: DZbillztoxKdKgUcmFXXJQwlicxtNREtpSSviQ2vMGY
+https://github.com/lmorchard/django-notification/archive/badges-fork.zip#egg=django-notification

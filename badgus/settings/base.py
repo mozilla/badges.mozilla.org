@@ -386,7 +386,10 @@ MOBILE_COOKIE = 'mobile'
 ##############################
 
 
-SITE_TITLE = 'dev.badges.mozilla.org'
+SITE_TITLE = 'badges-local.allizom.org'
+
+# TODO: This needs to be moved into local server conf or env vars
+ALLOWED_HOSTS = ['badges.allizom.org', 'badges.mozilla.org']
 
 # Make sure South stays out of the way during testing
 #SOUTH_TESTS_MIGRATE = False
@@ -660,3 +663,7 @@ CONSTANCE_CONFIG = dict(
 BROWSERID_VERIFY_CLASS = 'django_browserid.views.Verify'
 
 SQL_RESET_SEQUENCES = False
+
+BROWSERID_AUDIENCES = [
+    'https://badges.allizom.org/', 'https://badges.mozilla.org/'
+]
