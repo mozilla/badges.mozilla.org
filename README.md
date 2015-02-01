@@ -12,14 +12,19 @@ Feel free to file them [as issues on the badges.mozilla.org project][issues]!
 
 [issues]: https://github.com/mozilla/badges.mozilla.org/issues
 
-Development
------------
+Docker for development
+----------------------
+
+0. Make sure you have [docker](https://docker.io) and [fig](https://pypi.python.org/pypi/fig)
+1. fig up
+
+Development outside of Docker
+-----------------------------
 
 Here's how I get it running on my MacBook:
 
     git clone 
-    git submodule update --init --recursive
-    virtualenv --no-site-packages venv
+    virtualenv --no-site-packages virtualenv
     . ./venv/bin/activate
     pip install -r requirements/dev.txt
     # Set up a mysql database
