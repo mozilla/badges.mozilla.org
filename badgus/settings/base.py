@@ -9,10 +9,29 @@ import socket
 
 from django.utils.functional import lazy
 
-ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import dj_database_url
+from decouple import Csv, config
+
+BASE_DIR = ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
 
 def path(*a):
     return os.path.join(ROOT, *a)
+
+# Quick-start development settings - unsuitable for production
+# See https://docs.djangoproject.com/en/1.7/howto/deployment/checklist/
+
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = config('SECRET_KEY', default='')
+
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = config('DEBUG', default=False, cast=bool)
+
+TEMPLATE_DEBUG = config('DEBUG', default=DEBUG, cast=bool)
+
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(),
+    default='badges-dev.allizom.org,badges.allizom.org,badges.mozilla.org')
+BROWSERID_AUDIENCES = config('BROWSERID_AUDIENCES', cast=Csv(),
+    default=','.join(['https://%s/' % x for x in ALLOWED_HOSTS]))
 
 # For backwards compatability, (projects built based on cloning playdoh)
 # we still have to have a ROOT_URLCONF.
@@ -23,17 +42,29 @@ ROOT_URLCONF = '%s.urls' % os.path.basename(ROOT)
 # Is this a dev instance?
 DEV = False
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
 ADMINS = ()
 MANAGERS = ADMINS
 
-DATABASES = {}  # See settings_local.
+# Database
+# https://docs.djangoproject.com/en/1.7/ref/settings/#databases
+DATABASES = {
+    'default': config(
+        'DATABASE_URL',
+        default='mysql://root:passwd@db/badges',
+        cast=dj_database_url.parse
+    )
+}
 
 SLAVE_DATABASES = []
 
 DATABASE_ROUTERS = ('multidb.PinningMasterSlaveRouter',)
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': config('MEMCACHED', default='127.0.0.1:11211'),
+    }
+}
 
 # Site ID is used by Django's Sites framework.
 SITE_ID = 1
@@ -52,34 +83,24 @@ CEF_VERSION = '0'
 CEF_DEVICE_VERSION = '0'
 
 
-## Internationalization.
+# Internationalization
+# https://docs.djangoproject.com/en/1.7/topics/i18n/
 
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# On Unix systems, a value of None will cause Django to use the same
-# timezone as the operating system.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
-TIME_ZONE = 'America/Los_Angeles'
+LANGUAGE_CODE = config('LANGUAGE_CODE', default='en-us')
 
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
-USE_I18N = True
+TIME_ZONE = config('TIME_ZONE', default='UTC')
 
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale
-USE_L10N = True
+USE_I18N = config('USE_I18N', default=True, cast=bool)
+
+USE_L10N = config('USE_L10N', default=True, cast=bool)
+
+USE_TZ = config('USE_TZ', default=True, cast=bool)
 
 # Gettext text domain
 TEXT_DOMAIN = 'messages'
 STANDALONE_DOMAINS = [TEXT_DOMAIN, 'javascript']
 TOWER_KEYWORDS = {'_lazy': None}
 TOWER_ADD_HEADERS = True
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-US'
 
 ## Accepted locales
 
@@ -156,28 +177,11 @@ SUPPORTED_NONLOCALES = ['media', 'static', 'admin', 'browserid']
 
 ## Media and templates.
 
-# Absolute path to the directory that holds media.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = path('media')
+STATIC_ROOT = config('STATIC_ROOT', default=os.path.join(BASE_DIR, 'static'))
+STATIC_URL = config('STATIC_URL', default='/static/')
 
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
-
-# Absolute path to the directory static files should be collected to.
-# Don't put anything in this directory yourself; store your static files
-# in apps' "static/" subdirectories and in STATICFILES_DIRS.
-# Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = path('static')
-
-# URL prefix for static files.
-# Example: "http://media.lawrence.com/static/"
-STATIC_URL = '/static/'
-
-# Make this unique, and don't share it with anybody.
-# Set this in your local settings which is not committed to version control.
-SECRET_KEY = ''
+MEDIA_ROOT = config('MEDIA_ROOT', default=os.path.join(BASE_DIR, 'media'))
+MEDIA_URL = config('MEDIA_URL', default='/media/')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -291,9 +295,12 @@ def get_middleware(exclude=(), append=(),
     return current['middleware']
 
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
+    'constance',
+    'constance.backends.database',
+    'badgus.base',
+
     # Local apps
-    #'funfactory',  # Content common to most playdoh-based apps.
     'compressor',
 
     'tower',  # for ./manage.py extract (L10n)
@@ -306,12 +313,6 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    # 'django.contrib.sites',
-    # 'django.contrib.messages',
-    # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    # 'django.contrib.admindocs',
 
     # Third-party apps, patches, fixes
     'commonware.response.cookies',
@@ -320,8 +321,27 @@ INSTALLED_APPS = (
 
     # L10n
     'product_details',
-)
 
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.admin',
+
+    'taggit',
+    'valet_keys',
+
+    'badgus.profiles',
+    
+    'badger',
+
+    'badgus.badger_api',
+
+    'notification',
+    #'csp',
+    #'south',
+]
+
+for app in config('EXTRA_APPS', default='', cast=Csv()):
+    INSTALLED_APPS.append(app)
 
 def get_apps(exclude=(), append=(), current={'apps': INSTALLED_APPS}):
     """
@@ -343,8 +363,10 @@ JAVA_BIN = '/usr/bin/java'
 # Sessions
 #
 # By default, be at least somewhat secure with our session cookies.
-SESSION_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = config('SESSION_COOKIE_SECURE',
+        default=not DEBUG, cast=bool)
+SESSION_COOKIE_HTTPONLY = config('SESSION_COOKIE_HTTPONLY',
+        default=not DEBUG, cast=bool)
 
 ## Auth
 # The first hasher in this list will be used for new passwords.
@@ -387,9 +409,6 @@ MOBILE_COOKIE = 'mobile'
 
 
 SITE_TITLE = 'badges-local.allizom.org'
-
-# TODO: This needs to be moved into local server conf or env vars
-ALLOWED_HOSTS = ['badges.allizom.org', 'badges.mozilla.org']
 
 # Make sure South stays out of the way during testing
 #SOUTH_TESTS_MIGRATE = False
@@ -473,29 +492,6 @@ TEMPLATE_CONTEXT_PROCESSORS = list(TEMPLATE_CONTEXT_PROCESSORS) + [
     'constance.context_processors.config',
     'django.contrib.messages.context_processors.messages',
     'notification.context_processors.notification',
-]
-
-INSTALLED_APPS = [
-    'constance',
-    'constance.backends.database',
-    'badgus.base', # Mainly to override registration templates, FIXME
-] + list(INSTALLED_APPS) + [
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.admin',
-
-    'taggit',
-    'valet_keys',
-
-    'badgus.profiles',
-    
-    'badger',
-
-    'badgus.badger_api',
-
-    'notification',
-    #'csp',
-    #'south',
 ]
 
 CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
@@ -627,7 +623,7 @@ CSP_FRAME_SRC = ("'self'",
                  'https://www.facebook.com',)
 CSP_OPTIONS = ('eval-script',)
 
-BADGER_ALLOW_ADD_BY_ANYONE = False
+BADGER_ALLOW_ADD_BY_ANYONE = config('BADGER_ALLOW_ADD_BY_ANYONE', default=False, cast=bool)
 
 DEFAULT_FROM_EMAIL = 'notifications@badges.mozilla.org'
 OBI_BASE_URL = "//backpack.openbadges.org/"
@@ -663,7 +659,3 @@ CONSTANCE_CONFIG = dict(
 BROWSERID_VERIFY_CLASS = 'django_browserid.views.Verify'
 
 SQL_RESET_SEQUENCES = False
-
-BROWSERID_AUDIENCES = [
-    'https://badges.allizom.org/', 'https://badges.mozilla.org/'
-]
