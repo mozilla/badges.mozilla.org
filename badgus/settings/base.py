@@ -25,13 +25,13 @@ SECRET_KEY = config('SECRET_KEY', default='')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
-
 TEMPLATE_DEBUG = config('DEBUG', default=DEBUG, cast=bool)
+DEV = DEBUG
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv(),
     default='badges-dev.allizom.org,badges.allizom.org,badges.mozilla.org')
 BROWSERID_AUDIENCES = config('BROWSERID_AUDIENCES', cast=Csv(),
-    default=','.join(['https://%s/' % x for x in ALLOWED_HOSTS]))
+    default='https://badges-dev.allizom.org,https://badges.allizom.org,https://badges.mozilla.org')
 
 # For backwards compatability, (projects built based on cloning playdoh)
 # we still have to have a ROOT_URLCONF.
@@ -40,7 +40,6 @@ BROWSERID_AUDIENCES = config('BROWSERID_AUDIENCES', cast=Csv(),
 ROOT_URLCONF = '%s.urls' % os.path.basename(ROOT)
 
 # Is this a dev instance?
-DEV = False
 
 ADMINS = ()
 MANAGERS = ADMINS
