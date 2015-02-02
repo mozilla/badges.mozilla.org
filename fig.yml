@@ -19,8 +19,8 @@ web:
     - DATABASE_URL=mysql://root:passwd@db/badges
     - MEMCACHED=memcached:11211
     - DEBUG=True
-    - ALLOWED_HOSTS=localhost,127.0.0.1,badges-local.allizom.org
-    - BROWSERID_AUDIENCES=http://localhost:8000/,http://127.0.0.1:8000/,http://badges-local.allizom.org:8000/
+    - ALLOWED_HOSTS=localhost,127.0.0.1,192.168.59.103,badges-local.allizom.org
+    - BROWSERID_AUDIENCES=http://localhost:8000/,http://127.0.0.1:8000/,http://192.168.59.103:8000/,http://badges-local.allizom.org:8000/
     - EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
     - SECRET_KEY=8675309
     - EXTRA_APPS=debug_toolbar,
