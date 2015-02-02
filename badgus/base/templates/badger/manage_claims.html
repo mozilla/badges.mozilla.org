@@ -10,7 +10,7 @@
 
     <section class="badge span4">
         <header class="page-header">
-            <h2 class="badge-title">{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
+            <h2 class="badge-title">{{ _("Badge: {badge_title}") | fe(badge_title=badge.title) }}</h2>
         </header>
         {% include "badger/includes/badge_full.html" %}
     </section>
@@ -25,7 +25,7 @@
             <select name="amount">
                 <option value="1">1 reusable claim code</option>
                 {% for x in (6, 15, 30, 60, 90, 120, 150) %}
-                    <option value="{{ x }}">{{ _('{num} single-use claim codes') | f(num=x) }}</option>
+                    <option value="{{ x }}">{{ _('{num} single-use claim codes') | fe(num=x) }}</option>
                 {% endfor %}
             </select>
             <input type="submit" class="btn btn-large btn-primary submit" value="{{ _("Generate") }}">
@@ -43,7 +43,7 @@
                         <a class="btn" target="_blank" href="{{ url('badger.claims_list', badge.slug, item.claim_group) }}">
                             <strong class="modified">{{ item.modified }}</strong>
                             &#8212;
-                            <span class="count">{{ _('{count} single-use codes') | f(count=item.count) }}</span>
+                            <span class="count">{{ _('{count} single-use codes') | fe(count=item.count) }}</span>
                         </a>
                         &#8212;
                         <a class="btn btn-success" 

@@ -15,7 +15,7 @@
 
 {% block extrahead %}
     <link rel="alternate" type="application/json"
-        title="{{ _('{title} (JSON)') | f(title=award) }}"
+        title="{{ _('{title} (JSON)') | fe(title=award) }}"
         href="{{ request.build_absolute_uri(url('badger.award_detail_json', badge.slug, award.pk)) }}" />
 
      <meta property="og:type" content="article"> 
@@ -36,9 +36,9 @@
 <header class="page-header">
     <h2 class="badge-title">
         {% if award.user == request.user %}
-            {{ _("Your Awarded Badge: {badge_title}") | f(badge_title=badge.title) }}
+            {{ _("Your Awarded Badge: {badge_title}") | fe(badge_title=badge.title) }}
         {% else %}
-            {{ _("Awarded Badge: {badge_title}") | f(badge_title=badge.title) }}
+            {{ _("Awarded Badge: {badge_title}") | fe(badge_title=badge.title) }}
         {% endif %}
     </h2>
 </header>

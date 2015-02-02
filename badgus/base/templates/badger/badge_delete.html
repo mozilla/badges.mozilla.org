@@ -8,7 +8,7 @@
 
     <section class="span4" id="detail">
         <header class="page-header">
-            <h2>{{ _("Badge: {badge_title}") | f(badge_title=badge.title) }}</h2>
+            <h2>{{ _("Badge: {badge_title}") | fe(badge_title=badge.title) }}</h2>
         </header>
         {% include "badger/includes/badge_full.html" %}
     </section>

@@ -11,7 +11,7 @@
 {% block content %}
 <section class="awards_list">
     <header class="page-header">
-        <h2>{{ _("Awards for {user}") | f(user=user) }}</h2>
+        <h2>{{ _("Awards for {user}") | fe(user=user) }}</h2>
     </header>
     {% include "badger/includes/awards_as_badges_list.html" %}
 </section>
