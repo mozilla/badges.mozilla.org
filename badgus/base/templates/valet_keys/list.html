@@ -25,7 +25,7 @@
             <td class="actions">
                 <a class="btn btn-info"
                    title="{{ _('View key usage history') }}"
-                   href="{{ url('valet_keys.history', pk=key.pk) }}">{{ _('History ({count})') | f(count=key.history.count()) }}</a>
+                   href="{{ url('valet_keys.history', pk=key.pk) }}">{{ _('History ({count})') | fe(count=key.history.count()) }}</a>
                 {% if not key.is_disabled %}
                     <a class="btn btn-danger"
                        title="{{ _('Disable key') }}"
