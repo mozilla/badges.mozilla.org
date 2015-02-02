@@ -21,6 +21,7 @@ web:
     - DEBUG=True
     - ALLOWED_HOSTS=localhost,127.0.0.1,badges-local.allizom.org
     - BROWSERID_AUDIENCES=http://localhost:8000/,http://127.0.0.1:8000/,http://badges-local.allizom.org:8000/
+    - EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
     - SECRET_KEY=8675309
     - EXTRA_APPS=debug_toolbar,
     - BADGER_ALLOW_ADD_BY_ANYONE=True
