@@ -1,0 +1,40 @@
+{
+    "name": "badges.mozilla.org",
+    "description": "Mozillians making happy badges for Mozillians",
+    "repository": {
+        "url": "https://github.com/mozilla/badges.mozilla.org",
+        "license": "MPL2",
+        "type": "git",
+        "tests": "https://travis-ci.org/mozilla/badges.mozilla.org",
+        "clone": "https://github.com/mozilla/badges.mozilla.org.git"
+    },
+    "participate": {
+        "home": "https://github.com/mozilla/badges.mozilla.org",
+        "docs": "https://github.com/mozilla/badges.mozilla.org/wiki",
+        "irc": "irc://irc.mozilla.org/#badger",
+        "irc-contacts": [
+            "lorchard"
+        ]
+    },
+    "bugs": {
+        "list": "https://github.com/mozilla/badges.mozilla.org/issues",
+        "report": "https://github.com/mozilla/badges.mozilla.org/issues/new",
+        "mentored": "https://github.com/mozilla/badges.mozilla.org/labels/goodfirstbug"
+    },
+    "urls": {
+        "prod": "https://badges.mozilla.org",
+        "stage": "https://badges.allizom.org",
+        "dev": "https://badges-dev.allizom.org"
+    },
+    "keywords": [
+        "django",
+        "python",
+        "mysql",
+        "docker",
+        "jquery",
+        "badges",
+        "browserid",
+        "html5",
+        "whimsy"
+    ]
+}
