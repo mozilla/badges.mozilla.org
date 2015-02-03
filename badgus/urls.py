@@ -17,6 +17,8 @@ from badger.models import Badge, Award
 
 urlpatterns = patterns('',
     url(r'^$', 'badger.views.home', name='home'),
+    (r'^(?P<path>contribute\.json)$', 'django.views.static.serve',
+        {'document_root': settings.ROOT}),
     (r'^notification/', include('notification.urls')),
     #(r'^$', include('badgus.base.urls')),
     (r'^badges/create$', 'badgus.base.views.create'),
