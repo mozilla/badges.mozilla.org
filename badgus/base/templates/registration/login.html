@@ -11,18 +11,17 @@
     </section>
 {% else %}
     <section>
-        <header class="page-header">
-            <h1>Sign in with BrowserID</h1>
-        </header>
-        <form class="browserid" action="{{url('browserid_verify')}}" method="POST">
-            {{ csrf() }}
-            {% set next = request.GET.get('next', False) %}
-            {% if next %}
-                <input type="hidden" name="next" value="{{ next }}" />
-            {% endif %}
-            {{ browserid_form.as_p()|safe }}
-            <a href="#" class="browserid-signin" title="{{_('Sign In with BrowserID')}}"><img src="{{ static('img/sign_in_blue.png') }}" /></a>
-        </form>
+        {% if request.user.is_authenticated() %}
+            <header class="page-header">
+                <h1>Already signed in</h1>
+            </header>
+            {{ browserid_logout(text='Logout') }}
+        {% else %}
+            <header class="page-header">
+                <h1>Sign in with BrowserID</h1>
+            </header>
+            {{ browserid_login(text='Login') }}
+        {% endif %}
     </section>
 {% endif %}
 
