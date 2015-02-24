@@ -1,6 +1,6 @@
 # sha256: zu6D_0xPoUYSif4HpYeehEAIn63eFQ1AdTaRzdjJQsE
 # sha256: VOtZznhUAcfR_e7SRe_OWX6Q-BHWog9rXGkxwASdY6Y
-Django==1.6.10
+Django==1.7.4
 
 # sha256: gRBAtkfl1WhvhNtBXv1pfmJQAIsRK2kJunesBZ4UDHQ
 MySQL-python==1.2.5
@@ -37,7 +37,7 @@ pyquery==1.2.9
 cssselect==0.9.1
 
 # sha256: BpWUg30DdqG6z1zEKqmhvi4cE5bcYvfQf3NYr-zTSt8
-lxml==3.4.1
+lxml==3.4.2
 
 # sha256: i8pS00-rg-P2l9AuFWJb12bqLJL7FVXGYFfsElkMwZ0
 https://github.com/jbalogh/test-utils/archive/e42e031d31ea63d593e47d564545149a0f30b95f.zip#egg=test-utils
@@ -55,11 +55,11 @@ translate-toolkit==1.12.0
 #django-browserid==0.11
 
 # sha256: 1BuH0etCTRi6Lb5zMTHp2HPnCcwR63PaJIw07sHV7W4
-django-browserid==0.10.1
+django-browserid==0.11.1
 
 # sha256: e3c179Ox4jI9yfzvBgs4DQX18YvQ8kf16edKYoJ53mY
 # sha256: HwRtz17HEu076GhLnzPJW3bijNHIJdsPXhVXv9h7N0U
-requests==2.5.1
+requests==2.5.2
 
 # sha256: LRy1WDkWc99RCaP-XoT95hYO3IskGz6xmrPTq-m43zE
 cef==0.5
@@ -122,13 +122,13 @@ django-compressor==1.4
 
 # sha256: qI7Y-5I6U8cMLEb75FCLX4Fka0sBQB8VaKghZxszIVw
 # sha256: 53T3tTehlADKaH9I01KrdGFzKsQThd2I_a1Hie-tKcU
-django-appconf==0.6
+django-appconf==1.0.1
 
 # sha256: o-u8J74DWi6HTtkE31FuNfSimneKdkOF3gneng8Tllg
 gitdb==0.6.4
 
 # sha256: M8c3hAnrIk0crKbmv05shhBIJjOhWYfX6kKWrRW2QBQ
-GitPython==0.3.5
+GitPython==0.3.6
 
 # sha256: TEiNy4TP_Yi80rFlGWK3Z_m7JFIGQHyOpngEPNOdPKg
 django-multidb-router==0.6
@@ -153,7 +153,7 @@ six==1.9.0
 smmap==0.9.0
 
 # sha256: OxNQQo3tQ4uqhTRD9zfPOTHrRggCTveBe2Dl3bp0nT8
-commonware==0.4.2
+commonware==0.4.3
 
 # sha256: sGqGRRqZ1sJr-mUIKZnb9ljgh-WW6SkszmiLU-q6qto
 django-sha2==0.4
