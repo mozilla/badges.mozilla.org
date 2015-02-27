@@ -207,7 +207,7 @@ class AwardsByBadgeFeed(AwardsFeed):
         self.title = _(u'Recent awards of "{badgetitle}"').format(
             badgetitle=badge.title)
         self.link = request.build_absolute_uri(
-            reverse('badger.views.awards_by_badge', args=(badge.slug,)))
+            reverse('badger.views.awards_list', args=(badge.slug,)))
         return badge
 
     def items(self, badge):
