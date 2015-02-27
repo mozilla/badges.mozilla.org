@@ -40,8 +40,6 @@ urlpatterns = patterns('badger.views',
         name='badger.detail_json'),
     url(r'^badge/(?P<slug>[^/]+)/?$', 'detail',
         name='badger.detail'),
-    url(r'^badge/(?P<slug>[^/]+)/awards/?$', 'awards_by_badge',
-        name='badger.awards_by_badge'),
     url(r'^users/(?P<username>[^/]+)/awards/?$', 'awards_by_user',
         name='badger.awards_by_user'),
 

@@ -32,12 +32,13 @@ from badger.utils import get_badge, award_badge
 
 @accepts_valet_key
 @csrf_exempt
-def awards_list(request, slug=None):
+def awards_list(request, *args, **kwargs):
     """Extend the django-badger awards list URL to offer a POST API"""
+    slug = kwargs.get('slug', None)
 
     if "GET" == request.method or not slug:
         # If GET or missing a slug, bail out to the original view
-        return badger.views.awards_list(request, slug)
+        return badger.views.awards_list(request, *args, **kwargs)
 
     if not request.valet_key:
         return HttpResponseForbidden('Valid key required')

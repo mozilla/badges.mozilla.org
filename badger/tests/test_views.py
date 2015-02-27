@@ -132,7 +132,7 @@ class BadgerViewsTest(BadgerTestCase):
         for b in (b1, b2, b3):
             eq_(1, doc.find('.badge .title:contains("%s")' % b.title).length)
 
-    def test_awards_by_badge(self):
+    def test_awards_list(self):
         """Can view awards by badge"""
         user = self._get_user()
         b1 = Badge.objects.create(creator=user, title="Code Badge #1")
@@ -144,7 +144,7 @@ class BadgerViewsTest(BadgerTestCase):
         for u in (u1, u2, u3):
             b1.award_to(u)
 
-        url = reverse('badger.views.awards_by_badge', args=(b1.slug,))
+        url = reverse('badger.views.awards_list', args=(b1.slug,))
         r = self.client.get(url, follow=True)
         doc = pq(r.content)
 
