@@ -50,7 +50,7 @@ class BadgerFeedsTest(BadgerTestCase):
         feed_urls = (
             reverse('badger.feeds.awards_recent', 
                     args=('atom', )),
-            reverse('badger.feeds.awards_by_badge', 
+            reverse('badger.feeds.awards_list', 
                     args=('atom', b1.slug, )),
             reverse('badger.feeds.awards_by_user',
                     args=('atom', user2.username,)),

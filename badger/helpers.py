@@ -31,11 +31,9 @@ def user_avatar(user, secure=False, size=256, rating='pg', default=''):
     except ObjectDoesNotExist:
         pass
 
-    base_url = (secure and 'https://secure.gravatar.com' or
-        'http://www.gravatar.com')
     m = hashlib.md5(user.email)
-    return '%(base_url)s/avatar/%(hash)s?%(params)s' % dict(
-        base_url=base_url, hash=m.hexdigest(),
+    return '//www.gravatar.com/avatar/%(hash)s?%(params)s' % dict(
+        hash=m.hexdigest(),
         params=urllib.urlencode(dict(
             s=size, d=default, r=rating
         ))
