@@ -23,9 +23,9 @@ Development outside of Docker
 
 Here's how I get it running on my MacBook:
 
-    git clone 
+    git clone
     virtualenv --no-site-packages virtualenv
-    . ./venv/bin/activate
+    . ./virtualenv/bin/activate
     pip install -r requirements/dev.txt
     # Set up a mysql database
     # Edit badgus/settings/local.py
