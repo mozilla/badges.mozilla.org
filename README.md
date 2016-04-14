@@ -1,6 +1,14 @@
 badges.mozilla.org
 ==================
 
+Current status
+--------------
+
+**This project and site are no longer maintained.**
+
+Project info
+------------
+
 [![Build Status](https://travis-ci.org/mozilla/badges.mozilla.org.svg)](https://travis-ci.org/mozilla/badges.mozilla.org)
 [![Requirements Status](https://requires.io/github/mozilla/badges.mozilla.org/requirements.svg)](https://requires.io/github/mozilla/badges.mozilla.org/requirements/)
 
